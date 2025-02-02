@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Repository.csproj",
+      "projectUniqueName": "C:\\Users\\rogel\\source\\repos\\WebApiIncidentManager\\Repository\\Repository.csproj",
       "projectName": "Repository",
-      "projectPath": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Repository.csproj",
+      "projectPath": "C:\\Users\\rogel\\source\\repos\\WebApiIncidentManager\\Repository\\Repository.csproj",
       "packagesPath": "C:\\Users\\rogel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\obj\\",
+      "outputPath": "C:\\Users\\rogel\\source\\repos\\WebApiIncidentManager\\Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

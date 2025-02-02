@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Common",
-    "\\Common\\Utilities"
+    "\\Common\\Utilities",
+    "\\WebApiIncidentManager"
   ],
   "SelectedNode": "\\WebApiIncidentManager.sln",
   "PreviewInSolutionExplorer": false
