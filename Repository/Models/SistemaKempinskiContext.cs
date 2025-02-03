@@ -32,10 +32,6 @@ public partial class SistemaKempinskiContext : DbContext
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=mysql-2a593c0a-rogelio35grm-abac.h.aivencloud.com;port=17104;database=Sistema_Kempinski;uid=avnadmin;pwd=AVNS_nolUS7f12mDHiWFDUGK", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"));
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
