@@ -607,10 +607,7 @@
       "System.Threading.Channels/6.0.0": {},
       "Domain/1.0.0": {
         "runtime": {
-          "Domain.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "Domain.dll": {}
         }
       },
       "Repository/1.0.0": {
@@ -620,10 +617,7 @@
           "Pomelo.EntityFrameworkCore.MySql": "8.0.2"
         },
         "runtime": {
-          "Repository.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "Repository.dll": {}
         }
       },
       "Services/1.0.0": {
@@ -632,10 +626,7 @@
           "Repository": "1.0.0"
         },
         "runtime": {
-          "Services.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "Services.dll": {}
         }
       }
     }

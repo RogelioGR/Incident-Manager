@@ -7,7 +7,6 @@ const LoginPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Lógica para manejar el envío del formulario
   };
 
   return (
