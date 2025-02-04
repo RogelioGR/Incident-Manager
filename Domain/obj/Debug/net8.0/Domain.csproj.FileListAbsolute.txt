@@ -10,3 +10,15 @@ C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\Domain\obj\Debug
 C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\bin\Debug\net8.0\Domain.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\obj\Debug\net8.0\Domain.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\Domain\obj\Debug\net8.0\ref\Domain.dll

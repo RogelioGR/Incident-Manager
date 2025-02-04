@@ -3,8 +3,10 @@
     "",
     "\\Common",
     "\\Common\\Utilities",
+    "\\Services",
+    "\\Services\\Services",
     "\\WebApiIncidentManager"
   ],
-  "SelectedNode": "\\WebApiIncidentManager.sln",
+  "SelectedNode": "\\Services\\Services\\ReporteUsuarioServices.cs",
   "PreviewInSolutionExplorer": false
 }
