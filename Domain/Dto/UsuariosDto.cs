@@ -14,7 +14,7 @@ namespace Domain.Dto
 
         public string Apellidos { get; set; } = null!;
 
-        public string? CorreoElectronico { get; set; }
+        public string CorreoElectronico { get; set; }
 
         public string? CorreoPersonal { get; set; }
 

@@ -14,7 +14,7 @@ const Sidebar: React.FC = () => {
           <i className="fa-solid fa-house sidebar-icon me-2"></i>
           Dashboard
         </Nav.Link>
-        <Nav.Link as={Link} to="/ViewPerfil" className="sidebar-link">
+        <Nav.Link as={Link} to="/PageReporte" className="sidebar-link">
           <i className="fas fa-file sidebar-icon me-2"></i>
           Reportes
         </Nav.Link>

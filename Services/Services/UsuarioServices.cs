@@ -7,17 +7,44 @@ using System.Threading.Tasks;
 using WebApiIncidentManager.Models;
 using Domain.Dto;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Services.Services
 {
     public class UsuarioServices : IUsuarioServices
     {
         private readonly SistemaKempinskiContext _dBcontext;
+        private readonly PasswordHasher<Usuario> _passwordHasher;
+
 
         public UsuarioServices(SistemaKempinskiContext sistemaKempinskiContext)
         {
             _dBcontext = sistemaKempinskiContext;
+            _passwordHasher = new PasswordHasher<Usuario>();
 
+
+        }
+        public async Task<UsuariosDto> ValidarUsuario(string correo, string contraseña)
+        {
+            // Verificamos si la correo ingresada 
+            var usuario = await _dBcontext.Usuarios.SingleOrDefaultAsync(u => u.CorreoElectronico == correo);
+            if (usuario == null)
+            {
+                return null;
+            }
+            // Verificamos si la contraseña ingresada 
+            var resultado = _passwordHasher.VerifyHashedPassword(usuario, usuario.Contraseña, contraseña);
+            if (resultado == PasswordVerificationResult.Failed)
+            {
+                return (null);
+
+            }
+            return new UsuariosDto
+            {
+                IdUsuarios = usuario.IdUsuarios,
+                CorreoElectronico = usuario.CorreoElectronico,
+                FkRol = usuario.FkRol
+            };
         }
         public async Task<IEnumerable<UsuariosDto>> ObtenerUsuarios()
         {
@@ -66,13 +93,17 @@ namespace Services.Services
             {
                 Nombre = usuarioDto.Nombre,
                 Apellidos = usuarioDto.Apellidos,
-                CorreoElectronico = usuarioDto.CorreoElectronico,
+                CorreoElectronico = usuarioDto.CorreoElectronico, 
                 CorreoPersonal = usuarioDto.CorreoPersonal,
                 Contraseña = usuarioDto.Contraseña,
                 FkDepartamento = usuarioDto.FkDepartamento,
                 FkRol = usuarioDto.FkRol
             };
+            // Encriptar la contraseña 
+            var passwordHasher = new PasswordHasher<Usuario>();
+            usuario.Contraseña = passwordHasher.HashPassword(usuario, usuarioDto.Contraseña);
 
+            // Agregar usuario al contexto y guardar cambios
             await _dBcontext.Usuarios.AddAsync(usuario);
             await _dBcontext.SaveChangesAsync();
 
@@ -80,15 +111,16 @@ namespace Services.Services
             return usuarioDto;
         }
 
+
         /// Edita un usuario existente.
         public async Task<UsuariosDto> EditarUsuario(int idUsuario, UsuariosDto usuarioDto)
         {
             var usuario = await _dBcontext.Usuarios.FirstOrDefaultAsync(u => u.IdUsuarios == idUsuario);
             if (usuario == null)
             {
-                return null; // Si el usuario no existe, retornamos null
+                return null; 
             }
-
+            // Actualizar los campos del usuario
             usuario.Nombre = usuarioDto.Nombre;
             usuario.Apellidos = usuarioDto.Apellidos;
             usuario.CorreoElectronico = usuarioDto.CorreoElectronico;
@@ -97,8 +129,14 @@ namespace Services.Services
             usuario.FkDepartamento = usuarioDto.FkDepartamento;
             usuario.FkRol = usuarioDto.FkRol;
 
-            await _dBcontext.SaveChangesAsync();
+            // Verificar si la contraseña ha sido modificada
+            if (!string.IsNullOrWhiteSpace(usuarioDto.Contraseña))
+            {
+                var passwordHasher = new PasswordHasher<Usuario>();
+                usuario.Contraseña = passwordHasher.HashPassword(usuario, usuarioDto.Contraseña);
+            }
 
+            await _dBcontext.SaveChangesAsync();
             return usuarioDto;
         }
 
@@ -111,19 +149,17 @@ namespace Services.Services
 
                 if (usuario == null)
                 {
-                    return false; // Si el usuario no existe, retornamos false
+                    return false; 
                 }
-
                 _dBcontext.Usuarios.Remove(usuario);
                 await _dBcontext.SaveChangesAsync();
 
-                return true; // Usuario eliminado exitosamente
+                return true; 
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al eliminar el usuario", ex);
             }
         }
-
     }
 }
