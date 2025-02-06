@@ -22,7 +22,6 @@ export const crearUsuario = async (usuario: IUsuario): Promise<IUsuario> => {
     throw error;
   }
 };
-
 // Editar un usuario existente
 export const editarUsuario = async (id: number, usuario: Partial<IUsuario>): Promise<IUsuario> => {
   try {
@@ -33,7 +32,6 @@ export const editarUsuario = async (id: number, usuario: Partial<IUsuario>): Pro
     throw error;
   }
 };
-
 // Eliminar un usuario
 export const eliminarUsuario = async (id: number): Promise<boolean> => {
   try {
