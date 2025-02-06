@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/PageLogin';
 import Dashboard from './pages/Dashboard';
 import PageUsers from './pages/PageUsers';
+import PageReporte from './pages/PageReporte';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/PageUsers" element={<PageUsers />} />
+          <Route path="/PageReporte" element={<PageReporte />} />
           <Route path="/" element={<LoginPage />} />
 
         </Routes>
