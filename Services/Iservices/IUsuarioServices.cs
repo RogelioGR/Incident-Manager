@@ -13,5 +13,6 @@ namespace Services.Iservices
         Task<UsuariosDto> CrearUsuario(UsuariosDto usuarioDto);
         Task<UsuariosDto> EditarUsuario(int idUsuario, UsuariosDto usuarioDto);
         Task<bool> EliminarUsuario(int idUsuario);
+        Task<UsuariosDto> ValidarUsuario(string correo, string contraseña);
     }
 }
