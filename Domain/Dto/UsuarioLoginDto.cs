@@ -10,10 +10,11 @@ namespace Domain.Dto
     public class UsuarioLoginDto
     {
         [Required]
-        public string Correo { get; set; } = string.Empty; // Valor predeterminado para string
+        [EmailAddress]
+        public string Correo { get; set; } = string.Empty; 
 
-        [Required]
-        public string Contraseña { get; set; } = string.Empty; // Valor predeterminado para string
+       //[MinLength(6)]
+        public string Contraseña { get; set; } = string.Empty; 
 
     }
 }

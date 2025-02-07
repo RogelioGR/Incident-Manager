@@ -343,7 +343,7 @@
         }
       }
     },
-    "/api/Departamentos/{idDepartamento}": {
+    "/api/Departamentos/{id}": {
       "put": {
         "tags": [
           "Departamentos"
@@ -351,11 +351,18 @@
         "parameters": [
           {
             "name": "idDepartamento",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -408,11 +415,18 @@
         "parameters": [
           {
             "name": "idDepartamento",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -507,7 +521,7 @@
         }
       }
     },
-    "/api/EstadoReporte/{idEstado}": {
+    "/api/EstadoReporte/{id}": {
       "put": {
         "tags": [
           "EstadoReporte"
@@ -515,11 +529,18 @@
         "parameters": [
           {
             "name": "idEstado",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -572,11 +593,18 @@
         "parameters": [
           {
             "name": "idEstado",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -671,7 +699,7 @@
         }
       }
     },
-    "/api/Prioridad/{idPrioridad}": {
+    "/api/Prioridad/{id}": {
       "put": {
         "tags": [
           "Prioridad"
@@ -679,11 +707,18 @@
         "parameters": [
           {
             "name": "idPrioridad",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -736,11 +771,18 @@
         "parameters": [
           {
             "name": "idPrioridad",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -787,55 +829,9 @@
             }
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Reportes"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReportesDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReportesDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReportesDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReportesDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReportesDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReportesDto"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/api/Reportes/{idReporte}": {
+    "/api/Reportes/{id}": {
       "get": {
         "tags": [
           "Reportes"
@@ -843,11 +839,18 @@
         "parameters": [
           {
             "name": "idReporte",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -881,11 +884,18 @@
         "parameters": [
           {
             "name": "idReporte",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -938,14 +948,52 @@
         "parameters": [
           {
             "name": "idReporte",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reportes/crearReporte": {
+      "post": {
+        "tags": [
+          "Reportes"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportesDto"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1037,7 +1085,7 @@
         }
       }
     },
-    "/api/ReporteUsuario/{idReporteU}": {
+    "/api/ReporteUsuario/{id}": {
       "get": {
         "tags": [
           "ReporteUsuario"
@@ -1045,11 +1093,18 @@
         "parameters": [
           {
             "name": "idReporteU",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1083,11 +1138,18 @@
         "parameters": [
           {
             "name": "idReporteU",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1140,11 +1202,18 @@
         "parameters": [
           {
             "name": "idReporteU",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1239,7 +1308,7 @@
         }
       }
     },
-    "/api/Roles/{idRol}": {
+    "/api/Roles/{id}": {
       "put": {
         "tags": [
           "Roles"
@@ -1247,11 +1316,18 @@
         "parameters": [
           {
             "name": "idRol",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1304,11 +1380,18 @@
         "parameters": [
           {
             "name": "idRol",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1403,14 +1486,52 @@
         }
       }
     },
-    "/api/Usuarios/{idUsuario}": {
+    "/api/Usuarios/{id}": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioLoginDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioLoginDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioLoginDto"
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "tags": [
           "Usuarios"
         ],
         "parameters": [
           {
-            "name": "idUsuario",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -1467,7 +1588,7 @@
         ],
         "parameters": [
           {
-            "name": "idUsuario",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -1764,18 +1885,18 @@
       },
       "UsuarioLoginDto": {
         "required": [
-          "contraseña",
           "correo"
         ],
         "type": "object",
         "properties": {
           "correo": {
             "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "format": "email"
           },
           "contraseña": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1826,6 +1947,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Introduce el token JWT en el formato: Bearer {token}",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

@@ -1,5 +1,6 @@
 ﻿using Domain.Dto;
 using Domain.Dto.CreateDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Services.Iservices;
@@ -7,6 +8,7 @@ using Services.Services;
 
 namespace WebApiBD.Controllers
 {
+    [Authorize] // Asegura que solo usuarios autenticados puedan acceder
     [Route("api/[controller]")]
     [ApiController]
     public class RolesController : Controller
@@ -30,31 +32,31 @@ namespace WebApiBD.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<RolesDto>> CrearRol([FromBody] CreateRolDto request)
+        public async Task<ActionResult<RolesDto>> PostRol([FromBody] CreateRolDto request)
         {
             var rolCreado = await _services.CrearRol(request.NombreRol);
             return CreatedAtAction(nameof(GetRoles), new { id = rolCreado.IdRol }, rolCreado);
         }
 
-        [HttpPut("{idRol}")]
-        public async Task<ActionResult<RolesDto>> EditarRol(int idRol, [FromBody] CreateRolDto request)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<RolesDto>> PutRol(int id, [FromBody] CreateRolDto request)
         {
-            var rolEditado = await _services.EditarRol(idRol, request.NombreRol);
+            var rolEditado = await _services.EditarRol(id, request.NombreRol);
             if (rolEditado == null)
             {
-                return NotFound($"Rol con ID {idRol} no encontrado.");
+                return NotFound($"Rol con ID {id} no encontrado.");
             }
             return Ok(rolEditado);
         }
 
-        [HttpDelete("{idRol}")]
-        public async Task<ActionResult> EliminarRol(int idRol)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteRol(int id)
         {
-            var exito = await _services.EliminarRol(idRol);
+            var exito = await _services.EliminarRol(id);
 
             if (!exito)
             {
-                return NotFound($"Rol con ID {idRol} no encontrado.");
+                return NotFound($"Rol con ID {id} no encontrado.");
             }
             return NoContent();
         }

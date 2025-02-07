@@ -2,9 +2,11 @@
 using Domain.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Services.Iservices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApiIncidentManager.Controllers
 {
+    [Authorize] // Asegura que solo usuarios autenticados puedan acceder
     [Route("api/[controller]")]
     [ApiController]
     public class ReporteUsuarioController : Controller
@@ -15,8 +17,6 @@ namespace WebApiIncidentManager.Controllers
         {
             _services = services;
         }
-
-        // Obtener todos los reportes de usuarios
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ReporteUsuarioDto>>> GetReportesUsuarios()
         {
@@ -27,47 +27,43 @@ namespace WebApiIncidentManager.Controllers
             }
             return Ok(reportesUsuarios);
         }
-        // Obtener un reporte de usuario por ID
-        [HttpGet("{idReporteU}")]
-        public async Task<ActionResult<ReporteUsuarioDto>> GetReporteUsuarioPorId(int idReporteU)
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ReporteUsuarioDto>> GetReporteUsuarioPorId(int id)
         {
-            var reporteUsuario = await _services.ObtenerReporteUsuarioPorId(idReporteU);
+            var reporteUsuario = await _services.ObtenerReporteUsuarioPorId(id);
             if (reporteUsuario == null)
             {
-                return NotFound($"Reporte de usuario con ID {idReporteU} no encontrado.");
+                return NotFound($"Reporte de usuario con ID {id} no encontrado.");
             }
             return Ok(reporteUsuario);
         }
 
-
-        // Crear un nuevo reporte de usuario
         [HttpPost]
-        public async Task<ActionResult<ReporteUsuarioDto>> CrearReporteUsuario([FromBody] CreateReporteUsuarioDto request)
+        public async Task<ActionResult<ReporteUsuarioDto>> PostReporteUsuario([FromBody] CreateReporteUsuarioDto request)
         {
             var reporteUsuarioCreado = await _services.CrearReporteUsuario(request.FkReporte, request.FkUsuario);
             return CreatedAtAction(nameof(GetReportesUsuarios), new { id = reporteUsuarioCreado.IdReporteU }, reporteUsuarioCreado);
         }
 
-        // Editar un reporte de usuario existente
-        [HttpPut("{idReporteU}")]
-        public async Task<ActionResult<ReporteUsuarioDto>> EditarReporteUsuario(int idReporteU, [FromBody] CreateReporteUsuarioDto request)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ReporteUsuarioDto>>PutReporteUsuario(int id, [FromBody] CreateReporteUsuarioDto request)
         {
-            var reporteUsuarioEditado = await _services.EditarReporteUsuario(idReporteU, request.FkReporte, request.FkUsuario);
+            var reporteUsuarioEditado = await _services.EditarReporteUsuario(id, request.FkReporte, request.FkUsuario);
             if (reporteUsuarioEditado == null)
             {
-                return NotFound($"Reporte de usuario con ID {idReporteU} no encontrado.");
+                return NotFound($"Reporte de usuario con ID {id} no encontrado.");
             }
             return Ok(reporteUsuarioEditado);
         }
 
-        // Eliminar un reporte de usuario
-        [HttpDelete("{idReporteU}")]
-        public async Task<ActionResult> EliminarReporteUsuario(int idReporteU)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteReporteUsuario(int id)
         {
-            var exito = await _services.EliminarReporteUsuario(idReporteU);
+            var exito = await _services.EliminarReporteUsuario(id);
             if (!exito)
             {
-                return NotFound($"Reporte de usuario con ID {idReporteU} no encontrado.");
+                return NotFound($"Reporte de usuario con ID {id} no encontrado.");
             }
             return NoContent();
         }

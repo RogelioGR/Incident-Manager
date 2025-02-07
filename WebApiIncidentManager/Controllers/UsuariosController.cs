@@ -1,5 +1,6 @@
 ﻿using Domain.Dto;
 using Domain.Dto.CreateDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Iservices;
 using System.Collections.Generic;
@@ -7,17 +8,16 @@ using System.Threading.Tasks;
 
 namespace WebApiBD.Controllers
 {
+    [Authorize] // Asegura que solo usuarios autenticados puedan acceder
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : Controller
     {
         private readonly IUsuarioServices _services;
-
         public UsuariosController(IUsuarioServices services)
         {
             _services = services;
         }
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UsuariosDto>>> GetUsuarios()
         {
@@ -28,8 +28,20 @@ namespace WebApiBD.Controllers
             }
             return Ok(usuarios);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UsuarioLoginDto>> GetUsuarioPorId(int id)
+        {
+            var usuario = await _services.ObtenerUsuarioPorId(id);
+            if (usuario == null)
+            {
+                return NotFound($"Usuario con ID {id} no encontrado.");
+            }
+            return Ok(usuario);
+        }
+
         [HttpPost]
-        public async Task<ActionResult<UsuariosDto>> CrearUsuario([FromBody] CreateUsuariosDto request)
+        public async Task<ActionResult<UsuariosDto>> PostUsuario([FromBody] CreateUsuariosDto request)
         {
             var usuarioCreado = await _services.CrearUsuario(new UsuariosDto
             {
@@ -45,10 +57,10 @@ namespace WebApiBD.Controllers
             return CreatedAtAction(nameof(GetUsuarios), new { id = usuarioCreado.IdUsuarios }, usuarioCreado);
         }
 
-        [HttpPut("{idUsuario}")]
-        public async Task<ActionResult<UsuariosDto>> EditarUsuario(int idUsuario, [FromBody] CreateUsuariosDto request)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<UsuariosDto>> PutUsuario(int id, [FromBody] CreateUsuariosDto request)
         {
-            var usuarioEditado = await _services.EditarUsuario(idUsuario, new UsuariosDto
+            var usuarioEditado = await _services.EditarUsuario(id, new UsuariosDto
             {
                 Nombre = request.Nombre,
                 Apellidos = request.Apellidos,
@@ -61,17 +73,18 @@ namespace WebApiBD.Controllers
 
             if (usuarioEditado == null)
             {
-                return NotFound($"Usuario con ID {idUsuario} no encontrado.");
+                return NotFound($"Usuario con ID {id} no encontrado.");
             }
             return Ok(usuarioEditado);
         }
-        [HttpDelete("{idUsuario}")]
-        public async Task<ActionResult> EliminarUsuario(int idUsuario)
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteUsuario(int id)
         {
-            var exito = await _services.EliminarUsuario(idUsuario);
+            var exito = await _services.EliminarUsuario(id);
             if (!exito)
             {
-                return NotFound($"Usuario con ID {idUsuario} no encontrado.");
+                return NotFound($"Usuario con ID {id} no encontrado.");
             }
             return NoContent();
         }

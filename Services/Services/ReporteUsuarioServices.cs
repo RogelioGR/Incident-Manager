@@ -21,8 +21,8 @@ namespace Services.Services
         public async Task<IEnumerable<ReporteUsuarioDto>> ObtenerReportesUsuarios()
         {
             return await _dBcontext.ReporteUsuarios
-                .Include(ru => ru.FkReporteNavigation) // Incluir la entidad relacionada Reporte
-                .Include(ru => ru.FkUsuarioNavigation) // Incluir la entidad relacionada Usuario (opcional)
+                .Include(ru => ru.FkReporteNavigation) 
+                .Include(ru => ru.FkUsuarioNavigation) 
                 .AsNoTracking()
                 .Select(ru => new ReporteUsuarioDto
                 {
@@ -56,8 +56,8 @@ namespace Services.Services
         public async Task<ReporteUsuarioDto> ObtenerReporteUsuarioPorId(int idReporteU)
         {
             var reporteUsuario = await _dBcontext.ReporteUsuarios
-                .Include(ru => ru.FkReporteNavigation) // Incluir la entidad relacionada Reporte
-                .Include(ru => ru.FkUsuarioNavigation) // Incluir la entidad relacionada Usuario (opcional)
+                .Include(ru => ru.FkReporteNavigation) 
+                .Include(ru => ru.FkUsuarioNavigation) 
                 .AsNoTracking()
                 .FirstOrDefaultAsync(ru => ru.FkUsuario == idReporteU);
 

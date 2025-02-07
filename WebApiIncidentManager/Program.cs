@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+ï»¿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Services.Iservices;
@@ -12,7 +12,34 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    // Configuraciï¿½n para permitir autenticaciï¿½n JWT en Swagger
+    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Description = "Introduce el token JWT en el formato: Bearer {token}"
+    });
+
+    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
 
 // Registro de servicios personalizados
 builder.Services.AddScoped<IRolesServices, RolesServices>();
@@ -52,7 +79,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Configuración de CORS (si es necesario)
+// ConfiguraciÃ³n de CORS (si es necesario)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -63,10 +90,10 @@ builder.Services.AddCors(options =>
     );
 });
 
-// Construir la aplicación
+// Construir la aplicaciÃ³n
 var app = builder.Build();
 
-// Configuración del pipeline HTTP
+// ConfiguraciÃ³n del pipeline HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -76,6 +103,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
+// Middleware de autenticaciï¿½n
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
