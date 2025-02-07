@@ -4,6 +4,7 @@ using Services.Iservices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using WebApiIncidentManager.Models;
@@ -54,14 +55,22 @@ namespace Services.Services
                 FechaCreada = reporte.FechaCreada
             };
         }
-
-        public async Task<ReportesDto> CrearReporte(ReportesDto reporteDto)
+        public async Task<ReportesDto> CrearReporteConUsuario(ReportesDto reporteDto, ClaimsPrincipal user)
         {
+            // 1️⃣ Extraer el ID del usuario autenticado desde los claims
+            var userIdClaim = user.FindFirst("UserId");
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
+            {
+                throw new UnauthorizedAccessException("Usuario no autenticado.");
+            }
+
+            // 2️⃣ Validar el objeto recibido
             if (string.IsNullOrWhiteSpace(reporteDto.Titulo) || string.IsNullOrWhiteSpace(reporteDto.Descripcion))
             {
                 throw new ArgumentException("El título y la descripción son requeridos.");
             }
 
+            // 3️⃣ Crear el reporte
             var reporte = new Reporte
             {
                 Titulo = reporteDto.Titulo,
@@ -69,17 +78,36 @@ namespace Services.Services
                 FkPrioridad = reporteDto.FkPrioridad,
                 Descripcion = reporteDto.Descripcion,
                 FkEstado = reporteDto.FkEstado,
-                FechaCreada = DateTime.UtcNow 
+                FechaCreada = DateTime.UtcNow
             };
 
             await _dBcontext.Reportes.AddAsync(reporte);
-            await _dBcontext.SaveChangesAsync();
+            await _dBcontext.SaveChangesAsync(); // 🔹 Guardamos para obtener el ID del reporte
 
-            reporteDto.IdReporte = reporte.IdReporte;
-            return reporteDto;
+            // 4️⃣ Asociar el usuario autenticado al reporte
+            var reporteUsuario = new ReporteUsuario
+            {
+                FkReporte = reporte.IdReporte,
+                FkUsuario = userId
+            };
+
+            await _dBcontext.ReporteUsuarios.AddAsync(reporteUsuario);
+            await _dBcontext.SaveChangesAsync(); // 🔹 Guardamos la relación usuario-reporte
+
+            // 5️⃣ Retornar el reporte creado con el ID generado
+            return new ReportesDto
+            {
+                IdReporte = reporte.IdReporte,
+                Titulo = reporte.Titulo,
+                FkDestinatario = reporte.FkDestinatario,
+                FkPrioridad = reporte.FkPrioridad,
+                Descripcion = reporte.Descripcion,
+                FkEstado = reporte.FkEstado,
+                FechaCreada = reporte.FechaCreada
+            };
         }
 
-       
+
         public async Task<ReportesDto> EditarReporte(int idReporte, ReportesDto reporteDto)
         {
             var reporte = await _dBcontext.Reportes.FirstOrDefaultAsync(r => r.IdReporte == idReporte);
@@ -114,5 +142,8 @@ namespace Services.Services
 
             return true; 
         }
+
+
     }
+
 }

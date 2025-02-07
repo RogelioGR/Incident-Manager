@@ -10,6 +10,7 @@ using WebApiIncidentManager.Models;
 
 namespace WebApiIncidentManager.Controllers
 {
+
     [Route("[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -24,6 +25,7 @@ namespace WebApiIncidentManager.Controllers
             _usuarioServices = usuariosServices;
             _sistemaKempinskiContext = sistemaKempinskiContext;
         }
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UsuarioLoginDto usuarioLogin)
@@ -60,7 +62,7 @@ namespace WebApiIncidentManager.Controllers
                     new Claim("UserId", usuario.IdUsuarios.ToString()),
                     new Claim(ClaimTypes.Email, usuario.CorreoElectronico),
                 }),
-                Expires = DateTime.UtcNow.AddHours(12),
+                Expires = DateTime.UtcNow.AddHours(5), //tiempo de vida de token
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"],
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

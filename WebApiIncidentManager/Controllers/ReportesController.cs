@@ -1,16 +1,17 @@
 ﻿using Domain.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Iservices;
 
 namespace WebApiBD.Controllers
 {
-    
-        [Route("api/[controller]")]
-        [ApiController]
+    [Authorize] // Asegura que solo usuarios autenticados
+    [Route("api/[controller]")]
+    [ApiController]
+
         public class ReportesController : ControllerBase
         {
             private readonly IReportesServices _services;
-
             public ReportesController(IReportesServices services)
             {
                 _services = services;
@@ -27,7 +28,7 @@ namespace WebApiBD.Controllers
                 return Ok(reportes);
             }
 
-            [HttpGet("{idReporte}")]
+            [HttpGet("{id}")]
             public async Task<ActionResult<ReportesDto>> GetReportePorId(int idReporte)
             {
                 var reporte = await _services.ObtenerReportePorId(idReporte);
@@ -38,34 +39,42 @@ namespace WebApiBD.Controllers
                 return Ok(reporte);
             }
 
-            [HttpPost]
-            public async Task<ActionResult<ReportesDto>> CrearReporte([FromBody] ReportesDto reporteDto)
+            [HttpPost("crearReporte")]
+            public async Task<IActionResult> PostReporte([FromBody] ReportesDto reporteDto)
+        {
+            try
             {
-                var reporteCreado = await _services.CrearReporte(reporteDto);
-                return CreatedAtAction(nameof(GetReportePorId), new { idReporte = reporteCreado.IdReporte }, reporteCreado);
+                var reporteCreado = await _services.CrearReporteConUsuario(reporteDto, User);
+                return Ok(reporteCreado);
             }
-
-            [HttpPut("{idReporte}")]
-            public async Task<ActionResult<ReportesDto>> EditarReporte(int idReporte, [FromBody] ReportesDto reporteDto)
+            catch (Exception ex)
             {
-                var reporteEditado = await _services.EditarReporte(idReporte, reporteDto);
+                return BadRequest(new { mensaje = ex.Message });
+            }
+        }
+
+            [HttpPut("{id}")]
+            public async Task<ActionResult<ReportesDto>> PutReporte(int id, [FromBody] ReportesDto reporteDto)
+            {
+                var reporteEditado = await _services.EditarReporte(id, reporteDto);
                 if (reporteEditado == null)
                 {
-                    return NotFound($"Reporte con ID {idReporte} no encontrado.");
+                    return NotFound($"Reporte con ID {id} no encontrado.");
                 }
                 return Ok(reporteEditado);
             }
 
-            [HttpDelete("{idReporte}")]
-            public async Task<ActionResult> EliminarReporte(int idReporte)
+            [HttpDelete("{id}")]
+            public async Task<ActionResult> DeleteReporte(int id)
             {
-                var exito = await _services.EliminarReporte(idReporte);
+                var exito = await _services.EliminarReporte(id);
                 if (!exito)
                 {
-                    return NotFound($"Reporte con ID {idReporte} no encontrado.");
+                    return NotFound($"Reporte con ID {id} no encontrado.");
                 }
                 return NoContent();
             }
+
         }
-    
+
 }

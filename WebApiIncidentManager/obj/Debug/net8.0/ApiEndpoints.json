@@ -21,7 +21,7 @@
   },
   {
     "ContainingType": "WebApiIncidentManager.Controllers.ComentarioController",
-    "Method": "CrearComentario",
+    "Method": "PostComentario",
     "RelativePath": "api/Comentario",
     "HttpMethod": "POST",
     "IsController": true,
@@ -78,7 +78,7 @@
   },
   {
     "ContainingType": "WebApiIncidentManager.Controllers.ComentarioController",
-    "Method": "EditarComentario",
+    "Method": "PutComentario",
     "RelativePath": "api/Comentario/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -114,7 +114,7 @@
   },
   {
     "ContainingType": "WebApiIncidentManager.Controllers.ComentarioController",
-    "Method": "EliminarComentario",
+    "Method": "DeleteComentario",
     "RelativePath": "api/Comentario/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -155,7 +155,7 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.DepartamentosController",
-    "Method": "CrearDepartamento",
+    "Method": "PostDepartamento",
     "RelativePath": "api/Departamentos",
     "HttpMethod": "POST",
     "IsController": true,
@@ -181,8 +181,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.DepartamentosController",
-    "Method": "EditarDepartamento",
-    "RelativePath": "api/Departamentos/{idDepartamento}",
+    "Method": "PutDepartamento",
+    "RelativePath": "api/Departamentos/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -190,11 +190,16 @@
       {
         "Name": "idDepartamento",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreateDepartamentoDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -212,8 +217,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.DepartamentosController",
-    "Method": "EliminarDepartamento",
-    "RelativePath": "api/Departamentos/{idDepartamento}",
+    "Method": "DeleteDepartamento",
+    "RelativePath": "api/Departamentos/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -221,6 +226,11 @@
       {
         "Name": "idDepartamento",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -248,7 +258,7 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.EstadoReporteController",
-    "Method": "CrearEstadoReporte",
+    "Method": "PostEstadoReporte",
     "RelativePath": "api/EstadoReporte",
     "HttpMethod": "POST",
     "IsController": true,
@@ -274,8 +284,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.EstadoReporteController",
-    "Method": "EditarEstadoReporte",
-    "RelativePath": "api/EstadoReporte/{idEstado}",
+    "Method": "PutEstadoReporte",
+    "RelativePath": "api/EstadoReporte/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -283,11 +293,16 @@
       {
         "Name": "idEstado",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreateEstadoReporteDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -305,8 +320,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.EstadoReporteController",
-    "Method": "EliminarEstadoReporte",
-    "RelativePath": "api/EstadoReporte/{idEstado}",
+    "Method": "DeleteEstadoReporte",
+    "RelativePath": "api/EstadoReporte/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -314,6 +329,11 @@
       {
         "Name": "idEstado",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -341,7 +361,7 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.PrioridadController",
-    "Method": "CrearPrioridad",
+    "Method": "PostPrioridad",
     "RelativePath": "api/Prioridad",
     "HttpMethod": "POST",
     "IsController": true,
@@ -367,8 +387,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.PrioridadController",
-    "Method": "EditarPrioridad",
-    "RelativePath": "api/Prioridad/{idPrioridad}",
+    "Method": "PutPrioridad",
+    "RelativePath": "api/Prioridad/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -376,11 +396,16 @@
       {
         "Name": "idPrioridad",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreatePrioridadDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -398,8 +423,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.PrioridadController",
-    "Method": "EliminarPrioridad",
-    "RelativePath": "api/Prioridad/{idPrioridad}",
+    "Method": "DeletePrioridad",
+    "RelativePath": "api/Prioridad/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -407,6 +432,11 @@
       {
         "Name": "idPrioridad",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -434,34 +464,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.ReportesController",
-    "Method": "CrearReporte",
-    "RelativePath": "api/Reportes",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "reporteDto",
-        "Type": "Domain.Dto.ReportesDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Domain.Dto.ReportesDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApiBD.Controllers.ReportesController",
     "Method": "GetReportePorId",
-    "RelativePath": "api/Reportes/{idReporte}",
+    "RelativePath": "api/Reportes/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -469,6 +473,11 @@
       {
         "Name": "idReporte",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -486,8 +495,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.ReportesController",
-    "Method": "EditarReporte",
-    "RelativePath": "api/Reportes/{idReporte}",
+    "Method": "PutReporte",
+    "RelativePath": "api/Reportes/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -495,11 +504,16 @@
       {
         "Name": "idReporte",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "reporteDto",
         "Type": "Domain.Dto.ReportesDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -517,8 +531,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.ReportesController",
-    "Method": "EliminarReporte",
-    "RelativePath": "api/Reportes/{idReporte}",
+    "Method": "DeleteReporte",
+    "RelativePath": "api/Reportes/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -526,6 +540,27 @@
       {
         "Name": "idReporte",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApiBD.Controllers.ReportesController",
+    "Method": "PostReporte",
+    "RelativePath": "api/Reportes/crearReporte",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reporteDto",
+        "Type": "Domain.Dto.ReportesDto",
         "IsRequired": true
       }
     ],
@@ -553,7 +588,7 @@
   },
   {
     "ContainingType": "WebApiIncidentManager.Controllers.ReporteUsuarioController",
-    "Method": "CrearReporteUsuario",
+    "Method": "PostReporteUsuario",
     "RelativePath": "api/ReporteUsuario",
     "HttpMethod": "POST",
     "IsController": true,
@@ -580,7 +615,7 @@
   {
     "ContainingType": "WebApiIncidentManager.Controllers.ReporteUsuarioController",
     "Method": "GetReporteUsuarioPorId",
-    "RelativePath": "api/ReporteUsuario/{idReporteU}",
+    "RelativePath": "api/ReporteUsuario/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -588,6 +623,11 @@
       {
         "Name": "idReporteU",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -605,8 +645,8 @@
   },
   {
     "ContainingType": "WebApiIncidentManager.Controllers.ReporteUsuarioController",
-    "Method": "EditarReporteUsuario",
-    "RelativePath": "api/ReporteUsuario/{idReporteU}",
+    "Method": "PutReporteUsuario",
+    "RelativePath": "api/ReporteUsuario/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -614,11 +654,16 @@
       {
         "Name": "idReporteU",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreateReporteUsuarioDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -636,8 +681,8 @@
   },
   {
     "ContainingType": "WebApiIncidentManager.Controllers.ReporteUsuarioController",
-    "Method": "EliminarReporteUsuario",
-    "RelativePath": "api/ReporteUsuario/{idReporteU}",
+    "Method": "DeleteReporteUsuario",
+    "RelativePath": "api/ReporteUsuario/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -645,6 +690,11 @@
       {
         "Name": "idReporteU",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -672,7 +722,7 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.RolesController",
-    "Method": "CrearRol",
+    "Method": "PostRol",
     "RelativePath": "api/Roles",
     "HttpMethod": "POST",
     "IsController": true,
@@ -698,8 +748,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.RolesController",
-    "Method": "EditarRol",
-    "RelativePath": "api/Roles/{idRol}",
+    "Method": "PutRol",
+    "RelativePath": "api/Roles/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -707,11 +757,16 @@
       {
         "Name": "idRol",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreateRolDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -729,8 +784,8 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.RolesController",
-    "Method": "EliminarRol",
-    "RelativePath": "api/Roles/{idRol}",
+    "Method": "DeleteRol",
+    "RelativePath": "api/Roles/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -738,6 +793,11 @@
       {
         "Name": "idRol",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -765,7 +825,7 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.UsuariosController",
-    "Method": "CrearUsuario",
+    "Method": "PostUsuario",
     "RelativePath": "api/Usuarios",
     "HttpMethod": "POST",
     "IsController": true,
@@ -791,14 +851,40 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.UsuariosController",
-    "Method": "EditarUsuario",
-    "RelativePath": "api/Usuarios/{idUsuario}",
+    "Method": "GetUsuarioPorId",
+    "RelativePath": "api/Usuarios/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Dto.UsuarioLoginDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApiBD.Controllers.UsuariosController",
+    "Method": "PutUsuario",
+    "RelativePath": "api/Usuarios/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idUsuario",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       },
@@ -822,14 +908,14 @@
   },
   {
     "ContainingType": "WebApiBD.Controllers.UsuariosController",
-    "Method": "EliminarUsuario",
-    "RelativePath": "api/Usuarios/{idUsuario}",
+    "Method": "DeleteUsuario",
+    "RelativePath": "api/Usuarios/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idUsuario",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }

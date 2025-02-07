@@ -10,6 +10,7 @@ namespace Services.Iservices
     public interface IUsuarioServices
     {
         Task<IEnumerable<UsuariosDto>> ObtenerUsuarios();
+        Task<UsuariosDto> ObtenerUsuarioPorId(int IdUsuario);
         Task<UsuariosDto> CrearUsuario(UsuariosDto usuarioDto);
         Task<UsuariosDto> EditarUsuario(int idUsuario, UsuariosDto usuarioDto);
         Task<bool> EliminarUsuario(int idUsuario);

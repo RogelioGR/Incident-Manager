@@ -15,8 +15,6 @@ namespace Services.Services
     {
         private readonly SistemaKempinskiContext _dBcontext;
         private readonly PasswordHasher<Usuario> _passwordHasher;
-
-
         public UsuarioServices(SistemaKempinskiContext sistemaKempinskiContext)
         {
             _dBcontext = sistemaKempinskiContext;
@@ -43,6 +41,28 @@ namespace Services.Services
             {
                 IdUsuarios = usuario.IdUsuarios,
                 CorreoElectronico = usuario.CorreoElectronico,
+                FkRol = usuario.FkRol
+            };
+        }
+        public async Task<UsuariosDto> ObtenerUsuarioPorId(int idUsuario)
+        {
+            var usuario = await _dBcontext.Usuarios
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.IdUsuarios == idUsuario);
+
+            if (usuario == null)
+            {
+                return null;
+            }
+
+            return new UsuariosDto
+            {
+                IdUsuarios = usuario.IdUsuarios,
+                Nombre = usuario.Nombre,
+                Apellidos = usuario.Apellidos,
+                CorreoElectronico = usuario.CorreoElectronico,
+                CorreoPersonal = usuario.CorreoPersonal,
+                FkDepartamento = usuario.FkDepartamento,
                 FkRol = usuario.FkRol
             };
         }
@@ -75,20 +95,16 @@ namespace Services.Services
                     } : null
                 }).ToListAsync();
         }
-
-        /// Crea un nuevo usuario.
         public async Task<UsuariosDto> CrearUsuario(UsuariosDto usuarioDto)
         {
             if (string.IsNullOrWhiteSpace(usuarioDto.Nombre) || string.IsNullOrWhiteSpace(usuarioDto.Apellidos) || string.IsNullOrWhiteSpace(usuarioDto.Contraseña))
             {
                 throw new ArgumentException("Nombre, Apellidos y Contraseña son requeridos");
             }
-
             if (await _dBcontext.Usuarios.AnyAsync(u => u.CorreoElectronico == usuarioDto.CorreoElectronico))
             {
                 throw new Exception("El correo electrónico ya está registrado");
             }
-
             var usuario = new Usuario
             {
                 Nombre = usuarioDto.Nombre,
@@ -110,9 +126,6 @@ namespace Services.Services
             usuarioDto.IdUsuarios = usuario.IdUsuarios;
             return usuarioDto;
         }
-
-
-        /// Edita un usuario existente.
         public async Task<UsuariosDto> EditarUsuario(int idUsuario, UsuariosDto usuarioDto)
         {
             var usuario = await _dBcontext.Usuarios.FirstOrDefaultAsync(u => u.IdUsuarios == idUsuario);
@@ -139,8 +152,6 @@ namespace Services.Services
             await _dBcontext.SaveChangesAsync();
             return usuarioDto;
         }
-
-        /// Elimina un usuario existente.
         public async Task<bool> EliminarUsuario(int idUsuario)
         {
             try

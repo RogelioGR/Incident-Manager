@@ -10,7 +10,6 @@ public partial class SistemaKempinskiContext : DbContext
     public SistemaKempinskiContext()
     {
     }
-
     public SistemaKempinskiContext(DbContextOptions<SistemaKempinskiContext> options)
         : base(options)
     {
