@@ -11,6 +11,7 @@ import LoginPage from './pages/PageLogin';
 import Dashboard from './pages/Dashboard';
 import PageUsers from './pages/PageUsers';
 import PageReporte from './pages/PageReporte';
+import Usuarios from './pages/usuario';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/PageUsers" element={<PageUsers />} />
           <Route path="/PageReporte" element={<PageReporte />} />
           <Route path="/" element={<LoginPage />} />
+          <Route path="/Usuarios" element={<Usuarios />} />
 
         </Routes>
      

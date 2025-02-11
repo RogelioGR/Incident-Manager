@@ -1,7 +1,5 @@
-
-
 export interface ApiResponse <T>{
     succeded: boolean;
-    message: string | null;
+    message: string ;
     result: T;
 }

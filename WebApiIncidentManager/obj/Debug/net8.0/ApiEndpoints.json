@@ -54,13 +54,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idComentario",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -85,18 +80,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idComentario",
+        "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreateComentarioDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -121,13 +111,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idComentario",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -188,18 +173,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idDepartamento",
+        "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreateDepartamentoDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -224,13 +204,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idDepartamento",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -291,18 +266,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idEstado",
+        "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreateEstadoReporteDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -327,13 +297,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idEstado",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -394,18 +359,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idPrioridad",
+        "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreatePrioridadDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -430,13 +390,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idPrioridad",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -502,18 +457,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idReporte",
+        "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "reporteDto",
         "Type": "Domain.Dto.ReportesDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -538,13 +488,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idReporte",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -621,13 +566,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idReporteU",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -652,18 +592,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idReporteU",
+        "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreateReporteUsuarioDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -688,13 +623,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idReporteU",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -755,18 +685,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idRol",
+        "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "request",
         "Type": "Domain.Dto.CreateDto.CreateRolDto",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
         "IsRequired": true
       }
     ],
@@ -791,13 +716,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idRol",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "id",
-        "Type": "",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

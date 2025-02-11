@@ -1,8 +1,25 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
+import { logout } from '../Data/Services/AuthService';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  closeMenu?: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({  closeMenu }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+
+    logout();
+    navigate('/login');
+    if (closeMenu) {
+      closeMenu();
+    }
+  };
+  
+
   return (
     <Navbar variant="dark" className="sidebar-container">
       <Navbar.Brand className="sidebar-brand">
@@ -19,7 +36,7 @@ const Sidebar: React.FC = () => {
           Reportes
         </Nav.Link>
         <Nav.Link as={Link} to="/ViewPerfil" className="sidebar-link">
-          <i className="fas fa-user-friends sidebar-icon me-2"></i>
+          <i className="fa-solid fa-building me-2"></i>
           Departamentos
         </Nav.Link>
         <Nav.Link as={Link} to="/PageUsers" className="sidebar-link">
@@ -33,7 +50,7 @@ const Sidebar: React.FC = () => {
       </Nav>
 
       <Nav className="flex-column mt-auto w-100">
-        <Nav.Link as={Link} to="/login" className="sidebar-link">
+        <Nav.Link onClick={handleLogout}  className="sidebar-link">
           <i className="fa-solid fa-power-off sidebar-icon me-2"></i>
           Cerrar sesión
         </Nav.Link>
