@@ -1,44 +1,31 @@
-import { IUsuario } from "../Interfaces/IUsers";
-import { ApiResponse } from "../Interfaces/IApiResponse";
 import axiosInstance from "./AxiosConfig";
+import { IUsuario } from "../Interfaces/IUsers";
 
-// Obtener todos los usuarios
 export const obtenerUsuarios = async (): Promise<IUsuario[]> => {
-    try {
-        const response = await axiosInstance.get<ApiResponse<IUsuario[]>>("api/Usuarios");
-        return response.data.result || [];
-    } catch (error) {
-        console.error('Error al obtener los usuarios:', error);
-        return [];
-    }
-};
-// Crear un nuevo usuario
-export const crearUsuario = async (usuario: IUsuario): Promise<IUsuario> => {
   try {
-    const response = await axiosInstance.post<ApiResponse<IUsuario>>("api/Usuarios", usuario);
-    return response.data.result;
+    const response = await axiosInstance.get('/api/Usuarios');
+    return response.data as IUsuario[]; 
   } catch (error) {
-    console.error("Error al crear el usuario:", error);
-    throw error;
+    console.error('Error al obtener los usuarios:', error);
+    throw error; 
   }
 };
-// Editar un usuario existente
-export const editarUsuario = async (id: number, usuario: Partial<IUsuario>): Promise<IUsuario> => {
-  try {
-    const response = await axiosInstance.put<ApiResponse<IUsuario>>(`api/Usuarios/${id}`, usuario);
-    return response.data.result;
-  } catch (error) {
-    console.error("Error al editar el usuario:", error);
-    throw error;
-  }
+
+export const obtenerUsuarioid = async (id: number): Promise<IUsuario> => {
+  const response = await axiosInstance.get(`/api/Usuarios${id}`);
+  return response.data.result as IUsuario;
+};   
+
+export const createUser = async (userData: IUsuario): Promise<IUsuario> => {
+  const response = await axiosInstance.post('/Usuario/create', userData);
+  return response.data.result as IUsuario;
 };
-// Eliminar un usuario
-export const eliminarUsuario = async (id: number): Promise<boolean> => {
-  try {
-    const response = await axiosInstance.delete<ApiResponse<boolean>>(`api/Usuarios/${id}`);
-    return response.data.succeded;
-  } catch (error) {
-    console.error("Error al eliminar el usuario:", error);
-    throw error;
-  }
+
+export const updateUser = async (idUsuarios: number, userData: IUsuario): Promise<IUsuario> => {
+  const response = await axiosInstance.put(`/Usuario/update/${idUsuarios}`, userData);
+  return response.data.result as IUsuario;
+};
+
+export const deleteUser = async (idUsuarios: number): Promise<void> => {
+  await axiosInstance.delete(`/Usuario/delete/${idUsuarios}`);
 };

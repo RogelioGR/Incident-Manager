@@ -8,4 +8,3 @@ export const parseJwt = (token: string) => {
     );
     return JSON.parse(base64);
   };
-  

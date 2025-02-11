@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import { obtenerUsuarioid } from '../Data/Services/UsersServices';
+import { IUsuario } from '../Data/Interfaces/IUsers';
 
 const Header : React.FC = () => {
+  const [user, setUser] = useState<IUsuario | null>(null);
+
+  useEffect(() =>{
+    const fetchUser = async () => {
+      try {
+          const id = localStorage.getItem('idUsuarios');
+          if (id) {
+              const  idUsuarios = parseInt(id, 10); 
+              const userData = await obtenerUsuarioid( idUsuarios);
+              setUser(userData);
+          }
+      } catch (error) {
+          console.error('Error al cargar la información del usuario', error);
+      }
+  };
+  fetchUser();
+  }, []);
   return (
     <header className="d-flex justify-content-between align-items-center p-2 border-bottom">
       <div className="user-info d-flex align-items-center">
@@ -16,9 +35,9 @@ const Header : React.FC = () => {
             }}
         />
         <div className="ms-2">
-          <span className="fw-bold">ROGELIO RAMOS</span>
+          <span className="fw-bold">{user?.nombre}</span>
           <br />
-          <span className="text-muted">Rogelio@mail.com</span>
+          <span className="text-muted">{user?.correoElectronico}</span>
         </div>
         <div className="dropdown ms-4">
           <button
