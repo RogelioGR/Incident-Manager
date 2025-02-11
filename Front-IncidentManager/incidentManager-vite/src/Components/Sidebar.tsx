@@ -19,7 +19,6 @@ const Sidebar: React.FC<SidebarProps> = ({  closeMenu }) => {
     }
   };
   
-
   return (
     <Navbar variant="dark" className="sidebar-container">
       <Navbar.Brand className="sidebar-brand">
@@ -31,19 +30,19 @@ const Sidebar: React.FC<SidebarProps> = ({  closeMenu }) => {
           <i className="fa-solid fa-house sidebar-icon me-2"></i>
           Dashboard
         </Nav.Link>
-        <Nav.Link as={Link} to="/PageReporte" className="sidebar-link">
+        <Nav.Link as={Link} to="/Reportes" className="sidebar-link">
           <i className="fas fa-file sidebar-icon me-2"></i>
           Reportes
         </Nav.Link>
-        <Nav.Link as={Link} to="/ViewPerfil" className="sidebar-link">
+        <Nav.Link as={Link} to="/Departamento" className="sidebar-link">
           <i className="fa-solid fa-building me-2"></i>
           Departamentos
         </Nav.Link>
-        <Nav.Link as={Link} to="/PageUsers" className="sidebar-link">
+        <Nav.Link as={Link} to="/Usuarios" className="sidebar-link">
         <i className="fa-solid fa-user sidebar-icon me-2"></i>
         Usuarios
         </Nav.Link>
-        <Nav.Link as={Link} to="/ViewPerfil" className="sidebar-link">
+        <Nav.Link as={Link} to="/Perfil" className="sidebar-link">
           <i className="fas fa-user-edit sidebar-icon me-2"></i>
           Perfil
         </Nav.Link>

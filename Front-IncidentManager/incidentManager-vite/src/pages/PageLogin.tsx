@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../Data/Services/AuthService'; 
+import { login } from '../Data/Services/AuthService';
+import { Container, Spinner, Alert } from 'react-bootstrap';
+
 
 const NewLogin: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -11,7 +12,6 @@ const NewLogin: React.FC = () => {
 
     const navigate = useNavigate();
 
-    // Evitar que usuarios autenticados vuelvan al login
     useEffect(() => {
         if (localStorage.getItem('authenticated') === 'true') {
             navigate("/Dashboard");
@@ -24,17 +24,10 @@ const NewLogin: React.FC = () => {
         setErrorMessage(null);
 
         try {
-            // Llama a la función login con los datos del formulario
             await login({ correo: email, contraseña: password });
-            
-            // Marca al usuario como autenticado
             localStorage.setItem('authenticated', 'true');
-
-            // Redirige al Dashboard después del login
             navigate("/Dashboard");
-
         } catch (error) {
-            // Manejo de errores
             if (error instanceof Error) {
                 setErrorMessage("Correo o contraseña incorrectos.");
             } else {
@@ -44,63 +37,71 @@ const NewLogin: React.FC = () => {
             setLoading(false);
         }
     };
-
     return (
         <Container fluid className="login-container">
-            <div className='box-login'>
-                <div className="inner-box">
-                    <div className="forms-wrap">
-                        <form autoComplete="off" className="sign-in-form" onSubmit={handleLogin}>
-                            <div className="logo">
-                            </div>
-                            <div className="heading">
-                                <h2>Iniciar sesión</h2>
-                            </div>
-                            <div className="actual-form">
-                                <div className="input-wrap">
-                                    <input
-                                        type="email"
-                                        minLength={4}
-                                        className="input-field"
-                                        autoComplete="off"
-                                        required
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                    />
-                                    <label className='label-login'>Correo Electrónico</label>
+            <div style={{
+                backgroundColor: '#f0f2f5',
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontFamily: 'Arial, sans-serif',
+                padding: '20px'
+            }}>
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-12 col-md-8 col-lg-6">
+                            <div className="card border-0 shadow-lg" style={{ borderRadius: '15px', backgroundColor: '#ffffff' }}>
+                                <div className="card-body p-4 p-md-5">
+                                    <h3 className="text-center mb-4" style={{ color: '#333333', fontWeight: 'bold' }}>Incident Manager</h3>
+                                    <p className="text-center text-muted mb-4">Gestiona tus incidentes de manera eficiente</p>
+
+                                    {errorMessage && <Alert variant="danger" className="text-center">{errorMessage}</Alert>}
+
+                                    <form autoComplete="off" onSubmit={handleLogin}>
+                                        <div className="mb-4">
+                                            <label htmlFor="email" className="form-label text-muted small">Correo Electrónico:</label>
+                                            <input
+                                                type="email"
+                                                className="form-control"
+                                                id="email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                placeholder="Ingresa tu correo"
+                                                required
+                                            />
+                                        </div>
+
+                                        <div className="mb-4">
+                                            <label htmlFor="password" className="form-label text-muted small">Contraseña:</label>
+                                            <input
+                                                type="password"
+                                                className="form-control"
+                                                id="password"
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)}
+                                                placeholder="Ingresa tu contraseña"
+                                                required
+                                            />
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            className="btn w-100"
+                                            style={{ backgroundColor: '#007bff', color: '#ffffff', borderRadius: '10px', padding: '12px', fontWeight: 'bold' }}
+                                            disabled={loading}
+                                        >
+                                            {loading ? (
+                                                <>
+                                                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                                                    {' '}Cargando...
+                                                </>
+                                            ) : 'Iniciar sesión'}
+                                        </button>
+                                    </form>
                                 </div>
-
-                                <div className="input-wrap">
-                                    <input
-                                        type="password"
-                                        minLength={4}
-                                        className="input-field"
-                                        autoComplete="off"
-                                        required
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    />
-                                    <label className='label-login'>Contraseña</label>
-                                </div>
-
-                                {errorMessage && (
-                                    <p style={{ color: 'red', fontSize: '0.9em' }}>{errorMessage}</p>
-                                )}
-
-                                <button type="submit" className="sign-btn" disabled={loading}>
-                                    {loading ? (
-                                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                    ) : (
-                                        'Iniciar sesión'
-                                    )}
-                                </button>
                             </div>
-                        </form>
-                    </div>
-                    <div className="logo-container">
-                        <div className="images-wrapper">
-                            <img src="/public/roomclean.png" className='image' alt="Logo" />
                         </div>
+
                     </div>
                 </div>
             </div>

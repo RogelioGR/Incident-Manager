@@ -5,8 +5,9 @@
     "\\Common\\Utilities",
     "\\Services",
     "\\Services\\Services",
-    "\\WebApiIncidentManager"
+    "\\WebApiIncidentManager",
+    "\\WebApiIncidentManager\\Controllers"
   ],
-  "SelectedNode": "\\Services\\Services\\ReporteUsuarioServices.cs",
+  "SelectedNode": "\\WebApiIncidentManager\\Controllers\\UsuariosController.cs",
   "PreviewInSolutionExplorer": false
 }

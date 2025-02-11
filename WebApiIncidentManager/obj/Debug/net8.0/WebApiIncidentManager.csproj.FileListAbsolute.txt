@@ -246,3 +246,11 @@ C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\WebApiIncidentMa
 C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\WebApiIncidentManager\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\WebApiIncidentManager\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\WebApiIncidentManager\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ittraining\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

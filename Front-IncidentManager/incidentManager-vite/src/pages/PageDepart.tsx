@@ -1,0 +1,27 @@
+import React from 'react';
+
+/*Componentes */
+import Sidebar from '../Components/Sidebar';
+import Header from '../Components/Header';
+import { Container, Dropdown } from 'react-bootstrap';
+
+const PageDepartamento: React.FC = () => {
+  return (
+    <>
+      <div className="d-flex vh-100 flex-column flex-md-row viewinform-container">
+        <Sidebar />
+        <div className="flex-grow-1 d-flex flex-column viewinform-content">
+          <Header />
+          <Container className="my-3" style={{ overflowY: 'auto' }}>
+            <div className="mt-2">
+            <h1 className="mb-2">Departamento</h1>
+            </div>
+
+          </Container>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default PageDepartamento;

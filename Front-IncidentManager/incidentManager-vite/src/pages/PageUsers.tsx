@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { obtenerUsuarios } from '../Data/Services/UsersServices';
 import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
-import { Container, Form, Table, Alert } from 'react-bootstrap';
+import { Container, Form, Table, Alert, Button } from 'react-bootstrap';
 import { IUsuario } from '../Data/Interfaces/IUsers';
 
 const PageUsers: React.FC = () => {
@@ -28,7 +28,7 @@ const PageUsers: React.FC = () => {
         fetchUsers();
     }, []);
 
-    const filteredUsers = Array.isArray(users) ? users.filter(user => 
+    const filteredUsers = Array.isArray(users) ? users.filter(user =>
         user.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user?.apellidos?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.correoElectronico.toLowerCase().includes(searchTerm.toLowerCase())
@@ -50,7 +50,7 @@ const PageUsers: React.FC = () => {
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
-                        
+
                         {error && (
                             <Alert variant="danger" className="text-center">
                                 {error}
@@ -68,15 +68,14 @@ const PageUsers: React.FC = () => {
                                 </p>
                             </div>
                         ) : (
-                            <Table striped bordered hover>
-                                <thead>
+                            <Table responsive striped bordered hover>
+                                <thead className="text-center">
                                     <tr>
                                         <th>#</th>
-                                        <th>Nombre</th>
-                                        <th>Apellidos</th>
+                                        <th>Nombre completo</th>
                                         <th>Departamento</th>
-                                        <th>Correo</th>
-                                        <th>contraseña</th>
+                                        <th>Correo Electrónico</th>
+                                        <th>Correo Personal</th>
                                         <th>accion</th>
 
                                     </tr>
@@ -85,11 +84,23 @@ const PageUsers: React.FC = () => {
                                     {filteredUsers.map((usuario) => (
                                         <tr key={usuario.idUsuarios}>
                                             <td>{usuario.idUsuarios}</td>
-                                            <td>{usuario.nombre}</td>
-                                            <td>{usuario.apellidos}</td>
+                                            <td >{usuario.apellidos}{usuario.nombre}</td>
                                             <td>{usuario.fkDepartamento}</td>
                                             <td>{usuario.correoElectronico}</td>
-                                            <td>{usuario.contraseña}</td>
+                                            <td>{usuario.correoPersonal}</td>
+                                            <td>
+                                                <div className="d-flex justify-content-center m-1">
+                                                <Button variant="primary" className="me-2" disabled>
+                                                    <i className="fas fa-plus"></i>
+                                                    <span className="d-none d-md-inline"> view</span>
+                                                </Button>
+                                                <Button variant="warning" className="me-2" disabled>
+                                                    <i className="fas fa-plus"></i>
+                                                    <span className="d-none d-md-inline"> Edit</span>
+                                                </Button>
+
+                                                </div>
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
