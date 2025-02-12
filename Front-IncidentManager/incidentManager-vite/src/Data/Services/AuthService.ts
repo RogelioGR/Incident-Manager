@@ -14,7 +14,6 @@ export const login = async (loginData: LoginData): Promise<void> => {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('idUsuarios', response.data.idUsuarios); 
         console.log('Inicio de sesión exitoso');
-        console.log(localStorage.getItem('idUsuarios'));
     } catch (error) {
         console.error('Ocurrio un error en el inicio de sesión:', error);
         throw new Error('Error de inicio de sesion');

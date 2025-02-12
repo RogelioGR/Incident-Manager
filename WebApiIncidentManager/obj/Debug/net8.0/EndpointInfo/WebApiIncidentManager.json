@@ -1326,7 +1326,49 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Usuarios/{id}": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioLoginDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioLoginDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioLoginDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Usuarios/create": {
       "post": {
         "tags": [
           "Usuarios"
@@ -1374,45 +1416,7 @@
         }
       }
     },
-    "/api/Usuarios/{id}": {
-      "get": {
-        "tags": [
-          "Usuarios"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UsuarioLoginDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UsuarioLoginDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UsuarioLoginDto"
-                }
-              }
-            }
-          }
-        }
-      },
+    "/api/Usuarios/update/{id}": {
       "put": {
         "tags": [
           "Usuarios"
@@ -1469,7 +1473,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Usuarios/delete/{id}": {
       "delete": {
         "tags": [
           "Usuarios"
