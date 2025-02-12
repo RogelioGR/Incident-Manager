@@ -4,6 +4,7 @@ import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
 import { Container, Table, Alert, Button } from 'react-bootstrap';
 import { IUsuario } from '../Data/Interfaces/IUsers';
+import MCreateUser from '../Components/Modals/Users/modalCreateUsers';
 
 const PageUsers: React.FC = () => {
     const [users, setUsers] = useState<IUsuario[]>([]);
@@ -33,6 +34,23 @@ const PageUsers: React.FC = () => {
         user?.apellidos?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.correoElectronico.toLowerCase().includes(searchTerm.toLowerCase())
     ) : [];
+    enum ModalsUsers {
+        NONE = 'NONE',
+        CREATE_USER = 'CREATE_USER',
+        EDIT_USER = 'EDIT_USER',
+        DELETE_USER = 'DELETE_USER',
+      }
+    
+      const [modalUsers, setModalUsers] = useState(ModalsUsers.NONE);
+      const [selectedUserId, setSelectedUserId] = useState<number>();
+    
+      const handleCloseModal = () => setModalUsers(ModalsUsers.NONE);
+    
+      const handleOpenModal = (type: ModalsUsers, IdUsuario?: number) => {
+        setModalUsers(type);
+        setSelectedUserId(IdUsuario);
+      };
+   
     return (
         <>
             <div className="d-flex vh-100 flex-column flex-md-row viewinform-container">
@@ -53,7 +71,8 @@ const PageUsers: React.FC = () => {
                                     />
                                 </div>
                             </div>
-                            <button className="btn btn-success mb-4">Crear usuario</button>
+                            <button className="btn btn-success mb-4" onClick={() => handleOpenModal(ModalsUsers.CREATE_USER)} 
+                            >Crear usuario</button>
                             <div>
                                 {error && (
                                     <Alert variant="danger" className="text-center">
@@ -87,13 +106,13 @@ const PageUsers: React.FC = () => {
                                             {filteredUsers.map((usuario) => (
                                                 <tr key={usuario.idUsuarios}>
                                                     <td>{usuario.idUsuarios}</td>
-                                                    <td >{usuario.apellidos}{usuario.nombre}</td>
+                                                    <td >{usuario.apellidos} {usuario.nombre}</td>
                                                     <td>{usuario.fkDepartamento}</td>
                                                     <td>{usuario.correoElectronico}</td>
                                                     <td>{usuario.correoPersonal}</td>
                                                     <td>
                                                         <div className="d-flex justify-content-center ">
-                                                            <Button variant="primary" className="me-1" >
+                                                            <Button variant="primary" className="me-1">
                                                                 <span className="d-none d-md-inline"> vista</span>
                                                             </Button>
                                                             <Button variant="warning" className="me-1" disabled>
@@ -106,6 +125,9 @@ const PageUsers: React.FC = () => {
                                         </tbody>
                                     </Table>
                                 )}
+                                {/* funciones Modales */}
+                            <MCreateUser show={modalUsers === ModalsUsers.CREATE_USER} handleClose={handleCloseModal} />
+
                             </div>
                         </div>
                     </Container>
