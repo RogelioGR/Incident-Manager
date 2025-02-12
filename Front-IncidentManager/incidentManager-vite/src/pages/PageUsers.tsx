@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { obtenerUsuarios } from '../Data/Services/UsersServices';
-import Sidebar from '../Components/Sidebar';
-import Header from '../Components/Header';
 import { Container, Table, Alert, Button } from 'react-bootstrap';
+import { obtenerUsuarios } from '../Data/Services/UsersServices';
 import { IUsuario } from '../Data/Interfaces/IUsers';
 import MCreateUser from '../Components/Modals/Users/McreateUsers';
+import MEditUser from '../Components/Modals/Users/MupdateUsers';
+import Header from '../Components/Header';
+import Sidebar from '../Components/Sidebar';
 
 const PageUsers: React.FC = () => {
     const [users, setUsers] = useState<IUsuario[]>([]);
@@ -115,8 +116,8 @@ const PageUsers: React.FC = () => {
                                                             <Button variant="primary" className="me-1">
                                                                 <span className="d-none d-md-inline"> vista</span>
                                                             </Button>
-                                                            <Button variant="warning" className="me-1" disabled>
-                                                                <span className="d-none d-md-inline"> Editar</span>
+                                                            <Button variant="warning" className="me-1">
+                                                                <span className="d-none d-md-inline"  onClick={() => handleOpenModal(ModalsUsers.EDIT_USER, usuario.idUsuarios)}> Editar</span>
                                                             </Button>
                                                         </div>
                                                     </td>
@@ -127,6 +128,8 @@ const PageUsers: React.FC = () => {
                                 )}
                                 {/* funciones Modales */}
                             <MCreateUser show={modalUsers === ModalsUsers.CREATE_USER} handleClose={handleCloseModal} />
+                            <MEditUser show={modalUsers === ModalsUsers.EDIT_USER} handleClose={handleCloseModal} userId={selectedUserId} />
+
 
                             </div>
                         </div>
