@@ -3,7 +3,7 @@ import React from 'react';
 /*Componentes */
 import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
-import { Container, Dropdown } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 const PagePerfil: React.FC = () => {
   return (
@@ -16,7 +16,6 @@ const PagePerfil: React.FC = () => {
             <div className="mt-2">
             <h1 className="mb-2">Perfil</h1>
             </div>
-
           </Container>
         </div>
       </div>

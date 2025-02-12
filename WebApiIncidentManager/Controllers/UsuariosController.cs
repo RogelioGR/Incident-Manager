@@ -41,7 +41,7 @@ namespace WebApiBD.Controllers
             return Ok(usuario);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult<UsuariosDto>> PostUsuario([FromBody] CreateUsuariosDto request)
         {
             var usuarioCreado = await _services.CrearUsuario(new UsuariosDto
@@ -58,7 +58,7 @@ namespace WebApiBD.Controllers
             return CreatedAtAction(nameof(GetUsuarios), new { id = usuarioCreado.IdUsuarios }, usuarioCreado);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public async Task<ActionResult<UsuariosDto>> PutUsuario(int id, [FromBody] CreateUsuariosDto request)
         {
             var usuarioEditado = await _services.EditarUsuario(id, new UsuariosDto
@@ -79,7 +79,7 @@ namespace WebApiBD.Controllers
             return Ok(usuarioEditado);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult> DeleteUsuario(int id)
         {
             var exito = await _services.EliminarUsuario(id);
