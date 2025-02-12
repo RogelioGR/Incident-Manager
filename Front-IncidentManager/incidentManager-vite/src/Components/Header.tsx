@@ -127,7 +127,7 @@ const closeMenu = () => {
           }}
         />
         <div className="ms-2">
-          <span className="fw-bold">{user.nombre}</span>
+          <span className="fw-bold">{user.nombre} {user.apellidos}</span>
           <br />
           <span className="text-muted">{user.correoElectronico}</span>
         </div>

@@ -4,7 +4,7 @@ import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
 import { Container, Table, Alert, Button } from 'react-bootstrap';
 import { IUsuario } from '../Data/Interfaces/IUsers';
-import MCreateUser from '../Components/Modals/Users/modalCreateUsers';
+import MCreateUser from '../Components/Modals/Users/McreateUsers';
 
 const PageUsers: React.FC = () => {
     const [users, setUsers] = useState<IUsuario[]>([]);
