@@ -12,7 +12,6 @@ interface MEditUserProps {
 }
 
 const MySwal = withReactContent(Swal);
-
 const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
   const [formData, setFormData] = useState<IUsuario>({
     nombre: "",
@@ -148,7 +147,7 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
                 <Row>
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label>Teléfono:</Form.Label>
+                      <Form.Label>departamento:</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Teléfono"
