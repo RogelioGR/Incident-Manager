@@ -7,6 +7,7 @@ import { obtenerUsuarioid } from "../../../Data/Services/UsersServices";
 interface MCreateUserProps {
   show: boolean;
   handleClose: () => void;
+  userId?: number;
 }
 
 const MCreateUser: React.FC<MCreateUserProps> = ({ show, handleClose }) => {
@@ -20,11 +21,11 @@ const MCreateUser: React.FC<MCreateUserProps> = ({ show, handleClose }) => {
     const fetchUser = async () => {
       try {
         setLoading(true);
-        const id = localStorage.getItem('idUsuarios');
+        const id = user?.idUsuarios;
   
-        if (id && isMounted) {
+        if (userId !== isMounted) {
           const idUsuarios = parseInt(id, 10);          
-          const userData = await obtenerUsuarioid(idUsuarios);
+          const userData = await obtenerUsuarioid(userId);
   
           setUser(userData);
         }
