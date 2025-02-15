@@ -47,6 +47,7 @@ const MDeleteUser: React.FC<MDeleteUserProps> = ({
         throw new Error("El ID del usuario es indefinido");
       }
     } catch (error) {
+      console.error(error);
       MySwal.fire({
         title: "Error",
         text: "No se pudo eliminar el usuario.",

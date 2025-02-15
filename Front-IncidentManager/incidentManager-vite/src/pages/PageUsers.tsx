@@ -3,7 +3,8 @@ import { Container, Table, Alert, Button } from 'react-bootstrap';
 import { obtenerUsuarios } from '../Data/Services/UsersServices';
 import { IUsuario } from '../Data/Interfaces/IUsers';
 import MCreateUser from '../Components/Modals/Users/McreateUsers';
-import MEditUser from '../Components/Modals/Users/MupdateUsers';
+import MViewUser from '../Components/Modals/Users/MviewUsers';
+import MDeleteUser from '../Components/Modals/Users/MdropUsers';
 import Header from '../Components/Header';
 import Sidebar from '../Components/Sidebar';
 
@@ -40,6 +41,7 @@ const PageUsers: React.FC = () => {
         CREATE_USER = 'CREATE_USER',
         EDIT_USER = 'EDIT_USER',
         DELETE_USER = 'DELETE_USER',
+        VIEW_USER = 'VIEW_USER',
       }
     
       const [modalUsers, setModalUsers] = useState(ModalsUsers.NONE);
@@ -114,10 +116,10 @@ const PageUsers: React.FC = () => {
                                                     <td>
                                                         <div className="d-flex justify-content-center ">
                                                             <Button variant="primary" className="me-1">
-                                                                <span className="d-none d-md-inline"> vista</span>
+                                                                <span className="d-none d-md-inline" onClick={() => handleOpenModal(ModalsUsers.VIEW_USER, usuario.idUsuarios)}> vista</span>
                                                             </Button>
-                                                            <Button variant="warning" className="me-1">
-                                                                <span className="d-none d-md-inline"  onClick={() => handleOpenModal(ModalsUsers.EDIT_USER, usuario.idUsuarios)}> Editar</span>
+                                                            <Button variant="danger" className="me-1">
+                                                                <span className="d-none d-md-inline"  onClick={() => handleOpenModal(ModalsUsers.DELETE_USER, usuario.idUsuarios)}> Eliminar</span>
                                                             </Button>
                                                         </div>
                                                     </td>
@@ -128,7 +130,8 @@ const PageUsers: React.FC = () => {
                                 )}
                                 {/* funciones Modales */}
                             <MCreateUser show={modalUsers === ModalsUsers.CREATE_USER} handleClose={handleCloseModal} />
-                            <MEditUser show={modalUsers === ModalsUsers.EDIT_USER} handleClose={handleCloseModal} userId={selectedUserId} />
+                            <MViewUser show={modalUsers === ModalsUsers.VIEW_USER} handleClose={handleCloseModal} userId={selectedUserId} />
+                            <MDeleteUser show={modalUsers === ModalsUsers.DELETE_USER} handleClose={handleCloseModal} userId={selectedUserId} />
 
 
                             </div>

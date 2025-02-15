@@ -53,6 +53,7 @@ const MCreateUser: React.FC<MCreateUserProps> = ({ show, handleClose }) => {
       });
       handleClose();
     } catch (error) {
+      console.error(error);
       MySwal.fire("Error", "Hubo un error al crear el usuario", "error");
     }
   };
