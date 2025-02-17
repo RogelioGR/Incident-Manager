@@ -1,109 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Spinner, Placeholder } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sidebar from './Sidebar';
-
-/* funciones de Services */
-import { obtenerUsuarioid} from '../Data/Services/UsersServices';
+import { obtenerUsuarioid } from '../Data/Services/UsersServices';
 import { IUsuario } from '../Data/Interfaces/IUsers';
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<IUsuario | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-};
-
-const closeMenu = () => {
-    setMenuOpen(false);
-};
   useEffect(() => {
-    let isMounted = true;
-    
     const fetchUser = async () => {
-      try {
-        setLoading(true);
-        const id = localStorage.getItem('idUsuarios');
-  
-        if (id && isMounted) {
-          const idUsuarios = parseInt(id, 10);          
-          const userData = await obtenerUsuarioid(idUsuarios);
-  
-          setUser(userData);
-        }
-      } catch (error) {
-        console.error('Error completo:', error);
-        if (isMounted) {
-          setError('Error al cargar la información del usuario');
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
+      const id = localStorage.getItem('idUsuarios');
+      if (id) {
+        const idUsuarios = parseInt(id, 10);
+        const userData = await obtenerUsuarioid(idUsuarios);
+        setUser(userData);
       }
     };
-  
     fetchUser();
-  
-
-
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
-  if (loading) {
-    return (
-      <header className="d-flex justify-content-start align-items-center p-2 border-bottom">
-          <Spinner
-            animation="grow"
-            variant="secondary"
-            role="status"
-            style={{ width: '40px', height: '40px' }}
-          >
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-          <div className="ms-2">
-            <Placeholder
-              as="div"
-              animation="glow"
-              className="bg-secondary rounded"
-              style={{ height: '16px', width: '100px', marginBottom: '4px' }}
-            />
-            <Placeholder
-              as="div"
-              animation="glow"
-              className="bg-secondary rounded"
-              style={{ height: '14px', width: '150px' }}
-            />
-            </div>
-      </header>
-    );
-  }
-
-  if (error) {
-    return (
-      <header className="d-flex justify-content-center align-items-center p-2 border-bottom">
-        <div className="alert alert-danger" role="alert">
-          {error}
-        </div>
-      </header>
-    );
-  }
-
-  if (!user) {
-    return (
-      <header className="d-flex justify-content-center align-items-center p-2 border-bottom">
-        <div className="alert alert-warning" role="alert">
-          No se encontró información del usuario
-        </div>
-      </header>
-    );
-  }
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
 
   const handleLogout = () => {
     localStorage.removeItem('idUsuarios');
@@ -112,27 +31,25 @@ const closeMenu = () => {
   return (
     <header className="d-flex justify-content-between align-items-center p-2 border-bottom">
       <div className="menu-toggle-btn d-lg-none">
-                <button className="btn btn-link" onClick={toggleMenu}>
-                    <i className="fa fa-bars"></i>
-                </button>
-            </div>
-      <div className="user-info d-flex align-items-center">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"
-          alt="avatar"
-          className="rounded-circle"
-          style={{
-            width: '40px',
-            height: '40px'
-          }}
-        />
-        <div className="ms-2">
-          <span className="fw-bold">{user.nombre} {user.apellidos}</span>
-          <br />
-          <span className="text-muted">{user.correoElectronico}</span>
-        </div>
+        <button className="btn btn-link" onClick={toggleMenu}>
+          <i className="fa fa-bars"></i>
+        </button>
       </div>
-      
+      {user && (
+        <div className="user-info d-flex align-items-center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg"
+            alt="avatar"
+            className="rounded-circle"
+            style={{ width: '40px', height: '40px' }}
+          />
+          <div className="ms-2">
+            <span className="fw-bold">{user.nombre} {user.apellidos}</span>
+            <br />
+            <span className="text-muted">{user.correoElectronico}</span>
+          </div>
+        </div>
+      )}
       <div className="dropdown">
         <button
           className="btn btn-light dropdown-toggle"
@@ -144,11 +61,7 @@ const closeMenu = () => {
         </button>
         <ul className="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton">
           <li>
-            <Link 
-              className="dropdown-item" 
-              to="/login" 
-              onClick={handleLogout}
-            >
+            <Link className="dropdown-item" to="/login" onClick={handleLogout}>
               <i className="fa-solid fa-power-off me-2"></i>
               Cerrar sesión
             </Link>

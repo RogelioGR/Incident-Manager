@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G4GYRiGCkT17NPtbjRlY8OcVQjMK2OXJjCmxuVqFIlQFXcavP9i6wOqWLubVer/YhgazLpgYE2tHRgHwdn4MNA==",
+  "dgSpecHash": "cLw03bNjE5w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ittraining\\Desktop\\Proyecto\\Incident-Manager\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

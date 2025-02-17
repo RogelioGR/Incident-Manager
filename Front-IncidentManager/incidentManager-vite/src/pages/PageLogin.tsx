@@ -39,15 +39,7 @@ const NewLogin: React.FC = () => {
     };
     return (
         <Container fluid className="login-container">
-            <div style={{
-                backgroundColor: '#f0f2f5',
-                minHeight: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: 'Arial, sans-serif',
-                padding: '20px'
-            }}>
+            <div className='form-login'>
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-8 col-lg-6">

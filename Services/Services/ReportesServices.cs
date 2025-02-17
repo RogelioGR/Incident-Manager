@@ -78,7 +78,7 @@ namespace Services.Services
                 FkPrioridad = reporteDto.FkPrioridad,
                 Descripcion = reporteDto.Descripcion,
                 FkEstado = reporteDto.FkEstado,
-                FechaCreada = DateTime.UtcNow
+                FechaCreada = DateTime.Now
             };
 
             await _dBcontext.Reportes.AddAsync(reporte);
