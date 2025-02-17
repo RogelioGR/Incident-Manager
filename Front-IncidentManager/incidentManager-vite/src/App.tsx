@@ -6,14 +6,14 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
 
 /* Importación de páginas y componentes */
-import LoginPage from './pages/PageLogin';
+ import LoginPage from './pages/PageLogin';
 import Dashboard from './pages/Dashboard';
 import PageUsers from './pages/PageUsers';
 import PageReporte from './pages/PageReporte';
 import PageDepartamento from './pages/PageDepart';
 import PagePerfil from './pages/PagePerfil';
-
-const App: React.FC = () => {
+/* import Dashboardprueba from './pages/newlogin';
+ */const App: React.FC = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
