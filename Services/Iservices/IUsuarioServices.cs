@@ -15,5 +15,6 @@ namespace Services.Iservices
         Task<UsuariosDto> EditarUsuario(int idUsuario, UsuariosDto usuarioDto);
         Task<bool> EliminarUsuario(int idUsuario);
         Task<UsuariosDto> ValidarUsuario(string correo, string contraseña);
+        Task<IEnumerable<VistaUsuarioDto>> ObtenerVistaUsuarios();
     }
 }

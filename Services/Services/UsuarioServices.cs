@@ -172,5 +172,21 @@ namespace Services.Services
                 throw new Exception("Error al eliminar el usuario", ex);
             }
         }
+
+        public async Task<IEnumerable<VistaUsuarioDto>> ObtenerVistaUsuarios()
+        {
+            return await _dBcontext.VistaUsuarios
+                .AsNoTracking()
+                .Select(u => new VistaUsuarioDto
+                {
+                    IdUsuario = u.ID_Usuarios,
+                    Nombre = u.Nombre,
+                    Apellidos = u.Apellidos,
+                    CorreoElectronico = u.Correo_Electronico,
+                    CorreoPersonal = u.Correo_Personal,
+                    FkDepartamento = u.Departamento,
+                    FkRol = u.Rol,
+                }).ToListAsync();
+        }
     }
 }

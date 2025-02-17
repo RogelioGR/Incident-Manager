@@ -3,92 +3,64 @@
   "WorkspaceRootPath": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\services\\reportesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\services\\reportesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\services\\estadosreportesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\services\\estadosreportesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\viewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\viewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{687614AE-2ADB-4710-8728-C49E85217954}|Repository\\Repository.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\repository\\models\\sistemakempinskicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{687614AE-2ADB-4710-8728-C49E85217954}|Repository\\Repository.csproj|solutionrelative:repository\\models\\sistemakempinskicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\domain\\dto\\vistausuariosdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|solutionrelative:domain\\dto\\vistausuariosdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\services\\usuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\services\\usuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\departamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\departamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\services\\comentarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\services\\comentarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\reporteusuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\reporteusuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\prioridadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\prioridadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\estadoreportecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\estadoreportecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\comentariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\comentariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\services\\reporteusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\services\\reporteusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\domain\\dto\\usuariologindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|solutionrelative:domain\\dto\\usuariologindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\domain\\dto\\usuariosdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|solutionrelative:domain\\dto\\usuariosdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{687614AE-2ADB-4710-8728-C49E85217954}|Repository\\Repository.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\repository\\models\\vistausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{687614AE-2ADB-4710-8728-C49E85217954}|Repository\\Repository.csproj|solutionrelative:repository\\models\\vistausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\iservices\\iusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\iservices\\iusuarioservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\services\\rolesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\services\\rolesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{687614AE-2ADB-4710-8728-C49E85217954}|Repository\\Repository.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\repository\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{687614AE-2ADB-4710-8728-C49E85217954}|Repository\\Repository.csproj|solutionrelative:repository\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\iservices\\ireportesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\iservices\\ireportesservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\domain\\dto\\usuariologindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|solutionrelative:domain\\dto\\usuariologindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{687614AE-2ADB-4710-8728-C49E85217954}|Repository\\Repository.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\repository\\models\\sistemakempinskicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{687614AE-2ADB-4710-8728-C49E85217954}|Repository\\Repository.csproj|solutionrelative:repository\\models\\sistemakempinskicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\webapiincidentmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB33B549-72F7-483D-A418-ECF5562C1A28}|WebApiIncidentManager\\WebApiIncidentManager.csproj|solutionrelative:webapiincidentmanager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\domain\\dto\\departamentodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E61243A7-940B-47C8-A921-E818298A0650}|Domain\\Domain.csproj|solutionrelative:domain\\dto\\departamentodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\services\\prioridadservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\services\\prioridadservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|c:\\users\\rogel\\onedrive\\desktop\\doc estad\\webapiincidentmanager\\services\\iservices\\idepartamentoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DC031BA-2D68-407B-9D5D-0D74BCB3E77D}|Services\\Services.csproj|solutionrelative:services\\iservices\\idepartamentoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -98,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 245,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -131,269 +103,196 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EstadosReportesServices.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\EstadosReportesServices.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\EstadosReportesServices.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\EstadosReportesServices.cs",
-              "RelativeToolTip": "Services\\Services\\EstadosReportesServices.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-17T20:56:00.245Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "UsuarioLoginDto.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\UsuarioLoginDto.cs",
-              "RelativeDocumentMoniker": "Domain\\Dto\\UsuarioLoginDto.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\UsuarioLoginDto.cs",
-              "RelativeToolTip": "Domain\\Dto\\UsuarioLoginDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T03:48:16.231Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "IUsuarioServices.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Iservices\\IUsuarioServices.cs",
-              "RelativeDocumentMoniker": "Services\\Iservices\\IUsuarioServices.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Iservices\\IUsuarioServices.cs",
-              "RelativeToolTip": "Services\\Iservices\\IUsuarioServices.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T03:15:07.222Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "IReportesServices.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Iservices\\IReportesServices.cs",
-              "RelativeDocumentMoniker": "Services\\Iservices\\IReportesServices.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Iservices\\IReportesServices.cs",
-              "RelativeToolTip": "Services\\Iservices\\IReportesServices.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T02:24:59.588Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ReportesServices.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\ReportesServices.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\ReportesServices.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\ReportesServices.cs",
-              "RelativeToolTip": "Services\\Services\\ReportesServices.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAkwFAAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T02:21:51.906Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ReporteUsuarioServices.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\ReporteUsuarioServices.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\ReporteUsuarioServices.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\ReporteUsuarioServices.cs",
-              "RelativeToolTip": "Services\\Services\\ReporteUsuarioServices.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAF8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T02:17:38.558Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "RolesServices.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\RolesServices.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\RolesServices.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\RolesServices.cs",
-              "RelativeToolTip": "Services\\Services\\RolesServices.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T02:17:42.026Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ComentarioServices.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\ComentarioServices.cs",
-              "RelativeDocumentMoniker": "Services\\Services\\ComentarioServices.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\ComentarioServices.cs",
-              "RelativeToolTip": "Services\\Services\\ComentarioServices.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T02:09:00.575Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "SistemaKempinskiContext.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Models\\SistemaKempinskiContext.cs",
-              "RelativeDocumentMoniker": "Repository\\Models\\SistemaKempinskiContext.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Models\\SistemaKempinskiContext.cs",
-              "RelativeToolTip": "Repository\\Models\\SistemaKempinskiContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T02:06:39.657Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "UsuariosController.cs",
               "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\UsuariosController.cs",
               "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\UsuariosController.cs",
               "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\UsuariosController.cs",
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T01:45:05.713Z",
+              "WhenOpened": "2025-02-17T23:39:18.12Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RolesController.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\RolesController.cs",
-              "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\RolesController.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\RolesController.cs",
-              "RelativeToolTip": "WebApiIncidentManager\\Controllers\\RolesController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAtwDoAAAAwAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "VistaUsuariosDto.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\VistaUsuariosDto.cs",
+              "RelativeDocumentMoniker": "Domain\\Dto\\VistaUsuariosDto.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\VistaUsuariosDto.cs",
+              "RelativeToolTip": "Domain\\Dto\\VistaUsuariosDto.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAIwA4AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T01:44:59.515Z"
+              "WhenOpened": "2025-02-17T22:23:15.364Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ReporteUsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\ReporteUsuarioController.cs",
-              "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\ReporteUsuarioController.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\ReporteUsuarioController.cs",
-              "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ReporteUsuarioController.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAEwD4AAABDAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "VistaUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Models\\VistaUsuario.cs",
+              "RelativeDocumentMoniker": "Repository\\Models\\VistaUsuario.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Models\\VistaUsuario.cs",
+              "RelativeToolTip": "Repository\\Models\\VistaUsuario.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T01:44:52.894Z"
+              "WhenOpened": "2025-02-17T22:18:18.723Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ReportesController.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\ReportesController.cs",
-              "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\ReportesController.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\ReportesController.cs",
-              "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ReportesController.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAtwEQAAAANAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "SistemaKempinskiContext.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Models\\SistemaKempinskiContext.cs",
+              "RelativeDocumentMoniker": "Repository\\Models\\SistemaKempinskiContext.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Models\\SistemaKempinskiContext.cs",
+              "RelativeToolTip": "Repository\\Models\\SistemaKempinskiContext.cs",
+              "ViewState": "AgIAALcAAAAAAAAAAAAiwMYAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T01:44:43.456Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PrioridadController.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\PrioridadController.cs",
-              "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\PrioridadController.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\PrioridadController.cs",
-              "RelativeToolTip": "WebApiIncidentManager\\Controllers\\PrioridadController.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAtwDgAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T01:44:33.951Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "EstadoReporteController.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\EstadoReporteController.cs",
-              "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\EstadoReporteController.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\EstadoReporteController.cs",
-              "RelativeToolTip": "WebApiIncidentManager\\Controllers\\EstadoReporteController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T01:44:26.318Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DepartamentoController.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\DepartamentoController.cs",
-              "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\DepartamentoController.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\DepartamentoController.cs",
-              "RelativeToolTip": "WebApiIncidentManager\\Controllers\\DepartamentoController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T01:44:13.571Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ComentarioController.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\ComentarioController.cs",
-              "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\ComentarioController.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\ComentarioController.cs",
-              "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ComentarioController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T01:44:05.829Z"
+              "WhenOpened": "2025-02-17T22:14:14.43Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Program.cs",
-              "RelativeDocumentMoniker": "WebApiIncidentManager\\Program.cs",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Program.cs",
-              "RelativeToolTip": "WebApiIncidentManager\\Program.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAowFkAAAAAAAAAAAAAAA==",
+              "Title": "IUsuarioServices.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Iservices\\IUsuarioServices.cs",
+              "RelativeDocumentMoniker": "Services\\Iservices\\IUsuarioServices.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Iservices\\IUsuarioServices.cs",
+              "RelativeToolTip": "Services\\Iservices\\IUsuarioServices.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAIwBEAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-07T01:29:59.429Z"
+              "WhenOpened": "2025-02-17T22:29:36.976Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\appsettings.json",
-              "RelativeDocumentMoniker": "WebApiIncidentManager\\appsettings.json",
-              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\appsettings.json",
-              "RelativeToolTip": "WebApiIncidentManager\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-07T01:29:57.806Z"
+              "DocumentIndex": 0,
+              "Title": "ViewsController.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\ViewsController.cs",
+              "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\ViewsController.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\ViewsController.cs",
+              "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ViewsController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwA8AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:30:17.484Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 5,
               "Title": "UsuariosDto.cs",
               "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\UsuariosDto.cs",
               "RelativeDocumentMoniker": "Domain\\Dto\\UsuariosDto.cs",
               "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\UsuariosDto.cs",
               "RelativeToolTip": "Domain\\Dto\\UsuariosDto.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T04:57:02.482Z"
+              "WhenOpened": "2025-02-17T22:26:32.49Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "UsuarioServices.cs",
               "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\UsuarioServices.cs",
               "RelativeDocumentMoniker": "Services\\Services\\UsuarioServices.cs",
               "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\UsuarioServices.cs",
               "RelativeToolTip": "Services\\Services\\UsuarioServices.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwC4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAcwLUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T03:38:51.03Z"
+              "WhenOpened": "2025-02-17T22:23:46.457Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
+              "Title": "DepartamentoDto.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\DepartamentoDto.cs",
+              "RelativeDocumentMoniker": "Domain\\Dto\\DepartamentoDto.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\DepartamentoDto.cs",
+              "RelativeToolTip": "Domain\\Dto\\DepartamentoDto.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:23:28.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Repository\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Repository\\Models\\Usuario.cs",
+              "RelativeToolTip": "Repository\\Models\\Usuario.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA9wBUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T23:16:31.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UsuarioLoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\UsuarioLoginDto.cs",
+              "RelativeDocumentMoniker": "Domain\\Dto\\UsuarioLoginDto.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Domain\\Dto\\UsuarioLoginDto.cs",
+              "RelativeToolTip": "Domain\\Dto\\UsuarioLoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T23:19:38.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Program.cs",
+              "RelativeDocumentMoniker": "WebApiIncidentManager\\Program.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Program.cs",
+              "RelativeToolTip": "WebApiIncidentManager\\Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:36:38.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "WebApiIncidentManager\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\WebApiIncidentManager\\Controllers\\AuthController.cs",
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwB0AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T03:30:34.411Z"
+              "WhenOpened": "2025-02-17T22:31:10.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PrioridadServices.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\PrioridadServices.cs",
+              "RelativeDocumentMoniker": "Services\\Services\\PrioridadServices.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Services\\PrioridadServices.cs",
+              "RelativeToolTip": "Services\\Services\\PrioridadServices.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:09:51.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IDepartamentoServices.cs",
+              "DocumentMoniker": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Iservices\\IDepartamentoServices.cs",
+              "RelativeDocumentMoniker": "Services\\Iservices\\IDepartamentoServices.cs",
+              "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\WebApiIncidentManager\\Services\\Iservices\\IDepartamentoServices.cs",
+              "RelativeToolTip": "Services\\Iservices\\IDepartamentoServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:09:43.889Z"
             }
           ]
         },

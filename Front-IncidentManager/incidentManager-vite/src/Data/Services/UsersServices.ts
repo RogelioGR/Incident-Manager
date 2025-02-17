@@ -1,5 +1,6 @@
 import axiosInstance from "./AxiosConfig";
 import { IUsuario } from "../Interfaces/IUsers";
+import { IViewUsuario } from "../Interfaces/viewUsers";
 
 export const obtenerUsuarios = async (): Promise<IUsuario[]> => {
   try {
@@ -10,6 +11,17 @@ export const obtenerUsuarios = async (): Promise<IUsuario[]> => {
     throw error; 
   }
 };
+
+export const viewUsuarios = async (): Promise<IViewUsuario[]> => {
+  try {
+    const response = await axiosInstance.get('/Views/viewUsers');
+    return response.data as IViewUsuario[]; 
+  } catch (error) {
+    console.error('Error al obtener los usuarios:', error);
+    throw error; 
+  }
+};
+
 
 export const obtenerUsuarioid = async (id: number): Promise<IUsuario> => {
   try {

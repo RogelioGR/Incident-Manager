@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+using Repository.Models;
 
 namespace WebApiIncidentManager.Models;
 
@@ -30,7 +31,7 @@ public partial class SistemaKempinskiContext : DbContext
     public virtual DbSet<Role> Roles { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
-
+    public virtual DbSet<VistaUsuario> VistaUsuarios { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -188,6 +189,11 @@ public partial class SistemaKempinskiContext : DbContext
                 .HasForeignKey(d => d.FkRol)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Usuarios_ibfk_2");
+        });
+        modelBuilder.Entity<VistaUsuario>(entity =>
+        {
+            entity.HasKey(e => e.ID_Usuarios);
+            entity.ToView("Vista_Usuarios"); 
         });
 
         OnModelCreatingPartial(modelBuilder);

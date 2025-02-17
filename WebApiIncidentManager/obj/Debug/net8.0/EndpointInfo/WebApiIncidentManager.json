@@ -1497,6 +1497,44 @@
           }
         }
       }
+    },
+    "/Views/viewUsers": {
+      "get": {
+        "tags": [
+          "Views"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VistaUsuarioDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VistaUsuarioDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VistaUsuarioDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1837,6 +1875,40 @@
           },
           "fkRolNavigation": {
             "$ref": "#/components/schemas/RolesDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VistaUsuarioDto": {
+        "type": "object",
+        "properties": {
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "apellidos": {
+            "type": "string",
+            "nullable": true
+          },
+          "correoElectronico": {
+            "type": "string",
+            "nullable": true
+          },
+          "correoPersonal": {
+            "type": "string",
+            "nullable": true
+          },
+          "fkDepartamento": {
+            "type": "string",
+            "nullable": true
+          },
+          "fkRol": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
