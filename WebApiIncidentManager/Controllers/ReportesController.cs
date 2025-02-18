@@ -39,7 +39,7 @@ namespace WebApiBD.Controllers
                 return Ok(reporte);
             }
 
-            [HttpPost("crearReporte")]
+            [HttpPost("create")]
             public async Task<IActionResult> PostReporte([FromBody] ReportesDto reporteDto)
         {
             try
@@ -53,7 +53,7 @@ namespace WebApiBD.Controllers
             }
         }
 
-            [HttpPut("{id}")]
+            [HttpPut("Update{id}")]
             public async Task<ActionResult<ReportesDto>> PutReporte(int id, [FromBody] ReportesDto reporteDto)
             {
                 var reporteEditado = await _services.EditarReporte(id, reporteDto);
@@ -64,16 +64,20 @@ namespace WebApiBD.Controllers
                 return Ok(reporteEditado);
             }
 
-            [HttpDelete("{id}")]
+      
+            [HttpDelete("delete/{id}")]
             public async Task<ActionResult> DeleteReporte(int id)
             {
-                var exito = await _services.EliminarReporte(id);
-                if (!exito)
+                var mensaje = await _services.EliminarReporte(id);
+
+                if (mensaje.StartsWith("Error"))
                 {
-                    return NotFound($"Reporte con ID {id} no encontrado.");
+                    return NotFound(mensaje); 
                 }
-                return NoContent();
+
+                return Ok(mensaje); 
             }
+
 
         }
 

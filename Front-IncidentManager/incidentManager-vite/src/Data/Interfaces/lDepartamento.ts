@@ -1,5 +1,5 @@
 export interface IDepartamento {
-    ID_Departamento: number;
-    Nombre_Departamento: string;
-    Extension: number;
+    idDepartamento: number;
+    nombreDepartamentos: string;
+    extension: number;
 }

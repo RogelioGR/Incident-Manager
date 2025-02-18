@@ -72,7 +72,49 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Comentario/{id}": {
+      "get": {
+        "tags": [
+          "Comentario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComentarioDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComentarioDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComentarioDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Comentario/create": {
       "post": {
         "tags": [
           "Comentario"
@@ -120,45 +162,7 @@
         }
       }
     },
-    "/api/Comentario/{id}": {
-      "get": {
-        "tags": [
-          "Comentario"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComentarioDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComentarioDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComentarioDto"
-                }
-              }
-            }
-          }
-        }
-      },
+    "/api/Comentario/update{id}": {
       "put": {
         "tags": [
           "Comentario"
@@ -215,7 +219,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Comentario/delete{id}": {
       "delete": {
         "tags": [
           "Comentario"
@@ -274,7 +280,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Departamentos/create": {
       "post": {
         "tags": [
           "Departamentos"
@@ -322,7 +330,7 @@
         }
       }
     },
-    "/api/Departamentos/{id}": {
+    "/api/Departamentos/update{id}": {
       "put": {
         "tags": [
           "Departamentos"
@@ -379,7 +387,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Departamentos/delete{id}": {
       "delete": {
         "tags": [
           "Departamentos"
@@ -438,7 +448,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/EstadoReporte/create": {
       "post": {
         "tags": [
           "EstadoReporte"
@@ -486,7 +498,7 @@
         }
       }
     },
-    "/api/EstadoReporte/{id}": {
+    "/api/EstadoReporte/update{id}": {
       "put": {
         "tags": [
           "EstadoReporte"
@@ -543,7 +555,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/EstadoReporte/delete{id}": {
       "delete": {
         "tags": [
           "EstadoReporte"
@@ -602,7 +616,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Prioridad/create": {
       "post": {
         "tags": [
           "Prioridad"
@@ -650,7 +666,7 @@
         }
       }
     },
-    "/api/Prioridad/{id}": {
+    "/api/Prioridad/update{id}": {
       "put": {
         "tags": [
           "Prioridad"
@@ -707,7 +723,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Prioridad/delete{id}": {
       "delete": {
         "tags": [
           "Prioridad"
@@ -813,7 +831,40 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Reportes/create": {
+      "post": {
+        "tags": [
+          "Reportes"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reportes/Update{id}": {
       "put": {
         "tags": [
           "Reportes"
@@ -870,7 +921,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Reportes/delete/{id}": {
       "delete": {
         "tags": [
           "Reportes"
@@ -886,37 +939,6 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Reportes/crearReporte": {
-      "post": {
-        "tags": [
-          "Reportes"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReportesDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReportesDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReportesDto"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -955,52 +977,6 @@
                   "items": {
                     "$ref": "#/components/schemas/ReporteUsuarioDto"
                   }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "ReporteUsuario"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateReporteUsuarioDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateReporteUsuarioDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateReporteUsuarioDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReporteUsuarioDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReporteUsuarioDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReporteUsuarioDto"
                 }
               }
             }
@@ -1046,7 +1022,57 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/ReporteUsuario/create": {
+      "post": {
+        "tags": [
+          "ReporteUsuario"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReporteUsuarioDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReporteUsuarioDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReporteUsuarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReporteUsuarioDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReporteUsuarioDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReporteUsuarioDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ReporteUsuario/update{id}": {
       "put": {
         "tags": [
           "ReporteUsuario"
@@ -1103,7 +1129,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/ReporteUsuario/delete{id}": {
       "delete": {
         "tags": [
           "ReporteUsuario"
@@ -1162,7 +1190,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Roles/create": {
       "post": {
         "tags": [
           "Roles"
@@ -1210,7 +1240,7 @@
         }
       }
     },
-    "/api/Roles/{id}": {
+    "/api/Roles/update{id}": {
       "put": {
         "tags": [
           "Roles"
@@ -1267,7 +1297,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Roles/delete{id}": {
       "delete": {
         "tags": [
           "Roles"

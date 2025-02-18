@@ -3,7 +3,7 @@ import React from 'react';
 /*Componentes */
 import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
-import { Container, Dropdown } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 const PageDepartamento: React.FC = () => {
   return (

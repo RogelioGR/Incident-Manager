@@ -6,20 +6,23 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
 
 /* Importación de páginas y componentes */
- import LoginPage from './pages/PageLogin';
+import LoginPage from './pages/PageLogin';
 import Dashboard from './pages/Dashboard';
 import PageUsers from './pages/PageUsers';
 import PageReporte from './pages/PageReporte';
 import PageDepartamento from './pages/PageDepart';
 import PagePerfil from './pages/PagePerfil';
-/* import Dashboardprueba from './pages/newlogin';
- */const App: React.FC = () => {
+
+const App: React.FC = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       const tokenExpiry = parseJwt(token)?.exp * 1000;
       if (tokenExpiry && Date.now() >= tokenExpiry) {
+        console.log("Token expirado, cerrando sesión...");
         logoutUser();
+      } else {
+        console.log("Token válido");
       }
     }
   }, []);
@@ -38,6 +41,7 @@ import PagePerfil from './pages/PagePerfil';
         {/* Ruta pública */}
         <Route path="/login" element={<LoginPage />} />
 
+        {/* Rutas protegidas */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/usuarios" element={<PageUsers />} />
@@ -46,8 +50,9 @@ import PagePerfil from './pages/PagePerfil';
           <Route path="/perfil" element={<PagePerfil />} />
         </Route>
 
+        {/* Redirecciones */}
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="*" element={localStorage.getItem('token') ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
       </Routes>
     </Router>
   );
@@ -63,7 +68,6 @@ const parseJwt = (token: string) => {
     return JSON.parse(atob(token.split('.')[1]));
   } catch (e) {
     console.error("Error al decodificar el token:", e);
-
     return null;
   }
 };
