@@ -11,7 +11,7 @@ export const obtenerUsuarios = async (): Promise<IUsuario[]> => {
     throw error; 
   }
 };
-
+/* Vista de View de la base de datos  */
 export const viewUsuarios = async (): Promise<IViewUsuario[]> => {
   try {
     const response = await axiosInstance.get('/Views/viewUsers');
@@ -21,7 +21,6 @@ export const viewUsuarios = async (): Promise<IViewUsuario[]> => {
     throw error; 
   }
 };
-
 
 export const obtenerUsuarioid = async (id: number): Promise<IUsuario> => {
   try {

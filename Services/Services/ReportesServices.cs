@@ -128,22 +128,30 @@ namespace Services.Services
             return reporteDto;
         }
 
-        public async Task<bool> EliminarReporte(int idReporte)
+        public async Task<string> EliminarReporte(int idReporte)
         {
-            var reporte = await _dBcontext.Reportes.FindAsync(idReporte);
+            // Buscar la relación reporte-usuario
+            var reporteUsuario = await _dBcontext.ReporteUsuarios
+                .FirstOrDefaultAsync(ru => ru.FkReporte == idReporte);
 
+            if (reporteUsuario != null)
+            {
+                _dBcontext.ReporteUsuarios.Remove(reporteUsuario);
+                await _dBcontext.SaveChangesAsync(); 
+            }
+
+            // Buscar el reporte
+            var reporte = await _dBcontext.Reportes.FindAsync(idReporte);
             if (reporte == null)
             {
-                return false; 
+                return "Error: No se encontró el reporte.";
             }
 
             _dBcontext.Reportes.Remove(reporte);
             await _dBcontext.SaveChangesAsync();
 
-            return true; 
+            return "Eliminación exitosa";
         }
-
-
     }
 
 }

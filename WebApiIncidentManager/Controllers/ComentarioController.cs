@@ -40,14 +40,14 @@ namespace WebApiIncidentManager.Controllers
             return Ok(comentario);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult<ComentarioDto>> PostComentario([FromBody] CreateComentarioDto request)
         {
             var comentarioCreado = await _services.CrearComentario(request.Comentario1, request.FkReporte);
             return CreatedAtAction(nameof(GetComentarioPorId), new { idComentario = comentarioCreado.IdComentarios }, comentarioCreado);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update{id}")]
         public async Task<ActionResult<ComentarioDto>> PutComentario(int id, [FromBody] CreateComentarioDto request)
         {
             var comentarioEditado = await _services.EditarComentario(id, request.Comentario1, request.FkReporte);
@@ -58,7 +58,7 @@ namespace WebApiIncidentManager.Controllers
             return Ok(comentarioEditado);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete{id}")]
         public async Task<ActionResult> DeleteComentario(int id)
         {
             var exito = await _services.EliminarComentario(id);

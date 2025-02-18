@@ -62,7 +62,7 @@ namespace WebApiIncidentManager.Controllers
                     new Claim("UserId", usuario.IdUsuarios.ToString()),
                     new Claim(ClaimTypes.Email, usuario.CorreoElectronico),
                 }),
-                Expires = DateTime.UtcNow.AddHours(5), //tiempo de vida de token
+                Expires = DateTime.UtcNow.AddHours(2), //tiempo de vida de token
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"],
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -71,7 +71,12 @@ namespace WebApiIncidentManager.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var jwtToken = tokenHandler.WriteToken(token);
 
-            return Ok(new { Token = jwtToken, usuario.IdUsuarios });
+            return Ok(
+                new {
+                    Token = jwtToken,
+                    usuario.IdUsuarios,
+                    usuario.FkRol
+                });
         }
     }
 }

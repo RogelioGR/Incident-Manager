@@ -31,14 +31,14 @@ namespace WebApiBD.Controllers
             return Ok(r);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult<RolesDto>> PostRol([FromBody] CreateRolDto request)
         {
             var rolCreado = await _services.CrearRol(request.NombreRol);
             return CreatedAtAction(nameof(GetRoles), new { id = rolCreado.IdRol }, rolCreado);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update{id}")]
         public async Task<ActionResult<RolesDto>> PutRol(int id, [FromBody] CreateRolDto request)
         {
             var rolEditado = await _services.EditarRol(id, request.NombreRol);
@@ -49,7 +49,7 @@ namespace WebApiBD.Controllers
             return Ok(rolEditado);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete{id}")]
         public async Task<ActionResult> DeleteRol(int id)
         {
             var exito = await _services.EliminarRol(id);

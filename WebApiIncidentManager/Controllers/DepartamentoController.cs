@@ -29,14 +29,14 @@ namespace WebApiBD.Controllers
             return Ok(departamentos);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult<DepartamentoDto>> PostDepartamento([FromBody] CreateDepartamentoDto request)
         {
             var departamentoCreado = await _services.CrearDepartamento(request.NombreDepartamento, request.Extension);
             return CreatedAtAction(nameof(GetDepartamentos), new { id = departamentoCreado.IdDepartamento }, departamentoCreado);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update{id}")]
         public async Task<ActionResult<DepartamentoDto>> PutDepartamento(int id, [FromBody] CreateDepartamentoDto request)
         {
             var departamentoEditado = await _services.EditarDepartamento(id, request.NombreDepartamento, request.Extension);
@@ -47,7 +47,7 @@ namespace WebApiBD.Controllers
             return Ok(departamentoEditado);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete{id}")]
         public async Task<ActionResult> DeleteDepartamento(int id)
         {
             var exito = await _services.EliminarDepartamento(id);

@@ -14,6 +14,6 @@ namespace Services.Iservices
         Task<ReportesDto> ObtenerReportePorId(int idReporte);
         Task<ReportesDto> CrearReporteConUsuario(ReportesDto reporteDto, ClaimsPrincipal user);
         Task<ReportesDto> EditarReporte(int idReporte, ReportesDto reporteDto);
-        Task<bool> EliminarReporte(int idReporte);
+        Task<string> EliminarReporte(int idReporte);
     }
 }

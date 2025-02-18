@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table, Alert, Button } from 'react-bootstrap';
+import { Container, Table, Button } from 'react-bootstrap';
 import { viewUsuarios } from '../Data/Services/UsersServices'; // Actualiza la importación
 import { IViewUsuario } from '../Data/Interfaces/viewUsers';
 import MCreateUser from '../Components/Modals/Users/McreateUsers';
@@ -9,7 +9,7 @@ import Header from '../Components/Header';
 import Sidebar from '../Components/Sidebar';
 
 const PageUsers: React.FC = () => {
-    const [users, setUsers] = useState<IViewUsuario[]>([]); // Usa IViewUsuario aquí
+    const [users, setUsers] = useState<IViewUsuario[]>([]); 
     const [error, setError] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -40,7 +40,6 @@ const PageUsers: React.FC = () => {
     enum ModalsUsers {
         NONE = 'NONE',
         CREATE_USER = 'CREATE_USER',
-        EDIT_USER = 'EDIT_USER',
         DELETE_USER = 'DELETE_USER',
         VIEW_USER = 'VIEW_USER',
     }
@@ -59,10 +58,10 @@ const PageUsers: React.FC = () => {
             <Sidebar />
             <div className="flex-grow-1 d-flex flex-column viewinform-content">
                 <Header />
-                <Container className="my-3" style={{ overflowY: 'auto' }}>
+                <Container className="p-4" style={{ overflowY: 'auto' }}>
                     <div className="container mt-4">
                         <div className="d-flex justify-content-between align-items-center mb-3">
-                            <h1 className="reports-title">Usuarios</h1>
+                            <h2 className="reports-title">Usuarios</h2>
                             <div className="d-flex align-items-center search-container">
                                 <input
                                     type="text"
@@ -76,22 +75,21 @@ const PageUsers: React.FC = () => {
                         <button className="btn btn-success mb-4" onClick={() => handleOpenModal(ModalsUsers.CREATE_USER)}>
                             Crear usuario
                         </button>
-                        {error && <Alert variant="danger" className="text-center">{error}</Alert>}
                         {isLoading ? (
                             <div className="text-center"><p>Cargando usuarios...</p></div>
                         ) : filteredUsers.length === 0 ? (
                             <div className="text-center my-4"><p>No se encontraron usuarios</p></div>
                         ) : (
                             <Table responsive striped bordered hover>
-                                <thead className="text-center">
+                                <thead className="text-center bg-light text-dark">
                                     <tr>
-                                        <th>#</th>
-                                        <th>Nombre completo</th>
-                                        <th>Departamento</th>
-                                        <th>Correo Electrónico</th>
-                                        <th>Correo Personal</th>
-                                        <th>Rol</th>
-                                        <th>Acción</th>
+                                    <th className="py-3">#</th>
+                                                <th className="py-3">Nombre completo</th>
+                                                <th className="py-3">Departamento</th>
+                                                <th className="py-3">Correo Electrónico</th>
+                                                <th className="py-3">Correo Personal</th>
+                                                <th className="py-3">Rol</th>
+                                                <th className="py-3 text-center">Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -102,7 +100,11 @@ const PageUsers: React.FC = () => {
                                             <td>{view.fkDepartamento}</td>
                                             <td>{view.correoElectronico}</td>
                                             <td>{view.correoPersonal}</td>
-                                            <td>{view.fkRol}</td>
+                                            <td className="py-3">
+                                                        <span className="badge bg-light text-dark rounded-pill px-3 py-2">
+                                                            {view.fkRol}
+                                                        </span>
+                                                    </td>
 
                                             <td>
                                                 <div className="d-flex justify-content-center">

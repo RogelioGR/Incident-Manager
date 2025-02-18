@@ -13,7 +13,7 @@ export const login = async (loginData: LoginData): Promise<void> => {
         const response = await axiosInstance.post<AuthResponse>('/Auth/login', loginData);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('idUsuarios', response.data.idUsuarios); 
-        console.log('Inicio de sesión exitoso');
+        console.log('Inicio de sesión exitoso' );
     } catch (error) {
         console.error('Ocurrio un error en el inicio de sesión:', error);
         throw new Error('Error de inicio de sesion');
