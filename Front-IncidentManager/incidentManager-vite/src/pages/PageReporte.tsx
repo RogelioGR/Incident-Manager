@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
+import {  useNavigate } from 'react-router-dom';
+
 
 /* Importacion de services para funcionamiento de reportes */
 import { IReportes } from '../Data/Interfaces/lReports';
@@ -8,17 +10,18 @@ import { GetReportsByUsers } from '../Data/Services/ReportServices';
 import { GetPriorityid } from '../Data/Services/priorityServices';
 
 /* Importacion de paginas */
-import CrearReporteModal from '../Components/Modals/Reports/McreateReports';
 import Header from '../Components/Header';
 import Sidebar from '../Components/Sidebar';
-
+import CrearReporteModal from '../Components/Modals/Reports/McreateReports';
+import MDeleteReports from '../Components/Modals/Reports/MdropdReports';
+import { Link } from 'react-router-dom';
 
 const PageReporte: React.FC = () => {
   const [reportes, setReportes] = useState<IReportes[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [prioridades, setPrioridades] = useState<Map<number, Iprioridad>>(new Map());
   const [isLoading, setIsLoading] = useState(true);
-  
+  const navigate = useNavigate();
   const [modalType, setModalType] = useState<'CREATE' | 'EDIT' | 'DELETE' | null>(null);
 
   useEffect(() => {
@@ -60,6 +63,7 @@ const PageReporte: React.FC = () => {
     if (prioridad.includes('baja')) return 'priority-low';
     return '';
   };
+  
 
   return (
     <div className="d-flex vh-100 flex-column flex-md-row viewinform-container">
@@ -98,7 +102,10 @@ const PageReporte: React.FC = () => {
               <div className="row g-3">
                 {filteredReportes.length > 0 ? (
                   filteredReportes.map(reporte => (
+
                     <div className="col-md-4 col-lg-3" key={reporte.idReporte}>
+                        <Link to={`/vista`} style={{ textDecoration: 'none', color: '#000000' }} >
+                        
                       <div className="report-card">
                         <div className="card-header"></div>
                         <div className="card-content">
@@ -120,7 +127,10 @@ const PageReporte: React.FC = () => {
                           </div>
                         </div>
                       </div>
+                        </Link>
+
                     </div>
+                    
                   ))
                 ) : searchQuery ? (
                   <div className="col-12 no-results">
@@ -149,6 +159,7 @@ const PageReporte: React.FC = () => {
         </Container>
       </div>
       {modalType === 'CREATE' && <CrearReporteModal show={true} handleClose={() => setModalType(null)} />}
+      
     </div>
   );
 };

@@ -66,6 +66,10 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile = false, closeMenu }) => {
                     <i className="fas fa-history sidebar-icon me-3"></i>
                     Historial
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/Historial" className="sidebar-submenu-link ps-5 hover:bg-gray-600">
+                    <i className="fas fa-history sidebar-icon me-3"></i>
+                    Monitoreo
+                  </Nav.Link>
                 </div>
               </div>
               <Nav.Link as={Link} to="/Departamento" className="sidebar-link">
@@ -121,6 +125,10 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile = false, closeMenu }) => {
                   <i className="fas fa-history sidebar-icon me-3"></i>
                   Historial
                 </Nav.Link>
+                <Nav.Link as={Link} to="/Historial" className="sidebar-submenu-link ps-5 hover:bg-gray-600">
+                    <i className="fas fa-history sidebar-icon me-3"></i>
+                    Monitoreo
+                  </Nav.Link>
               </div>
             </div>
             <Nav.Link as={Link} to="/Departamento" className="sidebar-link">
