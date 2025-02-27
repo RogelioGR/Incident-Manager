@@ -73,6 +73,12 @@ const Dashboard: React.FC = () => {
     ],
   };
   /*  extrae los valores de fechacreada  */
+
+  const mesesOrdenados = [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+  ];
+
   const reportesPorMes = reportes.reduce((acc, reporte) => {
     const mes = new Date(reporte.fechaCreada).toLocaleString("default", {
       month: "long",
@@ -80,6 +86,9 @@ const Dashboard: React.FC = () => {
     acc[mes] = (acc[mes] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
+
+  const reportesPorMesOrdenados = Object.keys(reportesPorMes)
+  .sort((a, b) => mesesOrdenados.indexOf(a) - mesesOrdenados.indexOf(b));
 
   const mesColores = [
     "#FF6633",
@@ -97,18 +106,16 @@ const Dashboard: React.FC = () => {
   ];
 
   const reporteMesData = {
-    labels: Object.keys(reportesPorMes),
+    labels: reportesPorMesOrdenados,
     datasets: [
       {
         label: "Reportes por Mes",
-        data: Object.values(reportesPorMes),
-        backgroundColor: mesColores.slice(
-          0,
-          Object.keys(reportesPorMes).length
-        ),
+        data: reportesPorMesOrdenados.map((mes) => reportesPorMes[mes]),
+        backgroundColor: mesColores.slice(0, reportesPorMesOrdenados.length),
       },
     ],
   };
+  
 
   return (
     <>
@@ -184,7 +191,7 @@ const Dashboard: React.FC = () => {
                             <td>{reporte.idReporte}</td>
                             <td>{reporte.titulo}</td>
                             <td>{reporte.fkEstado}</td>
-                            <td>{getNombrePrioridad(reporte.fkPrioridad)}</td>
+                            <td>{getNombrePrioridad(reporte.fkPrioridad ) }</td>
                             <td>
                               {new Date(
                                 reporte.fechaCreada

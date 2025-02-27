@@ -2,23 +2,34 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Offcanvas } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../Data/Services/AuthService';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
 interface SidebarProps {
   mobile?: boolean;
   closeMenu?: () => void;
 }
+    const MySwal = withReactContent(Swal);
 
 const Sidebar: React.FC<SidebarProps> = ({ mobile = false, closeMenu }) => {
   const [isReportesOpen, setIsReportesOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout();
-    navigate('/login');
-    if (closeMenu) {
-      closeMenu();
-    }
-  };
+    MySwal.fire({
+        title: "Cerrar Sesión",
+        text: "¿Seguro que quieres cerrar tu sesión?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+        logout();
+        navigate('/login');
+        }
+      });
+};
 
   return (
     <>

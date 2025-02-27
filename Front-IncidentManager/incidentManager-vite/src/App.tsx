@@ -21,8 +21,9 @@ import DashboardEmpleado from './pages/DashboardEmpl';
 import DashboardLideres from './pages/DashboardLid';
 import PageHistorial from './pages/PageHistory';
 
+const MySwal = withReactContent(Swal);
+
 const App: React.FC = () => {
-  const MySwal = withReactContent(Swal);
 
   useEffect(() => {
 
