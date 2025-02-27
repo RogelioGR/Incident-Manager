@@ -73,7 +73,6 @@ const Dashboard: React.FC = () => {
     ],
   };
   /*  extrae los valores de fechacreada  */
-
   const mesesOrdenados = [
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
     "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
