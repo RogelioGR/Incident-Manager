@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../Data/Services/AuthService';
 import { Container, Spinner, Alert } from 'react-bootstrap';
+import { login } from '../Data/Services/AuthService';
 
 
 const NewLogin: React.FC = () => {
@@ -9,12 +9,22 @@ const NewLogin: React.FC = () => {
     const [password, setPassword] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (localStorage.getItem('authenticated') === 'true') {
-            navigate("/Dashboard");
+        const isAuthenticated = localStorage.getItem('authenticated') === 'true';
+        const rol = localStorage.getItem('fkRol');
+    /* verifica el rol del usuario para saber su cargo */
+        if (isAuthenticated) {
+            if (rol === '1') {
+                navigate("/dashboard"); 
+            } else if (rol === '2') {
+                navigate("/dashboardL"); 
+            } else if (rol === '3') {
+                navigate("/dashboardE"); 
+            } else {
+                alert('Rol no reconocido'); 
+            }
         }
     }, [navigate]);
 
@@ -47,9 +57,7 @@ const NewLogin: React.FC = () => {
                                 <div className="card-body p-4 p-md-5">
                                     <h3 className="text-center mb-4" style={{ color: '#333333', fontWeight: 'bold' }}>Incident Manager</h3>
                                     <p className="text-center text-muted mb-4">Gestiona tus incidentes de manera eficiente</p>
-
                                     {errorMessage && <Alert variant="danger" className="text-center">{errorMessage}</Alert>}
-
                                     <form autoComplete="off" onSubmit={handleLogin}>
                                         <div className="mb-4">
                                             <label htmlFor="email" className="form-label text-muted small">Correo Electrónico:</label>
@@ -63,7 +71,6 @@ const NewLogin: React.FC = () => {
                                                 required
                                             />
                                         </div>
-
                                         <div className="mb-4">
                                             <label htmlFor="password" className="form-label text-muted small">Contraseña:</label>
                                             <input

@@ -11,6 +11,7 @@ namespace Services.Iservices
     public interface IReportesServices
     {
         Task<IEnumerable<ReportesDto>> ObtenerReportes();
+        Task<IEnumerable<ReportesDto>> ObtenerReportesPorUsers(int id);
         Task<ReportesDto> ObtenerReportePorId(int idReporte);
         Task<ReportesDto> CrearReporteConUsuario(ReportesDto reporteDto, ClaimsPrincipal user);
         Task<ReportesDto> EditarReporte(int idReporte, ReportesDto reporteDto);

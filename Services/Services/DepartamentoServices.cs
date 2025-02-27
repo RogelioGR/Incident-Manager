@@ -20,7 +20,7 @@ namespace Services.Services
             _dBcontext = sistemaKempinskiContext;
         }
 
-        public async Task<IEnumerable<DepartamentoDto>> ObtenerRoles()
+        public async Task<IEnumerable<DepartamentoDto>> ObtenerDepartamento()
         {
             return await _dBcontext.Departamentos
                 .AsNoTracking()
@@ -31,6 +31,26 @@ namespace Services.Services
                     Extension = d.Extension
                 }).ToListAsync();
         }
+
+        public async Task<DepartamentoDto> ObtenerDepartamentoPorId(int id)
+        {
+            var departamento = await _dBcontext.Departamentos
+                .AsNoTracking()
+                .FirstOrDefaultAsync(d => d.IdDepartamento == id);
+
+            if (departamento == null)
+            {
+                return null;
+            }
+
+            return new DepartamentoDto
+            {
+                IdDepartamento = departamento.IdDepartamento,
+                NombreDepartamentos = departamento.NombreDepartamentos,
+                Extension = departamento.Extension
+            };
+        }
+
         public async Task<DepartamentoDto> CrearDepartamento(string NombreDepartamento, int Extension)
         {
             var depart = new Departamento

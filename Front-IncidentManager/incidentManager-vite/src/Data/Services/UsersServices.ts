@@ -2,6 +2,7 @@ import axiosInstance from "./AxiosConfig";
 import { IUsuario } from "../Interfaces/IUsers";
 import { IViewUsuario } from "../Interfaces/viewUsers";
 
+/* funcion que muestra todo los usuarios */
 export const obtenerUsuarios = async (): Promise<IUsuario[]> => {
   try {
     const response = await axiosInstance.get('/api/Usuarios');
@@ -21,7 +22,7 @@ export const viewUsuarios = async (): Promise<IViewUsuario[]> => {
     throw error; 
   }
 };
-
+/* funcion que obtiene la informacion del usuario por su id */
 export const obtenerUsuarioid = async (id: number): Promise<IUsuario> => {
   try {
     const response = await axiosInstance.get(`/api/Usuarios/${id}`);
@@ -31,7 +32,7 @@ export const obtenerUsuarioid = async (id: number): Promise<IUsuario> => {
     throw error;
   }
 };
-
+/* fucncion de crear el usuario */
 export const createUser = async (userData: IUsuario): Promise<IUsuario> => {
   try {
     const response = await axiosInstance.post('/api/Usuarios/create', userData);
@@ -41,7 +42,7 @@ export const createUser = async (userData: IUsuario): Promise<IUsuario> => {
     throw error;
   }
 };
-
+/* funcion de actualizar informacion del usuario */
 export const updateUser = async (idUsuarios: number, userData: IUsuario): Promise<IUsuario> => {
   try {
     const response = await axiosInstance.put(`/api/Usuarios/update/${idUsuarios}`, userData);
@@ -51,7 +52,7 @@ export const updateUser = async (idUsuarios: number, userData: IUsuario): Promis
     throw error;
   }
 };
-
+/* funcion de eliminar el usuario */
 export const deleteUser = async (idUsuarios: number): Promise<void> => {
   try {
     await axiosInstance.delete(`/api/Usuarios/delete/${idUsuarios}`);

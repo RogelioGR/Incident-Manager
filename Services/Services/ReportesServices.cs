@@ -34,6 +34,29 @@ namespace Services.Services
                     FechaCreada = r.FechaCreada
                 }).ToListAsync();
         }
+        public async Task<IEnumerable<ReportesDto>> ObtenerReportesPorUsers(int id)
+        {
+            var reportes = await _dBcontext.ReporteUsuarios
+                .Where(ru => ru.FkUsuario == id)
+                .Join(_dBcontext.Reportes,
+                      ru => ru.FkReporte,
+                      r => r.IdReporte,
+                      (ru, r) => new ReportesDto
+                      {
+                          IdReporte = r.IdReporte,
+                          Titulo = r.Titulo,
+                          FkDestinatario = r.FkDestinatario,
+                          FkPrioridad = r.FkPrioridad,
+                          Descripcion = r.Descripcion,
+                          FkEstado = r.FkEstado,
+                          FechaCreada = r.FechaCreada
+                      })
+                .AsNoTracking()
+                .ToListAsync();
+
+            return reportes;
+        }
+
         public async Task<ReportesDto> ObtenerReportePorId(int idReporte)
         {
             var reporte = await _dBcontext.Reportes
@@ -64,13 +87,12 @@ namespace Services.Services
                 throw new UnauthorizedAccessException("Usuario no autenticado.");
             }
 
-            // 2️⃣ Validar el objeto recibido
             if (string.IsNullOrWhiteSpace(reporteDto.Titulo) || string.IsNullOrWhiteSpace(reporteDto.Descripcion))
             {
                 throw new ArgumentException("El título y la descripción son requeridos.");
             }
 
-            // 3️⃣ Crear el reporte
+            //  Crear el reporte
             var reporte = new Reporte
             {
                 Titulo = reporteDto.Titulo,
@@ -82,9 +104,8 @@ namespace Services.Services
             };
 
             await _dBcontext.Reportes.AddAsync(reporte);
-            await _dBcontext.SaveChangesAsync(); // 🔹 Guardamos para obtener el ID del reporte
+            await _dBcontext.SaveChangesAsync(); 
 
-            // 4️⃣ Asociar el usuario autenticado al reporte
             var reporteUsuario = new ReporteUsuario
             {
                 FkReporte = reporte.IdReporte,
@@ -92,9 +113,8 @@ namespace Services.Services
             };
 
             await _dBcontext.ReporteUsuarios.AddAsync(reporteUsuario);
-            await _dBcontext.SaveChangesAsync(); // 🔹 Guardamos la relación usuario-reporte
+            await _dBcontext.SaveChangesAsync(); 
 
-            // 5️⃣ Retornar el reporte creado con el ID generado
             return new ReportesDto
             {
                 IdReporte = reporte.IdReporte,

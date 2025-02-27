@@ -21,12 +21,23 @@ namespace WebApiBD.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DepartamentoDto>>> GetDepartamentos()
         {
-            var departamentos = await _services.ObtenerRoles();
+            var departamentos = await _services.ObtenerDepartamento();
             if (departamentos == null)
             {
                 return NotFound();
             }
             return Ok(departamentos);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DepartamentoDto>> GetDepartamentoPorId(int id)
+        {
+            var departamento = await _services.ObtenerDepartamentoPorId(id);
+            if (departamento == null)
+            {
+                return NotFound($"Departamento con ID {id} no encontrado.");
+            }
+            return Ok(departamento);
         }
 
         [HttpPost("create")]

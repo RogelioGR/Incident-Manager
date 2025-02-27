@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
-import { viewUsuarios } from '../Data/Services/UsersServices'; // Actualiza la importación
+
+/* Importacion de services  */
+import { viewUsuarios } from '../Data/Services/UsersServices';
 import { IViewUsuario } from '../Data/Interfaces/viewUsers';
+
+/* Importacion de paginas y modales */
 import MCreateUser from '../Components/Modals/Users/McreateUsers';
 import MViewUser from '../Components/Modals/Users/MviewUsers';
 import MDeleteUser from '../Components/Modals/Users/MdropUsers';
@@ -9,34 +13,11 @@ import Header from '../Components/Header';
 import Sidebar from '../Components/Sidebar';
 
 const PageUsers: React.FC = () => {
-    const [users, setUsers] = useState<IViewUsuario[]>([]); 
-    const [error, setError] = useState<string | null>(null);
+    const [users, setUsers] = useState<IViewUsuario[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                setIsLoading(true);
-                const usersData = await viewUsuarios(); // Llamamos a la función viewUsuarios
-                setUsers(usersData);
-                setError(null);
-            } catch (error) {
-                setError('Error al cargar los usuarios');
-                console.error(error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchUsers();
-    }, []);
-
-    const filteredUsers = Array.isArray(users) ? users.filter(user =>
-        user.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user?.apellidos?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user.correoElectronico.toLowerCase().includes(searchTerm.toLowerCase())
-    ) : [];
-
+    // Estados para controlar los modales
     enum ModalsUsers {
         NONE = 'NONE',
         CREATE_USER = 'CREATE_USER',
@@ -47,6 +28,41 @@ const PageUsers: React.FC = () => {
     const [modalUsers, setModalUsers] = useState(ModalsUsers.NONE);
     const [selectedUserId, setSelectedUserId] = useState<number>();
 
+    useEffect(() => {
+        let isMounted = true;
+
+        const fetchUsers = async () => {
+            try {
+                setIsLoading(true);
+                const usersData = await viewUsuarios();
+                if (isMounted) {
+                    setUsers(usersData);
+                }
+            } catch (error) {
+                console.error('Error al cargar los usuarios:', error);
+            } finally {
+                if (isMounted) {
+                    setIsLoading(false);
+                }
+            }
+        };
+        fetchUsers();
+        return () => {
+            isMounted = false;
+        };
+    }, []);
+
+    const getFilteredUsers = (users: IViewUsuario[], searchTerm: string) => {
+        return users.filter(user =>
+            user.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            user?.apellidos?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            user.correoElectronico.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    };
+
+    const filteredUsers = getFilteredUsers(users, searchTerm);
+
+    // Funciones para abrir y cerrar modales
     const handleCloseModal = () => setModalUsers(ModalsUsers.NONE);
     const handleOpenModal = (type: ModalsUsers, IdUsuario?: number) => {
         setModalUsers(type);
@@ -77,19 +93,20 @@ const PageUsers: React.FC = () => {
                         </button>
                         {isLoading ? (
                             <div className="text-center"><p>Cargando usuarios...</p></div>
-                        ) : filteredUsers.length === 0 ? (
+                        ) :(
+                    filteredUsers.length === 0 ? (
                             <div className="text-center my-4"><p>No se encontraron usuarios</p></div>
                         ) : (
                             <Table responsive striped bordered hover>
                                 <thead className="text-center bg-light text-dark">
                                     <tr>
-                                    <th className="py-3">#</th>
-                                                <th className="py-3">Nombre completo</th>
-                                                <th className="py-3">Departamento</th>
-                                                <th className="py-3">Correo Electrónico</th>
-                                                <th className="py-3">Correo Personal</th>
-                                                <th className="py-3">Rol</th>
-                                                <th className="py-3 text-center">Acción</th>
+                                        <th className="py-3">#</th>
+                                        <th className="py-3">Nombre completo</th>
+                                        <th className="py-3">Departamento</th>
+                                        <th className="py-3">Correo Electrónico</th>
+                                        <th className="py-3">Correo Personal</th>
+                                        <th className="py-3">Rol</th>
+                                        <th className="py-3 text-center">Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,22 +118,25 @@ const PageUsers: React.FC = () => {
                                             <td>{view.correoElectronico}</td>
                                             <td>{view.correoPersonal}</td>
                                             <td className="py-3">
-                                                        <span className="badge bg-light text-dark rounded-pill px-3 py-2">
-                                                            {view.fkRol}
-                                                        </span>
-                                                    </td>
-
+                                                <span className="badge bg-light text-dark rounded-pill px-3 py-2">
+                                                    {view.fkRol}
+                                                </span>
+                                            </td>
                                             <td>
                                                 <div className="d-flex justify-content-center">
-                                                    <Button variant="primary" className="me-1" onClick={() => handleOpenModal(ModalsUsers.VIEW_USER, view.idUsuario)}>Ver</Button>
-                                                    <Button variant="danger" className="me-1" onClick={() => handleOpenModal(ModalsUsers.DELETE_USER, view.idUsuario)}>Eliminar</Button>
+                                                    <Button variant="primary" className="me-1" onClick={() => handleOpenModal(ModalsUsers.VIEW_USER, view.idUsuario)}>
+                                                        Ver
+                                                    </Button>
+                                                    <Button variant="danger" className="me-1" onClick={() => handleOpenModal(ModalsUsers.DELETE_USER, view.idUsuario)}>
+                                                        Eliminar
+                                                    </Button>
                                                 </div>
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </Table>
-                        )}
+                        ))}
                         {/* Modales */}
                         <MCreateUser show={modalUsers === ModalsUsers.CREATE_USER} handleClose={handleCloseModal} />
                         <MViewUser show={modalUsers === ModalsUsers.VIEW_USER} handleClose={handleCloseModal} userId={selectedUserId} />

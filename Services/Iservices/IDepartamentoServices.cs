@@ -9,7 +9,8 @@ namespace Services.Iservices
 {
     public interface IDepartamentoServices
     {
-        Task<IEnumerable<DepartamentoDto>> ObtenerRoles();
+        Task<IEnumerable<DepartamentoDto>> ObtenerDepartamento();
+        Task<DepartamentoDto> ObtenerDepartamentoPorId(int id);
         Task<DepartamentoDto> CrearDepartamento(string NombreDepartamento, int Extension);
         Task<DepartamentoDto> EditarDepartamento(int iddepartamento, string nombreDepartamento, int extension);
         Task<bool> EliminarDepartamento(int iddepartamento);

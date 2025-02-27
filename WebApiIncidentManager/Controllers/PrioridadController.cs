@@ -30,6 +30,17 @@ namespace WebApiBD.Controllers
             return Ok(prioridades);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DepartamentoDto>> GetPrioridadPorId(int id)
+        {
+            var prioridades = await _services.ObtenerPrioridadPorId(id);
+            if (prioridades == null)
+            {
+                return NotFound($"prioridades con ID {id} no encontrado.");
+            }
+            return Ok(prioridades);
+        }
+
         [HttpPost("create")]
         public async Task<ActionResult<PrioridadDto>> PostPrioridad([FromBody] CreatePrioridadDto request)
         {

@@ -50,7 +50,6 @@ const MViewUser: React.FC<MviewUserProps> = ({ show, handleClose, userId }) => {
     <>
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Información del Usuario</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {loading ? (
@@ -64,6 +63,7 @@ const MViewUser: React.FC<MviewUserProps> = ({ show, handleClose, userId }) => {
             <Card className="p-3">
               <Card.Body>
                 <Form>
+                <h2 className="text-center mb-4">nformación del Usuario</h2>
                   <Form.Group>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control type="text" value={user.nombre || ""} readOnly />

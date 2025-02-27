@@ -20,14 +20,13 @@ const Header: React.FC = () => {
     };
     fetchUser();
   }, []);
-
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
-
   const handleLogout = () => {
-    localStorage.removeItem('idUsuarios');
+    localStorage.removeItem('token');
   };
-
+  
+  
   return (
     <header className="d-flex justify-content-between align-items-center p-2 border-bottom">
       <div className="menu-toggle-btn d-lg-none">

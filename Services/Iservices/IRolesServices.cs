@@ -10,6 +10,7 @@ namespace Services.Iservices
     public interface IRolesServices
     {
         Task<IEnumerable<RolesDto>> ObtenerRoles();
+        Task<RolesDto> ObtenerRolesPorId(int id);
         Task<RolesDto> CrearRol(string nombreRol);
         Task<RolesDto> EditarRol(int idRol, string nombreRol);
         Task<bool> EliminarRol(int idRol);

@@ -13,6 +13,7 @@ interface MEditUserProps {
 
 const MySwal = withReactContent(Swal);
 const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
+
   const [formData, setFormData] = useState<IUsuario>({
     nombre: "",
     apellidos: "",
@@ -32,6 +33,7 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
           console.log("userData:", userData);
           setFormData(userData);
         } catch (error) { 
+          console.error("Error al cargar los datos del usuario:", error);
           MySwal.fire("Error", "Hubo un error al cargar los datos del usuario", "error");
         }
       }
@@ -46,11 +48,8 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
     if (name === 'contraseña') {
       setIsPasswordChanged(true);
     }
-
     setFormData({ ...formData, [name]: value });
   };
-
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,7 +60,6 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
 
     try {
       const updatedData = { ...formData };
-
       if (!isPasswordChanged) {
         delete updatedData.contraseña;
       }
@@ -79,6 +77,7 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
       });
       handleClose();
     } catch (error) {
+      console.error("Error al cargar los datos del usuario:", error);
       MySwal.fire("Error", "Hubo un error al editar el usuario", "error");
     }
   };

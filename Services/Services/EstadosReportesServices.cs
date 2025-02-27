@@ -31,6 +31,24 @@ namespace Services.Services
                 }).ToListAsync();
 
         }
+        public async Task<EstadosReporteDto> ObtenerEstReportePorId(int id)
+        {
+            var estadoReporte = await _dBcontext.EstadosReportes
+                .AsNoTracking()
+                .FirstOrDefaultAsync(er => er.IdEstado == id);
+
+            if (estadoReporte == null)
+            {
+                return null;
+            }
+
+            return new EstadosReporteDto
+            {
+                IdEstado = estadoReporte.IdEstado,
+                NombreEstado = estadoReporte.NombreEstado,
+            };
+        }
+
 
         public async Task<EstadosReporteDto> CrearEstadoReporte(string nombreest)
         {

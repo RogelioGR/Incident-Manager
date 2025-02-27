@@ -6,14 +6,16 @@ interface LoginData {
 interface AuthResponse {
     token: string;
     idUsuarios: string; 
+    fkRol: string; 
 }
 
 export const login = async (loginData: LoginData): Promise<void> => {
     try {
         const response = await axiosInstance.post<AuthResponse>('/Auth/login', loginData);
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('idUsuarios', response.data.idUsuarios); 
-        console.log('Inicio de sesión exitoso' );
+        localStorage.setItem('idUsuarios', response.data.idUsuarios);
+        localStorage.setItem('fkRol', response.data.fkRol);
+        console.log('Inicio de sesión exitoso');
     } catch (error) {
         console.error('Ocurrio un error en el inicio de sesión:', error);
         throw new Error('Error de inicio de sesion');
@@ -22,8 +24,8 @@ export const login = async (loginData: LoginData): Promise<void> => {
 
 export const logout = () => {
     localStorage.removeItem('authenticated');
-    localStorage.removeItem('rol');
     localStorage.removeItem('token');
-    localStorage.removeItem('userId');
+    localStorage.removeItem('fkRol');
+    localStorage.removeItem('idUsuarios');
     localStorage.removeItem('_grecaptcha');
 };

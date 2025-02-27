@@ -27,8 +27,21 @@ namespace WebApiBD.Controllers
                 }
                 return Ok(reportes);
             }
+        [HttpGet("GetReportesByUsers/{id}")]
+        public async Task<IActionResult> GetReportesByUsuario(int id)
+        {
+            var reportes = await _services.ObtenerReportesPorUsers(id);
 
-            [HttpGet("{id}")]
+            if (reportes == null || !reportes.Any())
+            {
+                return NotFound("No se encontraron reportes para este usuario.");
+            }
+
+            return Ok(reportes);
+        }
+
+
+        [HttpGet("{id}")]
             public async Task<ActionResult<ReportesDto>> GetReportePorId(int idReporte)
             {
                 var reporte = await _services.ObtenerReportePorId(idReporte);

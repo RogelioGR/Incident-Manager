@@ -29,6 +29,26 @@ namespace Services.Services
               
                 }).ToListAsync();
         }
+
+        public async Task<PrioridadDto> ObtenerPrioridadPorId(int id)
+        {
+            var prioridad = await _dBcontext.Prioridads
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.IdPrioridad == id);
+
+            if (prioridad == null)
+            {
+                return null;
+            }
+
+            return new PrioridadDto
+            {
+                IdPrioridad = prioridad.IdPrioridad,
+                NombrePrioridad = prioridad.NombrePrioridad
+            };
+        }
+
+
         public async Task<PrioridadDto> CrearPrioridad(string nombrePrioridad)
         {
             var prio = new Prioridad

@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button, Table, Form } from "react-bootstrap";
-import { Bar } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
-import { GetReport } from "../Data/Services/ReportServices";
-import { IReportes } from "../Data/Interfaces/lReports";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
-Chart.register(...registerables);
+/* Services */
+import { IReportes } from "../Data/Interfaces/lReports";
+import { GetReport } from "../Data/Services/ReportServices";
+import { Iprioridad } from "../Data/Interfaces/lPrioridad";
+import { GetPriority } from "../Data/Services/priorityServices";
 
 /*Componentes */
-import Sidebar from '../Components/Sidebar';
-import Header from '../Components/Header';
+import Sidebar from "../Components/Sidebar";
+import Header from "../Components/Header";
+import ReportPDF from "../Components/ReportPDF";
+import GraficoReportes from "../Components/GraficoReportes"; 
+
+/* importacion de las graficas */
+Chart.register(...registerables);
 
 const Dashboard: React.FC = () => {
   const [reportes, setReportes] = useState<IReportes[]>([]);
+  const [prioridades, setPrioridades] = useState<Iprioridad[]>([]);
   const [busqueda, setBusqueda] = useState("");
 
   useEffect(() => {
+    /* LLama a la funcion de la WebApi de reporte */
     const fetchReportes = async () => {
       try {
         const data = await GetReport();
@@ -24,34 +33,67 @@ const Dashboard: React.FC = () => {
         console.error("Error al obtener los reportes", error);
       }
     };
+    /* LLama a la funcion de la WebApi de prioridad */
+    const fetchPrioridades = async () => {
+      try {
+        const data = await GetPriority();
+        setPrioridades(data);
+      } catch (error) {
+        console.error("Error al obtener las prioridades", error);
+      }
+    };
+
     fetchReportes();
+    fetchPrioridades();
   }, []);
 
+  /* funcion de busqueda de titulo de reporte */
   const reportesFiltrados = reportes.filter((reporte) =>
     reporte.titulo?.toLowerCase().includes(busqueda.toLowerCase())
   );
 
-  const estados = [...new Set(reportes.map(r => r.fkEstado))];
-  const estadoData = {
-    labels: estados,
+  /* Obtener el nombre de la prioridad */
+  const getNombrePrioridad = (fkPrioridad: number) => {
+    const prioridad = prioridades.find((p) => p.idPrioridad === fkPrioridad);
+    return prioridad ? prioridad.nombrePrioridad : "Desconocido";
+  };
+
+  /*  extrae los valores de FkPrioridad */
+  const prioridadesIds = [...new Set(reportes.map((r) => r.fkPrioridad))];
+  const prioridadData = {
+    labels: prioridadesIds.map((id) => getNombrePrioridad(id)),
     datasets: [
       {
-        label: "Cantidad de Reportes por Estado",
-        data: estados.map(estado => reportes.filter(r => r.fkEstado === estado).length),
+        label: "Cantidad de Reportes por Prioridad",
+        data: prioridadesIds.map(
+          (id) => reportes.filter((r) => r.fkPrioridad === id).length
+        ),
         backgroundColor: ["#f94144", "#f9c74f", "#43aa8b"],
       },
     ],
   };
-
+  /*  extrae los valores de fechacreada  */
   const reportesPorMes = reportes.reduce((acc, reporte) => {
-    const mes = new Date(reporte.fechaCreada).toLocaleString('default', { month: 'long' });
+    const mes = new Date(reporte.fechaCreada).toLocaleString("default", {
+      month: "long",
+    });
     acc[mes] = (acc[mes] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
 
   const mesColores = [
-    "#FF6633", "#FFB399", "#FF33FF", "#FFFF99", "#00B3E6", "#E6B333", 
-    "#3366E6", "#999966", "#99FF99", "#B34D4D", "#80B300", "#809900"
+    "#FF6633",
+    "#FFB399",
+    "#FF33FF",
+    "#FFFF99",
+    "#00B3E6",
+    "#E6B333",
+    "#3366E6",
+    "#999966",
+    "#99FF99",
+    "#B34D4D",
+    "#80B300",
+    "#809900",
   ];
 
   const reporteMesData = {
@@ -60,7 +102,10 @@ const Dashboard: React.FC = () => {
       {
         label: "Reportes por Mes",
         data: Object.values(reportesPorMes),
-        backgroundColor: mesColores.slice(0, Object.keys(reportesPorMes).length),
+        backgroundColor: mesColores.slice(
+          0,
+          Object.keys(reportesPorMes).length
+        ),
       },
     ],
   };
@@ -71,35 +116,41 @@ const Dashboard: React.FC = () => {
         <Sidebar />
         <div className="flex-grow-1 d-flex flex-column viewinform-content">
           <Header />
-          <Container className="p-4" style={{ overflowY: 'auto' }}>
-          <h2 className="p-2">Dashboard</h2>
+          <Container className="p-4" style={{ overflowY: "auto" }}>
+            <h2 className="reports-title m-2">Dashboard</h2>
 
             <Row className="mb-4">
-              <Col md={6}>
+            <Col md={6}>
                 <Card className="shadow">
                   <Card.Body>
-                    <Card.Title className="text-center">Reportes por Estado</Card.Title>
-                    <div style={{ height: "200px" }}>
-                      <Bar data={estadoData} options={{ maintainAspectRatio: false }} />
-                    </div>
+                  <GraficoReportes title="Reportes por Prioridad" data={prioridadData} />
                   </Card.Body>
                 </Card>
               </Col>
+
               <Col md={6}>
                 <Card className="shadow">
                   <Card.Body>
-                    <Card.Title className="text-center">Reportes por Mes</Card.Title>
-                    <div style={{ height: "200px" }}>
-                      <Bar data={reporteMesData} options={{ maintainAspectRatio: false }} />
-                    </div>
+                  <GraficoReportes title="Reportes por Mes" data={reporteMesData} />
+
                   </Card.Body>
                 </Card>
               </Col>
             </Row>
+            {/* Botón para descargar el PDF */}
             <Row className="mb-4">
               <Col className="d-flex justify-content-between align-items-center">
-                <h5 className="mb-0">Descargar Reporte del Mes</h5>
-                <Button variant="primary">Generar PDF</Button>
+                <h5>Descargar Reporte del Mes</h5>
+                <PDFDownloadLink
+                  document={<ReportPDF reportes={reportesFiltrados} />}
+                  fileName="Reporte_Incidentes.pdf"
+                >
+                  {({ loading }) => (
+                    <Button variant="primary">
+                      {loading ? "Generando PDF..." : "Descargar PDF"}
+                    </Button>
+                  )}
+                </PDFDownloadLink>
               </Col>
             </Row>
             <Row className="mb-3">
@@ -133,8 +184,12 @@ const Dashboard: React.FC = () => {
                             <td>{reporte.idReporte}</td>
                             <td>{reporte.titulo}</td>
                             <td>{reporte.fkEstado}</td>
-                            <td>{reporte.fkPrioridad}</td>
-                            <td>{new Date(reporte.fechaCreada).toLocaleDateString()}</td>
+                            <td>{getNombrePrioridad(reporte.fkPrioridad)}</td>
+                            <td>
+                              {new Date(
+                                reporte.fechaCreada
+                              ).toLocaleDateString()}
+                            </td>
                           </tr>
                         ))}
                       </tbody>

@@ -29,6 +29,17 @@ namespace WebApiBD.Controllers
             return Ok(estados);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DepartamentoDto>> GetEstadoReportePorId(int id)
+        {
+            var estados = await _services.ObtenerEstReportePorId(id);
+            if (estados == null)
+            {
+                return NotFound($"estados con ID {id} no encontrado.");
+            }
+            return Ok(estados);
+        }
+
         [HttpPost("create")]
         public async Task<ActionResult<EstadosReporteDto>> PostEstadoReporte([FromBody] CreateEstadoReporteDto request)
         {

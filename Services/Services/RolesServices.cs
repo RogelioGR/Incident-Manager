@@ -30,6 +30,25 @@ namespace Services.Services
                 }).ToListAsync();
         }
 
+        public async Task<RolesDto> ObtenerRolesPorId(int id)
+        {
+            var roles = await _dBcontext.Roles
+                .AsNoTracking()
+                .FirstOrDefaultAsync(r => r.IdRol == id);
+
+            if (roles == null)
+            {
+                return null;
+            }
+
+            return new RolesDto
+            {
+                IdRol = roles.IdRol,
+                NombreRol = roles.NombreRol,
+            };
+        }
+
+
         /// Crea un nuevo rol.
         public async Task<RolesDto> CrearRol(string nombreRol)
         {

@@ -31,6 +31,18 @@ namespace WebApiBD.Controllers
             return Ok(r);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DepartamentoDto>> GetRolPorId(int id)
+        {
+            var rols = await _services.ObtenerRolesPorId(id);
+            if (rols == null)
+            {
+                return NotFound($"rols con ID {id} no encontrado.");
+            }
+            return Ok(rols);
+        }
+
+
         [HttpPost("create")]
         public async Task<ActionResult<RolesDto>> PostRol([FromBody] CreateRolDto request)
         {

@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body{
   margin: 0%;
 }
+/* estilo de diseño de login */
 .login-container{
   background-color: #f0f2f5;
 }
@@ -26,6 +28,7 @@ body{
       opacity: 1;
   }
 }
+
   /* Sidebar menu*/
   .sidebar-container {
     height: auto;
@@ -42,11 +45,6 @@ body{
     color: white;
     margin: 20px;
   }
-  
-  .sidebar-brand img {
-    margin-right: 10px;
-  }
-  
   .sidebar-brand-text {
     font-size: 1.4rem;
     font-weight: bold;
@@ -92,3 +90,203 @@ body{
     color: white !important;
   }
 
+  /* Card de reportes */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .report-card {
+    width: 100%;
+    background-color: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .card-header {
+    position: relative;
+  }
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-content {
+    padding: 30px 20px 20px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+  }
+  
+  .card-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .priority-badge {
+    background-color: #f0f4ff;
+    color: #d88d14;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  .priority-high {
+    background-color: #ffeded;
+    color: #e64747;
+  }
+  
+  .priority-medium {
+    background-color: #fff8ed;
+    color: #d69136;
+  }
+  
+  .priority-low {
+    background-color: #edfff0;
+    color: #47e67b;
+  }
+  
+  .card-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .btn-card {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .reports-empty {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .reports-empty-icon {
+    font-size: 48px;
+    color: #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .reports-empty-text {
+    font-size: 18px;
+    color: #666;
+  }
+
+  /* Buscador estilo */
+  .search-container {
+    position: relative;
+    max-width: 200px;
+    width: 100%;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #e1e1e1;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .search-input:focus {
+    box-shadow: 0 0 0 3px rgba(142, 176, 255, 0.2);
+    border-color: #5b84e3;
+    background-color: #ffffff;
+    outline: none;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #adb5bd;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .search-input:focus + .search-icon,
+  .search-container:hover .search-icon {
+    color: #4776E6;
+  }
+  
+  .clear-search {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #adb5bd;
+    cursor: pointer;
+    font-size: 14px;
+    display: none;
+  }
+  
+  .reports-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+  }
+  
+  .reports-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+  
+  .no-results {
+    text-align: center;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .no-results-icon {
+    font-size: 36px;
+    color: #adb5bd;
+    margin-bottom: 15px;
+  }
+  
+  .no-results-text {
+    font-size: 16px;
+    color: #666;
+  }
+  
