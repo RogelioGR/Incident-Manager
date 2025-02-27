@@ -1,7 +1,7 @@
 export interface IReportes {
     idReporte?: number;
     titulo: string;
-    fkDestinatario: number;
+    fkDestinatario?: number;
     fkPrioridad: number;
     descripcion: string;
     fkEstado: number;

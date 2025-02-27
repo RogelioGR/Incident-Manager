@@ -1,36 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { IReportes } from '../../../Data/Interfaces/lReports';
-import { createReports } from '../../../Data/Services/ReportServices';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-const MySwal = withReactContent(Swal);
+import { IReportes } from '../../../Data/Interfaces/lReports';
+import { IUsuario } from '../../../Data/Interfaces/IUsers';
+import { Iprioridad } from '../../../Data/Interfaces/lPrioridad';
+import { createReports } from '../../../Data/Services/ReportServices';
+import { obtenerUsuarios } from '../../../Data/Services/UsersServices';
+import { GetPriority } from '../../../Data/Services/priorityServices';
 
 interface MCreateProps {
     show: boolean;
     handleClose: () => void;
 }
+const MySwal = withReactContent(Swal);
 
 const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
+    const [usuarios, setUsuarios] = useState<IUsuario[]>([]);
+    const [prioridades, setPrioridades] = useState<Iprioridad[]>([]);
+    const [selectedDestinatarioId, setSelectedDestinatarioId] = useState<number>(0);
+    const [loading, setLoading] = useState(false);
+
     const [reporteData, setReporteData] = useState<IReportes>({
-        idReporte: 0,
         titulo: '',
-        fkDestinatario: 0,
         fkPrioridad: 0,
         descripcion: '',
         fkEstado: 1,
-        fechaCreada: new Date().toISOString(), 
+        fechaCreada: new Date().toISOString(),
     });
-    const [loading, setLoading] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    useEffect(() => {
+        const fetchUsuarios = async () => {
+            try {
+                const usuariosData = await obtenerUsuarios();
+                setUsuarios(usuariosData);
+            } catch (error) {
+                console.error("Error al obtener la lista de usuarios:", error);
+            }
+        };
+
+        const fetchPrioridades = async () => {
+            try {
+                const prioridadesData = await GetPriority();
+                setPrioridades(prioridadesData);
+            } catch (error) {
+                console.error("Error al obtener la lista de prioridades:", error);
+            }
+        };
+
+        if (show) {
+            fetchUsuarios();
+            fetchPrioridades();
+        }
+    }, [show]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-
-        // Convertir a número si es necesario (para fkDestinatario y fkPrioridad)
         setReporteData({
             ...reporteData,
-            [name]: name === "fkDestinatario" || name === "fkPrioridad" ? parseInt(value) || 0 : value
+            [name]: name === "fkPrioridad" ? parseInt(value) || 0 : value,
         });
     };
 
@@ -39,10 +68,9 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
         setLoading(true);
 
         try {
-            // Enviar solo los campos necesarios (sin idReporte, ya que lo genera el backend)
             await createReports({
                 titulo: reporteData.titulo,
-                fkDestinatario: reporteData.fkDestinatario,
+                fkDestinatario: selectedDestinatarioId,
                 fkPrioridad: reporteData.fkPrioridad,
                 descripcion: reporteData.descripcion,
                 fkEstado: reporteData.fkEstado,
@@ -56,11 +84,11 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
                 confirmButtonText: "OK",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.reload(); // Recargar la página si es necesario
+                    window.location.reload();
                 }
             });
 
-            handleClose(); // Cerrar el modal
+            handleClose();
         } catch (error) {
             console.error(error);
             MySwal.fire({
@@ -75,13 +103,7 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
     };
 
     return (
-        <Modal
-            show={show}
-            onHide={handleClose}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
+        <Modal show={show} onHide={handleClose} size="lg" centered>
             <Modal.Header closeButton>
                 <Modal.Title>Crear Reporte</Modal.Title>
             </Modal.Header>
@@ -99,26 +121,36 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
                         />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>ID del Destinatario:</Form.Label>
-                        <Form.Control
-                            type="number"
+                        <Form.Label>Destinatario:</Form.Label>
+                        <Form.Select
                             name="fkDestinatario"
-                            placeholder="ID del destinatario"
-                            value={reporteData.fkDestinatario}
-                            onChange={handleChange}
+                            value={selectedDestinatarioId}
+                            onChange={(e) => setSelectedDestinatarioId(parseInt(e.target.value))}
                             required
-                        />
+                        >
+                            <option value={0}>Seleccione un destinatario</option>
+                            {usuarios.map((usuario) => (
+                                <option key={usuario.idUsuarios} value={usuario.idUsuarios}>
+                                    {usuario.nombre} {usuario.apellidos}
+                                </option>
+                            ))}
+                        </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Prioridad:</Form.Label>
-                        <Form.Control
-                            type="number"
+                        <Form.Select
                             name="fkPrioridad"
-                            placeholder="Prioridad (1-5)"
                             value={reporteData.fkPrioridad}
                             onChange={handleChange}
                             required
-                        />
+                        >
+                            <option value={0}>Seleccione una prioridad</option>
+                            {prioridades.map((prioridad) => (
+                                <option key={prioridad.idPrioridad} value={prioridad.idPrioridad}>
+                                    {prioridad.nombrePrioridad}
+                                </option>
+                            ))}
+                        </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Descripción:</Form.Label>

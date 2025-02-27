@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { logout } from '../Data/Services/AuthService';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
+
 import Sidebar from './Sidebar';
+
 import { obtenerUsuarioid } from '../Data/Services/UsersServices';
 import { IUsuario } from '../Data/Interfaces/IUsers';
 
+const MySwal = withReactContent(Swal);
+
 const Header: React.FC = () => {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<IUsuario | null>(null);
 
@@ -23,8 +31,20 @@ const Header: React.FC = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
   const handleLogout = () => {
-    localStorage.removeItem('token');
-  };
+    MySwal.fire({
+        title: "Cerrar Sesión",
+        text: "¿Seguro que quieres cerrar tu sesión?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+        logout();
+        navigate('/login');
+        }
+      });
+};
   
   
   return (
@@ -60,7 +80,7 @@ const Header: React.FC = () => {
         </button>
         <ul className="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton">
           <li>
-            <Link className="dropdown-item" to="/login" onClick={handleLogout}>
+            <Link className="dropdown-item" to="" onClick={handleLogout}>
               <i className="fa-solid fa-power-off me-2"></i>
               Cerrar sesión
             </Link>
