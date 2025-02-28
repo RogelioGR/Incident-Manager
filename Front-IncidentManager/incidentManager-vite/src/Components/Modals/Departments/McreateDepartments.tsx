@@ -21,9 +21,9 @@ const MCreateDepart: React.FC<MCreateProps> = ({ show, handleClose }) => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+     const { name, value } = e.target;
+     setFormData({ ...formData, [name]: value });
+   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,6 +37,7 @@ const MCreateDepart: React.FC<MCreateProps> = ({ show, handleClose }) => {
         confirmButtonText: "OK",
       }).then((result) => {
         if (result.isConfirmed) {
+          handleClose();
           window.location.reload();
         }
       });
@@ -56,13 +57,12 @@ const MCreateDepart: React.FC<MCreateProps> = ({ show, handleClose }) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title></Modal.Title>
+        <Modal.Title>Crear Departamento</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Container className="flex-grow-1 my-5">
           <h2 className="text-center mb-4">Crear Departamento</h2>
           <Row className="justify-content-center">
-            
             <Col md={8}>
               <Form onSubmit={handleSubmit}>
                 <Row>

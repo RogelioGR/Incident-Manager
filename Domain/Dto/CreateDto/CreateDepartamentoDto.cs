@@ -9,8 +9,7 @@ namespace Domain.Dto.CreateDto
 {
     public class CreateDepartamentoDto
     {
-        [Required]
-
+        public int IdDepartamento { get; set; }
         public string NombreDepartamento { get; set; }
         public int Extension { get; set; }
     }

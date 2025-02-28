@@ -9,8 +9,7 @@ namespace Domain.Dto
 {
     public class DepartamentoDto
     {
-        [Key]
-        [Required]
+    
         public int IdDepartamento { get; set; }
 
         public string NombreDepartamentos { get; set; } = null!;

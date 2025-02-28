@@ -11,7 +11,7 @@ namespace Services.Iservices
     {
         Task<IEnumerable<DepartamentoDto>> ObtenerDepartamento();
         Task<DepartamentoDto> ObtenerDepartamentoPorId(int id);
-        Task<DepartamentoDto> CrearDepartamento(string NombreDepartamento, int Extension);
+        Task<DepartamentoDto> CrearDepartamento(DepartamentoDto departamentoDto);
         Task<DepartamentoDto> EditarDepartamento(int iddepartamento, string nombreDepartamento, int extension);
         Task<bool> EliminarDepartamento(int iddepartamento);
     }

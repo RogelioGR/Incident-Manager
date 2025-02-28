@@ -22,6 +22,7 @@ import DashboardLideres from './pages/DashboardLid';
 import PageHistorial from './pages/PageHistory';
 import PageViewReports from './pages/PageViewReports';
 
+
 const MySwal = withReactContent(Swal);
 
 const App: React.FC = () => {
