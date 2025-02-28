@@ -51,23 +51,19 @@ namespace Services.Services
             };
         }
 
-        public async Task<DepartamentoDto> CrearDepartamento(string NombreDepartamento, int Extension)
+        public async Task<DepartamentoDto> CrearDepartamento(DepartamentoDto departamentoDto)
         {
-            var depart = new Departamento
-            {
-                NombreDepartamentos = NombreDepartamento,
-                Extension = Extension
-            };
 
-            if (string.IsNullOrWhiteSpace(NombreDepartamento))
-            {
-                throw new ArgumentException("El nombre del departamento es requerido.");
-            }
-
-            if (Extension <= 0)
+            if (departamentoDto.Extension <= 0)
             {
                 throw new ArgumentException("La extensión debe ser un número.");
             }
+
+            var depart = new Departamento
+            {
+                NombreDepartamentos = departamentoDto.NombreDepartamentos,
+                Extension = departamentoDto.Extension
+            };
 
             await _dBcontext.Departamentos.AddAsync(depart);
             await _dBcontext.SaveChangesAsync();

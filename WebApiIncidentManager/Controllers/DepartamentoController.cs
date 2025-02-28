@@ -43,7 +43,11 @@ namespace WebApiBD.Controllers
         [HttpPost("create")]
         public async Task<ActionResult<DepartamentoDto>> PostDepartamento([FromBody] CreateDepartamentoDto request)
         {
-            var departamentoCreado = await _services.CrearDepartamento(request.NombreDepartamento, request.Extension);
+            var departamentoCreado = await _services.CrearDepartamento(new DepartamentoDto
+            {
+                NombreDepartamentos = request.NombreDepartamento,
+                Extension = request.Extension
+            });
             return CreatedAtAction(nameof(GetDepartamentos), new { id = departamentoCreado.IdDepartamento }, departamentoCreado);
         }
 

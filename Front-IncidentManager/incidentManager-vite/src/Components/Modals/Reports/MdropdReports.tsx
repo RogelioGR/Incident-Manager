@@ -58,7 +58,7 @@ const MDeleteReports: React.FC<MDeleteProps> = ({
       </Modal.Header>
       <Modal.Body className="text-center justify-content-center">
         <h2>Eliminar Reporte</h2>
-        <p>¿Estás seguro de que deseas eliminar el usuario?</p>
+        <p>¿Estás seguro de que deseas eliminar el reporte?</p>
       </Modal.Body>
       <Modal.Footer className="justify-content-center">
         <Button variant="danger" onClick={ValidarEliminacion}>

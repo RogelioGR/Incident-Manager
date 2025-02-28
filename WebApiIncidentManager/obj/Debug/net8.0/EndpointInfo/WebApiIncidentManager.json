@@ -1791,14 +1791,15 @@
         "additionalProperties": false
       },
       "CreateDepartamentoDto": {
-        "required": [
-          "nombreDepartamento"
-        ],
         "type": "object",
         "properties": {
+          "idDepartamento": {
+            "type": "integer",
+            "format": "int32"
+          },
           "nombreDepartamento": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "extension": {
             "type": "integer",
@@ -1903,9 +1904,6 @@
         "additionalProperties": false
       },
       "DepartamentoDto": {
-        "required": [
-          "idDepartamento"
-        ],
         "type": "object",
         "properties": {
           "idDepartamento": {

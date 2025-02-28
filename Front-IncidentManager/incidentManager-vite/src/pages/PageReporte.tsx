@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-
-/* Importacion de services para funcionamiento de reportes */
+/* Importación de servicios */
 import { IReportes } from '../Data/Interfaces/lReports';
 import { Iprioridad } from '../Data/Interfaces/lPrioridad';
 import { GetReportsByUsers } from '../Data/Services/ReportServices';
 import { GetPriorityid } from '../Data/Services/priorityServices';
 
-/* Importacion de paginas */
+/* Importación de componentes */
 import Header from '../Components/Header';
 import Sidebar from '../Components/Sidebar';
 import CrearReporteModal from '../Components/Modals/Reports/McreateReports';
 import MDeleteReports from '../Components/Modals/Reports/MdropdReports';
-import { Link } from 'react-router-dom';
 
 const PageReporte: React.FC = () => {
   const [reportes, setReportes] = useState<IReportes[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [prioridades, setPrioridades] = useState<Map<number, Iprioridad>>(new Map());
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
   const [modalType, setModalType] = useState<'CREATE' | 'EDIT' | 'DELETE' | null>(null);
+  const [selectedReportId, setSelectedReportId] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
+
     const fetchData = async () => {
       setIsLoading(true);
-      
       const userId = parseInt(localStorage.getItem('idUsuarios') || '0', 10);
       if (userId) {
         try {
@@ -63,7 +62,6 @@ const PageReporte: React.FC = () => {
     if (prioridad.includes('baja')) return 'priority-low';
     return '';
   };
-  
 
   return (
     <div className="d-flex vh-100 flex-column flex-md-row viewinform-container">
@@ -74,10 +72,7 @@ const PageReporte: React.FC = () => {
           <div className="container mt-2">
             <h2 className="reports-title">Reportes</h2>
             <div className="reports-header">
-              <button
-                className="btn btn-success mt-4"
-                onClick={() => setModalType('CREATE')}
-              >
+              <button className="btn btn-success mt-4" onClick={() => setModalType('CREATE')}>
                 Crear Reporte
               </button>
               <div className="search-container">
@@ -102,55 +97,42 @@ const PageReporte: React.FC = () => {
               <div className="row g-3">
                 {filteredReportes.length > 0 ? (
                   filteredReportes.map(reporte => (
-
                     <div className="col-md-4 col-lg-3" key={reporte.idReporte}>
-                        <Link to={`/vista`} style={{ textDecoration: 'none', color: '#000000' }} >
-                        
-                      <div className="report-card">
-                        <div className="card-header"></div>
-                        <div className="card-content">
-                          <h5 className="card-title">{reporte.titulo}</h5>
-                          {typeof reporte.fkPrioridad === 'number' && (
-                            <span className={`priority-badge ${getPriorityClass(reporte.fkPrioridad)}`}>
-                              {prioridades.get(reporte.fkPrioridad)?.nombrePrioridad || 'Normal'}
-                            </span>
-                          )}
-                          <p
-                            className="card-description line-clamp-3 hover:line-clamp-none cursor-pointer"
-                            title={reporte.descripcion}
-                          >
-                            {reporte.descripcion}
-                          </p>
-                          <div className="card-buttons">
-                            <button className="btn-card btn btn-primary">Ver</button>
-                            <button className="btn-card btn btn-danger">Eliminar</button>
+                        <div className="report-card">
+                          <div className="card-header"></div>
+                          <div className="card-content">
+                            <h5 className="card-title">{reporte.titulo}</h5>
+                            {typeof reporte.fkPrioridad === 'number' && (
+                              <span className={`priority-badge ${getPriorityClass(reporte.fkPrioridad)}`}>
+                                {prioridades.get(reporte.fkPrioridad)?.nombrePrioridad || 'Normal'}
+                              </span>
+                            )}
+                            <p className="card-description line-clamp-3">{reporte.descripcion}</p>
+                            <div className="card-buttons">
+                              <button
+/*                                 onClick={() => navigate(`/reporte/${reporte.idReporte}`)}
+ */
+onClick={() => navigate(`/vista`)}
+
+                              className="btn-card btn btn-primary"
+                              >Ver</button>
+                              <button
+                                className="btn-card btn btn-danger"
+                                onClick={() => {
+                                  setSelectedReportId(reporte.idReporte ?? null);
+                                  setModalType('DELETE');
+                                }}
+                              >
+                                Eliminar
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                        </Link>
-
                     </div>
-                    
                   ))
-                ) : searchQuery ? (
-                  <div className="col-12 no-results">
-                    <div className="no-results-icon">
-                      <i className="bi bi-search"></i>
-                    </div>
-                    <p className="no-results-text">No se encontraron reportes</p>
-                  </div>
                 ) : (
-                  <div className="col-12 reports-empty">
-                    <div className="reports-empty-icon">
-                      <i className="bi bi-clipboard-x"></i>
-                    </div>
-                    <p className="reports-empty-text">Todavía no has generado ningún reporte</p>
-                    <button
-                      className="btn btn-success mt-4"
-                      onClick={() => setModalType('CREATE')}
-                    >
-                      Crear mi primer reporte
-                    </button>
+                  <div className="col-12 no-results">
+                    <p className="no-results-text">No se encontraron reportes</p>
                   </div>
                 )}
               </div>
@@ -159,7 +141,9 @@ const PageReporte: React.FC = () => {
         </Container>
       </div>
       {modalType === 'CREATE' && <CrearReporteModal show={true} handleClose={() => setModalType(null)} />}
-      
+      {modalType === 'DELETE' && selectedReportId !== null && (
+        <MDeleteReports show={true} handleClose={() => setModalType(null)} ReportsId={selectedReportId} />
+      )}
     </div>
   );
 };
