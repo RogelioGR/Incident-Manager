@@ -43,9 +43,9 @@ export const createUser = async (userData: IUsuario): Promise<IUsuario> => {
   }
 };
 /* funcion de actualizar informacion del usuario */
-export const updateUser = async (idUsuarios: number, userData: IUsuario): Promise<IUsuario> => {
+export const updateUser = async (id: number, userData: IUsuario): Promise<IUsuario> => {
   try {
-    const response = await axiosInstance.put(`/api/Usuarios/update/${idUsuarios}`, userData);
+    const response = await axiosInstance.put(`/api/Usuarios/update/${id}`, userData);
     return response.data;
   } catch (error) {
     console.error('Error al actualizar el usuario:', error);
@@ -53,9 +53,9 @@ export const updateUser = async (idUsuarios: number, userData: IUsuario): Promis
   }
 };
 /* funcion de eliminar el usuario */
-export const deleteUser = async (idUsuarios: number): Promise<void> => {
+export const deleteUser = async (id: number): Promise<void> => {
   try {
-    await axiosInstance.delete(`/api/Usuarios/delete/${idUsuarios}`);
+    await axiosInstance.delete(`/api/Usuarios/delete/${id}`);
   } catch (error) {
     console.error('Error al eliminar el usuario:', error);
     throw error;

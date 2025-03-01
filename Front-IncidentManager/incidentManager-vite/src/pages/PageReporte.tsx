@@ -72,7 +72,8 @@ const PageReporte: React.FC = () => {
           <div className="container mt-2">
             <h2 className="reports-title">Reportes</h2>
             <div className="reports-header">
-              <button className="btn btn-success mt-4" onClick={() => setModalType('CREATE')}>
+              <button className="btn btn-success mt-4"
+               onClick={() => setModalType('CREATE')}>
                 Crear Reporte
               </button>
               <div className="search-container">
@@ -142,7 +143,7 @@ onClick={() => navigate(`/vista`)}
       </div>
       {modalType === 'CREATE' && <CrearReporteModal show={true} handleClose={() => setModalType(null)} />}
       {modalType === 'DELETE' && selectedReportId !== null && (
-        <MDeleteReports show={true} handleClose={() => setModalType(null)} ReportsId={selectedReportId} />
+      <MDeleteReports show={true} handleClose={() => setModalType(null)} ReportsId={selectedReportId} />
       )}
     </div>
   );

@@ -54,10 +54,11 @@ namespace Services.Services
         public async Task<DepartamentoDto> CrearDepartamento(DepartamentoDto departamentoDto)
         {
 
-            if (departamentoDto.Extension <= 0)
+            if (string.IsNullOrWhiteSpace(departamentoDto.NombreDepartamentos))
             {
-                throw new ArgumentException("La extensión debe ser un número.");
+                throw new ArgumentException("el nombre son reuqueridos.");
             }
+
 
             var depart = new Departamento
             {
@@ -68,13 +69,8 @@ namespace Services.Services
             await _dBcontext.Departamentos.AddAsync(depart);
             await _dBcontext.SaveChangesAsync();
 
-            return new DepartamentoDto
-            {
-                IdDepartamento = depart.IdDepartamento,
-                NombreDepartamentos = depart.NombreDepartamentos,
-                Extension = depart.Extension
-           
-            };
+            return departamentoDto;
+            
         }
 
         public async Task<DepartamentoDto> EditarDepartamento(int iddepartamento, string nombreDepartamento, int extension)
@@ -98,11 +94,11 @@ namespace Services.Services
         }
 
         // Funcion para eliminar el departamento
-        public async Task<bool> EliminarDepartamento(int iddepartamento)
+        public async Task<bool> EliminarDepartamento(int idepartamento)
         {
             try
             {
-                var depart = await _dBcontext.Departamentos.FindAsync(iddepartamento);
+                var depart = await _dBcontext.Departamentos.FindAsync(idepartamento);
                     if (depart == null)
                 {
                     return false;

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace WebApiBD.Controllers
 {
     [Authorize] // Asegura que solo usuarios autenticados puedan acceder
-
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : Controller
