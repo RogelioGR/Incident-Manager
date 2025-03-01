@@ -67,6 +67,7 @@ namespace Services.Services
             };
         }
         public async Task<IEnumerable<UsuariosDto>> ObtenerUsuarios()
+
         {
             return await _dBcontext.Usuarios
                 .Include(u => u.FkDepartamentoNavigation)
@@ -86,7 +87,7 @@ namespace Services.Services
                     {
                         IdDepartamento = u.FkDepartamentoNavigation.IdDepartamento,
                         NombreDepartamentos = u.FkDepartamentoNavigation.NombreDepartamentos,
-                        Extension = u.FkDepartamentoNavigation.Extension // Asegúrate de mapear este campo
+                        Extension = u.FkDepartamentoNavigation.Extension 
                     } : null,
                     FkRolNavigation = u.FkRolNavigation != null ? new RolesDto
                     {
@@ -95,6 +96,7 @@ namespace Services.Services
                     } : null
                 }).ToListAsync();
         }
+        
         public async Task<UsuariosDto> CrearUsuario(UsuariosDto usuarioDto)
         {
             if (string.IsNullOrWhiteSpace(usuarioDto.Nombre) || string.IsNullOrWhiteSpace(usuarioDto.Apellidos) || string.IsNullOrWhiteSpace(usuarioDto.Contraseña))

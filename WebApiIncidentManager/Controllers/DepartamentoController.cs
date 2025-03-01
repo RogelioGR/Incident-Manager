@@ -45,7 +45,7 @@ namespace WebApiBD.Controllers
         {
             var departamentoCreado = await _services.CrearDepartamento(new DepartamentoDto
             {
-                NombreDepartamentos = request.NombreDepartamento,
+                NombreDepartamentos = request.NombreDepartamentos,
                 Extension = request.Extension
             });
             return CreatedAtAction(nameof(GetDepartamentos), new { id = departamentoCreado.IdDepartamento }, departamentoCreado);
@@ -54,7 +54,7 @@ namespace WebApiBD.Controllers
         [HttpPut("update{id}")]
         public async Task<ActionResult<DepartamentoDto>> PutDepartamento(int id, [FromBody] CreateDepartamentoDto request)
         {
-            var departamentoEditado = await _services.EditarDepartamento(id, request.NombreDepartamento, request.Extension);
+            var departamentoEditado = await _services.EditarDepartamento(id, request.NombreDepartamentos, request.Extension);
             if (departamentoEditado == null)
             {
                 return NotFound($"Departamento con ID {id} no encontrado.");

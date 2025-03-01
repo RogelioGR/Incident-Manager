@@ -15,21 +15,24 @@ interface MCreateProps {
 }
 
 const MCreateDepart: React.FC<MCreateProps> = ({ show, handleClose }) => {
-  const [formData, setFormData] = useState<IDepartamento>({
+  const [departmentData, setDepartmentData] = useState<IDepartamento>({
     nombreDepartamentos: "",
     extension: 0
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
      const { name, value } = e.target;
-     setFormData({ ...formData, [name]: value });
+     setDepartmentData({
+      ...departmentData,
+      [name] : name  === "extension" ? String(value) || 0 : value,
+     });
    };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      await createDepartment(formData);
+      await createDepartment(departmentData);
       MySwal.fire({
         title: "Departamento creado",
         text: "El departamento ha sido creado exitosamente",
@@ -41,7 +44,6 @@ const MCreateDepart: React.FC<MCreateProps> = ({ show, handleClose }) => {
           window.location.reload();
         }
       });
-      handleClose();
     } catch (error) {
       console.error(error);
       MySwal.fire("Error", "Hubo un error al crear el departamento", "error");
@@ -73,7 +75,7 @@ const MCreateDepart: React.FC<MCreateProps> = ({ show, handleClose }) => {
                         type="text"
                         placeholder="Nombre"
                         name="nombreDepartamentos"
-                        value={formData.nombreDepartamentos}
+                        value={departmentData.nombreDepartamentos}
                         onChange={handleChange}
                       />
                     </Form.Group>
@@ -82,10 +84,10 @@ const MCreateDepart: React.FC<MCreateProps> = ({ show, handleClose }) => {
                     <Form.Group controlId="formLastName">
                       <Form.Label>Numero de Extension:</Form.Label>
                       <Form.Control
-                        type="text"
-                        placeholder="Numero de departamento"
+                        type="number"
+                        placeholder="Numero"
                         name="extension"
-                        value={formData.extension}
+                        value={departmentData.extension}
                         onChange={handleChange}
                       />
                     </Form.Group>

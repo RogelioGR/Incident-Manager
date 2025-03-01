@@ -9,29 +9,22 @@ import { GetDepartment } from '../Data/Services/departmentServices';
 import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
 import MCreateDepart from '../Components/Modals/Departments/McreateDepartments';
+import MDeleteDepart from '../Components/Modals/Departments/MdropDepartments';
 
 const PageDepartamento: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [departments, setDepartments] = useState<IDepartamento[]>([]);
-
-    enum ModalsDEPART {
-        NONE = 'NONE',
-        CREATE_DEPART = 'CREATE_DEPART',
-        DELETE_DEPART = 'DELETE_DEPART',
-    }
-        const [modalDepart, setModalDeparts] = useState(ModalsDEPART.NONE);
-    
-
-
+    const [modalType, setModalType] = useState<'CREATE' | 'EDIT' | 'DELETE' | null>(null);
+    const [selectedDepartId, setSelectedDepartId] = useState<number |null >(null);
     useEffect(() => {
         let isMounted = true;
 
         const fechDepart = async () => {
             try {
                 setIsLoading(true);
-                const usersData = await GetDepartment();
+                const DepartmentData = await GetDepartment();
                 if (isMounted) {
-                    setDepartments(usersData);
+                    setDepartments(DepartmentData);
                 }
             } catch (error) {
                 console.error('Error al cargar los Departamento:', error);
@@ -54,12 +47,6 @@ const PageDepartamento: React.FC = () => {
         )
     }
     const filteredDepart = getfilteredDepart(departments);
-    const handleCloseModal = () => setModalDeparts(ModalsDEPART.NONE);
-    const handleOpenModal = (type: ModalsDEPART) => {
-        setModalDeparts(type);
-    };
-
-
     return (
         <>
             <div className="d-flex vh-100 flex-column flex-md-row viewinform-container">
@@ -72,7 +59,8 @@ const PageDepartamento: React.FC = () => {
                                 <h2 className="reports-title">Departamento</h2>
 
                             </div>
-                            <button className="btn btn-success mb-4" onClick={() => handleOpenModal(ModalsDEPART.CREATE_DEPART)}>
+                            <button className="btn btn-success mb-4" 
+                            onClick={() => setModalType('CREATE')}>
                                 Crear departamento
                             </button>
                             {isLoading ? (
@@ -93,16 +81,31 @@ const PageDepartamento: React.FC = () => {
                                         <tbody>
                                             {filteredDepart.map((depart) => (
                                                 <tr key={depart.idDepartamento}>
-                                                <td>{depart.idDepartamento}</td>
-                                                <td>{depart.nombreDepartamentos}</td>
-                                                <td>{depart.extension}</td>
+                                                    <td>{depart.idDepartamento}</td>
+                                                    <td>{depart.nombreDepartamentos}</td>
+                                                    <td>{depart.extension}</td>
+                                                    <td>
+                                                        <div className="d-flex justify-content-center">
+                                                            <Button variant="primary" className="me-1"
+                                                             onClick={() => {
+                                                                setSelectedDepartId(depart.idDepartamento ?? null);
+                                                                setModalType('DELETE');
+                                                             }}>
+                                                                eliminar
+                                                            </Button>
+
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             ))}
 
                                         </tbody>
                                     </Table>
-                                ))}
-                                <MCreateDepart show={modalDepart === ModalsDEPART.CREATE_DEPART} handleClose={handleCloseModal}/>
+                                ))}      
+                                {modalType === 'CREATE' && <MCreateDepart show={true} handleClose={() => setModalType(null)} />}
+                                {modalType === 'DELETE' && selectedDepartId !== null && (
+      <MDeleteDepart show={true} handleClose={() => setModalType(null)} departId={selectedDepartId} />
+      )}
 
 
                         </div>
