@@ -15,5 +15,8 @@ namespace Repository.Models
         public string? PrioridadReporte { get; set; }
         public string? Descripcion { get; set; }
         public DateTime? Fecha_Creada { get; set; }
+        public int? ID_Comentario { get; set; }
+
+
     }
 }

@@ -34,21 +34,15 @@ namespace Services.Services
                     PrioridadReporte = R.PrioridadReporte,
                     Descripcion = R.Descripcion,
                     Fecha_Creada = R.Fecha_Creada,
+                    IdComentario = R.ID_Comentario
+
                 }).ToListAsync();
         }
         public async Task<VistaReporteCompletoDto> ObtenerVistaReportePorId(int id)
         {
             var reporte = await _dBcontext.VistaReporteCompletos
-                .Where(r => r.ID_Reporte == id)
-                .Select(r => new
-                {
-                    Reporte = r,
-                    ReporteUsuario = _dBcontext.ReporteUsuarios
-                        .Where(ru => ru.FkReporte == r.ID_Reporte)
-                        .Select(ru => ru.IdReporteU)
-                        .FirstOrDefault() // Tomamos solo un IdReporteU si hay varios
-                })
-                .FirstOrDefaultAsync();
+                 .FirstOrDefaultAsync(r => r.ID_Reporte == id);
+
 
             if (reporte == null)
             {
@@ -57,15 +51,18 @@ namespace Services.Services
 
             return new VistaReporteCompletoDto
             {
-                ID_Reporte = reporte.Reporte.ID_Reporte,
-                Titulo = reporte.Reporte.Titulo,
-                UsuarioCreador = reporte.Reporte.UsuarioCreador,
-                EstadoReporte = reporte.Reporte.EstadoReporte,
-                PrioridadReporte = reporte.Reporte.PrioridadReporte,
-                Descripcion = reporte.Reporte.Descripcion,
-                Fecha_Creada = reporte.Reporte.Fecha_Creada,
-                IdComentario = reporte.ReporteUsuario 
+                ID_Reporte = reporte.ID_Reporte,
+                Titulo = reporte.Titulo,
+                UsuarioCreador = reporte.UsuarioCreador,
+                EstadoReporte = reporte.EstadoReporte,
+                PrioridadReporte = reporte.PrioridadReporte,
+                Descripcion = reporte.Descripcion,
+                Fecha_Creada = reporte.Fecha_Creada,
+                IdComentario = reporte.ID_Comentario 
             };
+
+
+          
         }
 
 
