@@ -1,5 +1,5 @@
 export interface IComentario {
     ID_Comentario: number;
-    Comentario: string;
+    comentario1: string;
     FK_Reporte: number;
 }
