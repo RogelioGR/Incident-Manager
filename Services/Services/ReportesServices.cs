@@ -19,6 +19,56 @@ namespace Services.Services
         {
             _dBcontext = sistemaKempinskiContext;
         }
+
+        // funciones de View de reporte completo
+        public async Task<IEnumerable<VistaReporteCompletoDto>> ObtenerVistaReporte()
+        {
+            return await _dBcontext.VistaReporteCompletos
+                .AsNoTracking()
+                .Select(R => new VistaReporteCompletoDto
+                {
+                    ID_Reporte = R.ID_Reporte,
+                    Titulo = R.Titulo,
+                    UsuarioCreador = R.UsuarioCreador,
+                    EstadoReporte = R.EstadoReporte,
+                    PrioridadReporte = R.PrioridadReporte,
+                    Descripcion = R.Descripcion,
+                    Fecha_Creada = R.Fecha_Creada,
+                }).ToListAsync();
+        }
+        public async Task<VistaReporteCompletoDto> ObtenerVistaReportePorId(int id)
+        {
+            var reporte = await _dBcontext.VistaReporteCompletos
+                .Where(r => r.ID_Reporte == id)
+                .Select(r => new
+                {
+                    Reporte = r,
+                    ReporteUsuario = _dBcontext.ReporteUsuarios
+                        .Where(ru => ru.FkReporte == r.ID_Reporte)
+                        .Select(ru => ru.IdReporteU)
+                        .FirstOrDefault() // Tomamos solo un IdReporteU si hay varios
+                })
+                .FirstOrDefaultAsync();
+
+            if (reporte == null)
+            {
+                return null;
+            }
+
+            return new VistaReporteCompletoDto
+            {
+                ID_Reporte = reporte.Reporte.ID_Reporte,
+                Titulo = reporte.Reporte.Titulo,
+                UsuarioCreador = reporte.Reporte.UsuarioCreador,
+                EstadoReporte = reporte.Reporte.EstadoReporte,
+                PrioridadReporte = reporte.Reporte.PrioridadReporte,
+                Descripcion = reporte.Reporte.Descripcion,
+                Fecha_Creada = reporte.Reporte.Fecha_Creada,
+                IdComentario = reporte.ReporteUsuario 
+            };
+        }
+
+
         public async Task<IEnumerable<ReportesDto>> ObtenerReportes()
         {
             return await _dBcontext.Reportes
@@ -57,10 +107,10 @@ namespace Services.Services
             return reportes;
         }
 
-        public async Task<ReportesDto> ObtenerReportePorId(int idReporte)
+        public async Task<ReportesDto> ObtenerReportePorId(int id)
         {
             var reporte = await _dBcontext.Reportes
-                .FirstOrDefaultAsync(r => r.IdReporte == idReporte);
+                .FirstOrDefaultAsync(r => r.IdReporte == id);
 
             if (reporte == null)
             {

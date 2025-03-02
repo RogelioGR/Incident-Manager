@@ -75,7 +75,7 @@ const App: React.FC = () => {
           <Route path="/perfil" element={<PagePerfil />} />
           <Route path="/reportes" element={<PageReporte />} />
           <Route path="/Historial" element={<PageHistorial />} />
-          <Route path="/vista" element={<PageViewReports />} />
+          <Route path="/vistaReporte/:idReporte" element={<PageViewReports />} />
 
 
 

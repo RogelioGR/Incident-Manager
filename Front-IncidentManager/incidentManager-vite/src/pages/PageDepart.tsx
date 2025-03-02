@@ -10,12 +10,13 @@ import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
 import MCreateDepart from '../Components/Modals/Departments/McreateDepartments';
 import MDeleteDepart from '../Components/Modals/Departments/MdropDepartments';
+import MEditDepartment from '../Components/Modals/Departments/MupdateDepartments';
 
 const PageDepartamento: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [departments, setDepartments] = useState<IDepartamento[]>([]);
     const [modalType, setModalType] = useState<'CREATE' | 'EDIT' | 'DELETE' | null>(null);
-    const [selectedDepartId, setSelectedDepartId] = useState<number |null >(null);
+    const [selectedDepartId, setSelectedDepartId] = useState<number | null>(null);
     useEffect(() => {
         let isMounted = true;
 
@@ -57,10 +58,9 @@ const PageDepartamento: React.FC = () => {
                         <div className="container mt-4">
                             <div className="d-flex justify-content-between align-items-center mb-3">
                                 <h2 className="reports-title">Departamento</h2>
-
                             </div>
-                            <button className="btn btn-success mb-4" 
-                            onClick={() => setModalType('CREATE')}>
+                            <button className="btn btn-success mb-4"
+                                onClick={() => setModalType('CREATE')}>
                                 Crear departamento
                             </button>
                             {isLoading ? (
@@ -86,28 +86,36 @@ const PageDepartamento: React.FC = () => {
                                                     <td>{depart.extension}</td>
                                                     <td>
                                                         <div className="d-flex justify-content-center">
-                                                            <Button variant="primary" className="me-1"
-                                                             onClick={() => {
-                                                                setSelectedDepartId(depart.idDepartamento ?? null);
-                                                                setModalType('DELETE');
-                                                             }}>
+                                                            <Button variant="warning" className="me-1"
+                                                                onClick={() => {
+                                                                    setSelectedDepartId(depart.idDepartamento ?? null);
+                                                                    setModalType('EDIT');
+                                                                }}
+                                                            >
+                                                                Editar
+                                                            </Button>
+                                                            <Button variant="danger" className="me-1"
+                                                                onClick={() => {
+                                                                    setSelectedDepartId(depart.idDepartamento ?? null);
+                                                                    setModalType('DELETE');
+                                                                }}>
                                                                 eliminar
                                                             </Button>
-
                                                         </div>
                                                     </td>
                                                 </tr>
                                             ))}
-
                                         </tbody>
                                     </Table>
-                                ))}      
-                                {modalType === 'CREATE' && <MCreateDepart show={true} handleClose={() => setModalType(null)} />}
-                                {modalType === 'DELETE' && selectedDepartId !== null && (
-      <MDeleteDepart show={true} handleClose={() => setModalType(null)} departId={selectedDepartId} />
-      )}
-
-
+                                ))}
+                                
+                            {modalType === 'CREATE' && <MCreateDepart show={true} handleClose={() => setModalType(null)} />}
+                            {modalType === 'DELETE' && selectedDepartId !== null && (
+                                <MDeleteDepart show={true} handleClose={() => setModalType(null)} departId={selectedDepartId} />
+                            )}
+                            {modalType === 'EDIT' && selectedDepartId !== null && (
+                                <MEditDepartment show={true} handleClose={() => setModalType(null)} departId={selectedDepartId} />
+                            )}
                         </div>
                     </Container>
                 </div>

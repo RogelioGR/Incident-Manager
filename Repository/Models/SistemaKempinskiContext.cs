@@ -31,7 +31,11 @@ public partial class SistemaKempinskiContext : DbContext
     public virtual DbSet<Role> Roles { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
+
+    // Importacion de las view MySQL
     public virtual DbSet<VistaUsuario> VistaUsuarios { get; set; }
+    public virtual DbSet<VistaReporteCompleto> VistaReporteCompletos{ get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -195,6 +199,12 @@ public partial class SistemaKempinskiContext : DbContext
             entity.HasKey(e => e.ID_Usuarios);
             entity.ToView("Vista_Usuarios"); 
         });
+        modelBuilder.Entity<VistaReporteCompleto>(entity =>
+        {
+            entity.HasKey(e => e.ID_Reporte);
+            entity.ToView("VistaReporteCompleto");
+        });
+
 
         OnModelCreatingPartial(modelBuilder);
     }

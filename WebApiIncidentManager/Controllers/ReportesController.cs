@@ -42,12 +42,12 @@ namespace WebApiBD.Controllers
 
 
         [HttpGet("{id}")]
-            public async Task<ActionResult<ReportesDto>> GetReportePorId(int idReporte)
+            public async Task<ActionResult<ReportesDto>> GetReportePorId(int id)
             {
-                var reporte = await _services.ObtenerReportePorId(idReporte);
+                var reporte = await _services.ObtenerReportePorId(id);
                 if (reporte == null)
                 {
-                    return NotFound($"Reporte con ID {idReporte} no encontrado.");
+                    return NotFound($"Reporte con ID {id} no encontrado.");
                 }
                 return Ok(reporte);
             }
@@ -66,7 +66,7 @@ namespace WebApiBD.Controllers
             }
         }
 
-            [HttpPut("Update{id}")]
+            [HttpPut("Update/{id}")]
             public async Task<ActionResult<ReportesDto>> PutReporte(int id, [FromBody] ReportesDto reporteDto)
             {
                 var reporteEditado = await _services.EditarReporte(id, reporteDto);

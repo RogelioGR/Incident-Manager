@@ -62,7 +62,6 @@ const PageUsers: React.FC = () => {
 
     const filteredUsers = getFilteredUsers(users, searchTerm);
 
-    // Funciones para abrir y cerrar modales
     const handleCloseModal = () => setModalUsers(ModalsUsers.NONE);
     const handleOpenModal = (type: ModalsUsers, IdUsuario?: number) => {
         setModalUsers(type);
@@ -116,7 +115,7 @@ const PageUsers: React.FC = () => {
                                             <td>{view.apellidos} {view.nombre}</td>
                                             <td>{view.fkDepartamento}</td>
                                             <td>{view.correoElectronico}</td>
-                                            <td>{view.correoPersonal}</td>
+                                            <td>{view.correoPersonal ? view.correoPersonal : <i>Sin correo</i>}</td>
                                             <td className="py-3">
                                                 <span className="badge bg-light text-dark rounded-pill px-3 py-2">
                                                     {view.fkRol}

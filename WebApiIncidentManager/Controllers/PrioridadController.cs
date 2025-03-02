@@ -48,7 +48,7 @@ namespace WebApiBD.Controllers
             return CreatedAtAction(nameof(GetPrioridades), new { id = prioridadCreada.IdPrioridad }, prioridadCreada);
         }
 
-        [HttpPut("update{id}")]
+        [HttpPut("update/{id}")]
         public async Task<ActionResult<PrioridadDto>> PutPrioridad(int id, [FromBody] CreatePrioridadDto request)
         {
             var prioridadEditada = await _services.Editarprioridad(id, request.NombrePrioridad);
@@ -59,7 +59,7 @@ namespace WebApiBD.Controllers
             return Ok(prioridadEditada);
         }
 
-        [HttpDelete("delete{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult> DeletePrioridad(int id)
         {
             var exito = await _services.EliminarPrioridad(id);

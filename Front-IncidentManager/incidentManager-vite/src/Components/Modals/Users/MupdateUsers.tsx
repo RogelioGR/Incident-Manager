@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Container, Row, Col, Form } from "react-bootstrap";
-import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
+
+/* Importacion services */
 import { IUsuario } from "../../../Data/Interfaces/IUsers";
 import { obtenerUsuarioid, updateUser } from "../../../Data/Services/UsersServices";
 

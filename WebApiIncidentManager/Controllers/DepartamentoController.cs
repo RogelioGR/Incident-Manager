@@ -51,7 +51,7 @@ namespace WebApiBD.Controllers
             return CreatedAtAction(nameof(GetDepartamentos), new { id = departamentoCreado.IdDepartamento }, departamentoCreado);
         }
 
-        [HttpPut("update{id}")]
+        [HttpPut("update/{id}")]
         public async Task<ActionResult<DepartamentoDto>> PutDepartamento(int id, [FromBody] CreateDepartamentoDto request)
         {
             var departamentoEditado = await _services.EditarDepartamento(id, request.NombreDepartamentos, request.Extension);
@@ -62,7 +62,7 @@ namespace WebApiBD.Controllers
             return Ok(departamentoEditado);
         }
 
-        [HttpDelete("delete{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult> DeleteDepartamento(int id)
         {
             var exito = await _services.EliminarDepartamento(id);
