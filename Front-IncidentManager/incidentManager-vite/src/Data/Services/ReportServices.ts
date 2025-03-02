@@ -1,5 +1,6 @@
 import axiosInstance from "./AxiosConfig";
 import { IReportes } from "../Interfaces/lReports";
+import { IViewReporte } from "../Interfaces/ViewReports";
 
 export const GetReport = async (): Promise<IReportes[]> => {
   try {
@@ -10,6 +11,26 @@ export const GetReport = async (): Promise<IReportes[]> => {
     throw error;
   }
 };
+/* funciones del View Mysql reporte completo */
+export const GetReportComplets = async (): Promise<IViewReporte[]> => {
+  try {
+    const response = await axiosInstance.get('/Views/viewReports');
+    return response.data as IViewReporte[];
+  } catch (error) {
+    console.error('Error al obtener los Reportes:', error);
+    throw error;
+  }
+};
+export const GetViewReportid = async (id: number): Promise<IViewReporte> => {
+  try {
+    const response = await axiosInstance.get(`/Views/viewReports/${id}`);
+    return response.data;  
+  } catch (error) {
+    console.error('Error al obtener el Reportes:', error);
+    throw error;
+  }
+};
+
 /* Funcion que muestra los reportes creados por el usuario */
 export const GetReportsByUsers = async (id: number): Promise<IReportes[]> => {
   try {

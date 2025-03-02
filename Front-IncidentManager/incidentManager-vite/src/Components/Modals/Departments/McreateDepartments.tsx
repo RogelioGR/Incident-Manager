@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Button, Row, Col, Form, Container } from "react-bootstrap";
-import Swal from 'sweetalert2';
 import withReactContent from "sweetalert2-react-content";
+import Swal from 'sweetalert2';
 
-
+/* Importacion Services */
 import { IDepartamento } from "../../../Data/Interfaces/lDepartamento";
 import { createDepartment } from "../../../Data/Services/departmentServices";
 
@@ -15,18 +15,19 @@ interface MCreateProps {
 }
 
 const MCreateDepart: React.FC<MCreateProps> = ({ show, handleClose }) => {
+
   const [departmentData, setDepartmentData] = useState<IDepartamento>({
     nombreDepartamentos: "",
     extension: 0
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-     const { name, value } = e.target;
-     setDepartmentData({
+    const { name, value } = e.target;
+    setDepartmentData({
       ...departmentData,
-      [name] : name  === "extension" ? String(value) || 0 : value,
-     });
-   };
+      [name]: name === "extension" ? String(value) || 0 : value,
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,39 +60,36 @@ const MCreateDepart: React.FC<MCreateProps> = ({ show, handleClose }) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>Crear Departamento</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Container className="flex-grow-1 my-5">
-          <h2 className="text-center mb-4">Crear Departamento</h2>
+          <h2 className="text-center mb-4">Crear departamento</h2>
           <Row className="justify-content-center">
             <Col md={8}>
               <Form onSubmit={handleSubmit}>
                 <Row>
-                  <Col md={6}>
-                    <Form.Group controlId="formFirstName">
-                      <Form.Label>Nombre departamento:</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Nombre"
-                        name="nombreDepartamentos"
-                        value={departmentData.nombreDepartamentos}
-                        onChange={handleChange}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={6}>
-                    <Form.Group controlId="formLastName">
-                      <Form.Label>Numero de Extension:</Form.Label>
-                      <Form.Control
-                        type="number"
-                        placeholder="Numero"
-                        name="extension"
-                        value={departmentData.extension}
-                        onChange={handleChange}
-                      />
-                    </Form.Group>
-                  </Col>
+
+                  <Form.Group controlId="formFirstName">
+                    <Form.Label>Nombre departamento:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Nombre"
+                      name="nombreDepartamentos"
+                      value={departmentData.nombreDepartamentos}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formLastName">
+                    <Form.Label>Numero de Extension:</Form.Label>
+                    <Form.Control
+                      type="number"
+                      placeholder="Numero"
+                      name="extension"
+                      value={departmentData.extension}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
                 </Row>
 
                 <div className="text-center mt-4">

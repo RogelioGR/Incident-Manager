@@ -111,10 +111,7 @@ const PageReporte: React.FC = () => {
                             <p className="card-description line-clamp-3">{reporte.descripcion}</p>
                             <div className="card-buttons">
                               <button
-/*                                 onClick={() => navigate(`/reporte/${reporte.idReporte}`)}
- */
-onClick={() => navigate(`/vista`)}
-
+                               onClick={() => navigate(`/vistaReporte/${reporte.idReporte}`)}
                               className="btn-card btn btn-primary"
                               >Ver</button>
                               <button

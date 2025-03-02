@@ -19,18 +19,18 @@ namespace WebApiIncidentManager.Controllers
     public class ViewsController : Controller
     {
         private readonly IUsuarioServices _usuarioServices;
+        private readonly IReportesServices _reportesServices;
         private readonly SistemaKempinskiContext _sistemaKempinskiContext;
 
-   
-        private readonly IUsuarioServices _services;
-        public ViewsController(IUsuarioServices services)
+        public ViewsController(IUsuarioServices usuarioServices, IReportesServices reportesServices)
         {
-            _services = services;
+            _usuarioServices = usuarioServices;
+            _reportesServices = reportesServices;
         }
         [HttpGet("viewUsers")]
         public async Task<ActionResult<IEnumerable<VistaUsuarioDto>>> ViewUsuario()
         {
-            var  ViewUsuario = await _services.ObtenerVistaUsuarios();
+            var  ViewUsuario = await _usuarioServices.ObtenerVistaUsuarios();
             if (ViewUsuario == null)
             {
                 return NotFound();
@@ -38,6 +38,27 @@ namespace WebApiIncidentManager.Controllers
             return Ok(ViewUsuario);
         }
 
+        [HttpGet("viewReports")]
+        public async Task<ActionResult<IEnumerable<VistaUsuarioDto>>> ViewReportes()
+        {
+            var ViewReportes = await _reportesServices.ObtenerVistaReporte();
+            if (ViewReportes == null)
+            {
+                return NotFound();
+            }
+            return Ok(ViewReportes);
+        }
+
+        [HttpGet("viewReports/{id}")]
+        public async Task<ActionResult<IEnumerable<VistaUsuarioDto>>> ViewReportesId(int id)
+        {
+            var ViewReportes = await _reportesServices.ObtenerVistaReportePorId(id);
+            if (ViewReportes == null)
+            {
+                return NotFound($"El reporte con ID {id} no encontrado.");
+            }
+            return Ok(ViewReportes);
+        }
 
     }
 }

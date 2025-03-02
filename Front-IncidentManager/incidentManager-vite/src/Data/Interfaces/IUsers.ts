@@ -7,5 +7,4 @@ export interface IUsuario {
     contraseña?: string;
     fkDepartamento?: number;
     fkRol: string | number;
-
 }

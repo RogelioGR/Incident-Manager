@@ -11,6 +11,16 @@ export const GetDepartment = async (): Promise<IDepartamento[]> => {
   }
 };
 
+export const GetDepartmentId = async (id: number): Promise<IDepartamento> => {
+  try {
+    const response = await axiosInstance.get(`/api/Departamentos/${id}`);
+    return response.data;  
+  } catch (error) {
+    console.error('Error al obtener el departamento:', error);
+    throw error;
+  }
+};
+
 export const createDepartment = async (DepartmentData: IDepartamento): Promise<IDepartamento> => {
   try {
     const response = await axiosInstance.post('/api/Departamentos/create', DepartmentData);

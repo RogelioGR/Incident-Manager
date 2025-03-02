@@ -162,7 +162,7 @@
         }
       }
     },
-    "/api/Comentario/update{id}": {
+    "/api/Comentario/update/{id}": {
       "put": {
         "tags": [
           "Comentario"
@@ -221,7 +221,7 @@
         }
       }
     },
-    "/api/Comentario/delete{id}": {
+    "/api/Comentario/delete/{id}": {
       "delete": {
         "tags": [
           "Comentario"
@@ -370,7 +370,7 @@
         }
       }
     },
-    "/api/Departamentos/update{id}": {
+    "/api/Departamentos/update/{id}": {
       "put": {
         "tags": [
           "Departamentos"
@@ -429,7 +429,7 @@
         }
       }
     },
-    "/api/Departamentos/delete{id}": {
+    "/api/Departamentos/delete/{id}": {
       "delete": {
         "tags": [
           "Departamentos"
@@ -578,7 +578,7 @@
         }
       }
     },
-    "/api/EstadoReporte/update{id}": {
+    "/api/EstadoReporte/update/{id}": {
       "put": {
         "tags": [
           "EstadoReporte"
@@ -637,7 +637,7 @@
         }
       }
     },
-    "/api/EstadoReporte/delete{id}": {
+    "/api/EstadoReporte/delete/{id}": {
       "delete": {
         "tags": [
           "EstadoReporte"
@@ -786,7 +786,7 @@
         }
       }
     },
-    "/api/Prioridad/update{id}": {
+    "/api/Prioridad/update/{id}": {
       "put": {
         "tags": [
           "Prioridad"
@@ -845,7 +845,7 @@
         }
       }
     },
-    "/api/Prioridad/delete{id}": {
+    "/api/Prioridad/delete/{id}": {
       "delete": {
         "tags": [
           "Prioridad"
@@ -936,19 +936,12 @@
         ],
         "parameters": [
           {
-            "name": "idReporte",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -1007,7 +1000,7 @@
         }
       }
     },
-    "/api/Reportes/Update{id}": {
+    "/api/Reportes/Update/{id}": {
       "put": {
         "tags": [
           "Reportes"
@@ -1215,7 +1208,7 @@
         }
       }
     },
-    "/api/ReporteUsuario/update{id}": {
+    "/api/ReporteUsuario/update/{id}": {
       "put": {
         "tags": [
           "ReporteUsuario"
@@ -1274,7 +1267,7 @@
         }
       }
     },
-    "/api/ReporteUsuario/delete{id}": {
+    "/api/ReporteUsuario/delete/{id}": {
       "delete": {
         "tags": [
           "ReporteUsuario"
@@ -1423,7 +1416,7 @@
         }
       }
     },
-    "/api/Roles/update{id}": {
+    "/api/Roles/update/{id}": {
       "put": {
         "tags": [
           "Roles"
@@ -1482,7 +1475,7 @@
         }
       }
     },
-    "/api/Roles/delete{id}": {
+    "/api/Roles/delete/{id}": {
       "delete": {
         "tags": [
           "Roles"
@@ -1750,6 +1743,93 @@
           }
         }
       }
+    },
+    "/Views/viewReports": {
+      "get": {
+        "tags": [
+          "Views"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VistaUsuarioDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VistaUsuarioDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VistaUsuarioDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Views/viewReports/{id}": {
+      "get": {
+        "tags": [
+          "Views"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VistaUsuarioDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VistaUsuarioDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VistaUsuarioDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1797,7 +1877,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "nombreDepartamento": {
+          "nombreDepartamentos": {
             "type": "string",
             "nullable": true
           },

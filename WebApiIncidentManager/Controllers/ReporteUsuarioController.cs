@@ -46,7 +46,7 @@ namespace WebApiIncidentManager.Controllers
             return CreatedAtAction(nameof(GetReportesUsuarios), new { id = reporteUsuarioCreado.IdReporteU }, reporteUsuarioCreado);
         }
 
-        [HttpPut("update{id}")]
+        [HttpPut("update/{id}")]
         public async Task<ActionResult<ReporteUsuarioDto>>PutReporteUsuario(int id, [FromBody] CreateReporteUsuarioDto request)
         {
             var reporteUsuarioEditado = await _services.EditarReporteUsuario(id, request.FkReporte, request.FkUsuario);
@@ -57,7 +57,7 @@ namespace WebApiIncidentManager.Controllers
             return Ok(reporteUsuarioEditado);
         }
 
-        [HttpDelete("delete{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult> DeleteReporteUsuario(int id)
         {
             var exito = await _services.EliminarReporteUsuario(id);

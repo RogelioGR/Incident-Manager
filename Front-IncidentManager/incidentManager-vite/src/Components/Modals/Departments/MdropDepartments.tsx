@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 /* Funcion del services departamento */
 import { deleteDepartment } from "../../../Data/Services/departmentServices";
+
 interface MDeleteProps {
   show: boolean;
   handleClose: () => void;
@@ -18,13 +19,13 @@ const MDeleteDepart: React.FC<MDeleteProps> = ({
   handleClose,
   departId,
 }) => {
-  const Eliminacion = async () => {
+  const DropDepartments = async () => {
     try {
       if (departId !== undefined) {
         await deleteDepartment(departId);
         MySwal.fire({
           title: "Eliminado",
-          text: "El usuario ha sido eliminado.",
+          text: "El departamento ha sido eliminado.",
           icon: "success",
           confirmButtonText: "OK",
         }).then((result) => {
@@ -33,13 +34,13 @@ const MDeleteDepart: React.FC<MDeleteProps> = ({
           }
         });
       } else {
-        throw new Error("El ID del usuario es indefinido");
+        throw new Error("El ID del departamento es indefinido");
       }
     } catch (error) {
       console.error(error);
       MySwal.fire({
         title: "Error",
-        text: "No se pudo eliminar el usuario.",
+        text: "No se pudo eliminar el departamento.",
         icon: "error",
         confirmButtonText: "OK",
       });
@@ -60,7 +61,7 @@ const MDeleteDepart: React.FC<MDeleteProps> = ({
         <p>¿Estás seguro de que deseas eliminar el departamento {departId}?</p>
       </Modal.Body>
       <Modal.Footer className="justify-content-center">
-        <Button variant="danger" onClick={Eliminacion}>
+        <Button variant="danger" onClick={DropDepartments}>
           Eliminar
         </Button>
         <Button variant="secondary" onClick={handleClose}>
