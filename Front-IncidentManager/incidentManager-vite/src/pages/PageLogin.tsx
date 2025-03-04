@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Spinner, Alert } from 'react-bootstrap';
+
+/* Implementacion del services */
 import { login } from '../Data/Services/AuthService';
 
 
@@ -14,6 +16,7 @@ const NewLogin: React.FC = () => {
     useEffect(() => {
         const isAuthenticated = localStorage.getItem('authenticated') === 'true';
         const rol = localStorage.getItem('fkRol');
+
     /* verifica el rol del usuario para saber su cargo */
         if (isAuthenticated) {
             if (rol === '1') {
@@ -56,7 +59,6 @@ const NewLogin: React.FC = () => {
                             <div className="card border-0 shadow-lg" style={{ borderRadius: '15px', backgroundColor: '#ffffff' }}>
                                 <div className="card-body p-4 p-md-5">
                                     <h3 className="text-center mb-4" style={{ color: '#333333', fontWeight: 'bold' }}>Incident Manager</h3>
-                                    <p className="text-center text-muted mb-4">Gestiona tus incidentes de manera eficiente</p>
                                     {errorMessage && <Alert variant="danger" className="text-center">{errorMessage}</Alert>}
                                     <form autoComplete="off" onSubmit={handleLogin}>
                                         <div className="mb-4">

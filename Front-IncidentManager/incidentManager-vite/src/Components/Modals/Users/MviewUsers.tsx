@@ -3,7 +3,7 @@ import { Modal, Button, Spinner, Card, Alert, Form } from "react-bootstrap";
 import { IUsuario } from "../../../Data/Interfaces/IUsers";
 import { obtenerUsuarioid } from "../../../Data/Services/UsersServices";
 import MEditUser from "./MupdateUsers";
- 
+
 interface MviewUserProps {
   show: boolean;
   handleClose: () => void;
@@ -35,16 +35,16 @@ const MViewUser: React.FC<MviewUserProps> = ({ show, handleClose, userId }) => {
   enum ModalsUsers {
     NONE = 'NONE',
     EDIT_USER = 'EDIT_USER',
-   
-}
-   const [modalUsers, setModalUsers] = useState(ModalsUsers.NONE);
-    const [selectedUserId, setSelectedUserId] = useState<number>();
 
-    const handleCloseModal = () => setModalUsers(ModalsUsers.NONE);
-    const handleOpenModal = (type: ModalsUsers, IdUsuario?: number) => {
-        setModalUsers(type);
-        setSelectedUserId(IdUsuario);
-    };
+  }
+  const [modalUsers, setModalUsers] = useState(ModalsUsers.NONE);
+  const [selectedUserId, setSelectedUserId] = useState<number>();
+
+  const handleCloseModal = () => setModalUsers(ModalsUsers.NONE);
+  const handleOpenModal = (type: ModalsUsers, IdUsuario?: number) => {
+    setModalUsers(type);
+    setSelectedUserId(IdUsuario);
+  };
 
   return (
     <>
@@ -63,30 +63,30 @@ const MViewUser: React.FC<MviewUserProps> = ({ show, handleClose, userId }) => {
             <Card className="p-3">
               <Card.Body>
                 <Form>
-                <h2 className="text-center mb-4">nformación del Usuario</h2>
+                  <h2 className="text-center mb-4">Información del Usuario</h2>
                   <Form.Group>
                     <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text" value={user.nombre || ""} readOnly />
+                    <Form.Control type="text" value={user.nombre} readOnly />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Apellidos</Form.Label>
-                    <Form.Control type="text" value={user.apellidos || ""} readOnly />
+                    <Form.Control type="text" value={user.apellidos} readOnly />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Correo Electrónico</Form.Label>
-                    <Form.Control type="email" value={user.correoElectronico || ""} readOnly />
+                    <Form.Control type="email" value={user.correoElectronico} readOnly />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Correo Personal</Form.Label>
-                    <Form.Control type="email" value={user.correoPersonal || ""} readOnly />
+                    <Form.Control type="email" value={user.correoPersonal || "Sin correo personal"} readOnly />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Departamento</Form.Label>
-                    <Form.Control type="text" value={user.fkDepartamento?.toString() || ""} readOnly />
+                    <Form.Control type="text" value={user.fkDepartamento?.toString()} readOnly />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Rol de Usuario</Form.Label>
-                    <Form.Control type="text" value={user.fkRol?.toString() || ""} readOnly />
+                    <Form.Control type="text" value={user.fkRol?.toString()} readOnly />
                   </Form.Group>
                 </Form>
               </Card.Body>
@@ -94,13 +94,19 @@ const MViewUser: React.FC<MviewUserProps> = ({ show, handleClose, userId }) => {
           ) : (
             <p className="text-center">No se encontró información del usuario.</p>
           )}
+          <div className="text-center mt-4">
+            {user && (
+              <Button variant="warning" className="me-2" onClick={() => handleOpenModal(ModalsUsers.EDIT_USER, user.idUsuarios)}>Editar Usuario</Button>
+            )}
+            <Button
+              variant="secondary"
+              className="me-2"
+              onClick={handleClose}
+            >
+              Cancelar
+            </Button>
+          </div>
         </Modal.Body>
-        <Modal.Footer>
-          {user && (
-            <Button variant="warning" onClick={() => handleOpenModal(ModalsUsers.EDIT_USER, user.idUsuarios)}>Editar Usuario</Button>
-          )}
-          <Button variant="secondary" onClick={handleClose}>Cerrar</Button>
-        </Modal.Footer>
       </Modal>
 
       <MEditUser show={modalUsers === ModalsUsers.EDIT_USER} handleClose={handleCloseModal} userId={selectedUserId} />

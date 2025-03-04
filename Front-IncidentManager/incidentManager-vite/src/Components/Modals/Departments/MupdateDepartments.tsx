@@ -12,7 +12,6 @@ interface MEditProps {
   handleClose: () => void;
   departId?: number;
 }
-
 const MySwal = withReactContent(Swal);
 
 const MEditDepartment: React.FC<MEditProps> = ({ show, handleClose, departId }) => {

@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Badge, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+
 import Header from '../Components/Header';
 import Sidebar from '../Components/Sidebar';
+import MEditReports from '../Components/Modals/Reports/MupdateReports';
 
 import { IViewReporte } from '../Data/Interfaces/ViewReports';
 import { GetViewReportid } from '../Data/Services/ReportServices';
@@ -14,6 +16,10 @@ const PageViewReports: React.FC = () => {
     const { idReporte } = useParams<{ idReporte: string }>();
     const [taskData, setTaskData] = useState<IViewReporte | null>(null);
     const [commentData, setCommentData] = useState<IComentario | null>(null);
+    const [modalType, setModalType] = useState< | 'EDIT' | null>(null)  
+    const [selectedDepartId, setSelectedDepartId] = useState<number | null>(null);
+    
+    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -96,11 +102,16 @@ const PageViewReports: React.FC = () => {
                                 <div className="p-3 bg-white rounded shadow-sm mb-3 mb-md-0">
                                     <div className="d-flex justify-content-between align-items-center mb-3">
                                         <h4 className="mb-0">Instrucción</h4>
-                                        {taskData && (
-                                            <Button variant="warning" size="sm">
+                                        
+                                            <Button variant="warning" size="sm"
+                                            onClick={() => {
+                                                setSelectedDepartId(taskData?.iD_Reporte ?? null);
+                                                setModalType('EDIT');
+                                            }}
+                                            >
                                                 <i className="fas fa-pen me-1"></i> Editar
                                             </Button>
-                                        )}
+                                        
                                     </div>
                                     <p className="text-justify mb-3">
                                         {taskData ? taskData.descripcion : "Por el momento el reporte no se visualiza"}
@@ -121,19 +132,9 @@ const PageViewReports: React.FC = () => {
                                 </div>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col className="d-flex justify-content-center gap-2 flex-wrap">
-                                <Button variant="success" disabled={!taskData}>
-                                    <i className="fas fa-flag-checkered me-1"></i> Finalizado
-                                </Button>
-                                <Button variant="primary" disabled={!taskData}>
-                                    <i className="fas fa-edit me-1"></i> En proceso
-                                </Button>
-                                <Button variant="danger" disabled={!taskData}>
-                                    <i className="fas fa-exclamation-triangle me-1"></i> Reporte no realizado
-                                </Button>
-                            </Col>
-                        </Row>
+                        {modalType === 'EDIT' && selectedDepartId !== null && (
+                                <MEditReports show={true} handleClose={() => setModalType(null)} reportsId={selectedDepartId} />
+                            )}
                     </Container>
                 </div>
             </div>

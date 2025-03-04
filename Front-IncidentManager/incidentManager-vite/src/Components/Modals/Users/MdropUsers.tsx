@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Container } from "react-bootstrap";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { deleteUser } from "../../../Data/Services/UsersServices";
@@ -28,7 +28,7 @@ const MDeleteUser: React.FC<MDeleteUserProps> = ({
           icon: "error",
           confirmButtonText: "OK",
         });
-        return; 
+        return;
       }
 
       if (userId !== undefined) {
@@ -67,17 +67,20 @@ const MDeleteUser: React.FC<MDeleteUserProps> = ({
       <Modal.Header closeButton>
       </Modal.Header>
       <Modal.Body className="text-center justify-content-center">
+      <Container className="flex-grow-1 my-3">
         <h2>Eliminar Usuario</h2>
         <p>¿Estás seguro de que deseas eliminar el usuario?</p>
+        <div className="text-center mt-4">
+          <Button variant="danger" onClick={ValidarEliminacion} className="me-2">
+            Eliminar
+          </Button>
+          <Button variant="secondary" onClick={handleClose} className="me-2">
+            Cancelar
+          </Button>
+        </div>
+       </Container>
       </Modal.Body>
-      <Modal.Footer className="justify-content-center">
-        <Button variant="danger" onClick={ValidarEliminacion}>
-          Eliminar
-        </Button>
-        <Button variant="secondary" onClick={handleClose}>
-          Cancelar
-        </Button>
-      </Modal.Footer>
+  
     </Modal>
   );
 };

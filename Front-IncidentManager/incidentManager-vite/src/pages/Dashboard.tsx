@@ -197,7 +197,9 @@ const Dashboard: React.FC = () => {
                               ).toLocaleDateString()}
                             </td>
                           </tr>
-                        ))}
+                        ) )
+                        }
+                        
                       </tbody>
                     </Table>
                   </Card.Body>
