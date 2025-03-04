@@ -19,8 +19,8 @@ import PageDepartamento from './pages/PageDepart';
 import PagePerfil from './pages/PagePerfil';
 import DashboardEmpleado from './pages/DashboardEmpl';
 import DashboardLideres from './pages/DashboardLid';
-import PageHistorial from './pages/PageHistory';
 import PageViewReports from './pages/PageViewReports';
+import Monitoring from './pages/pageMonitoring';
 
 
 const MySwal = withReactContent(Swal);
@@ -74,11 +74,9 @@ const App: React.FC = () => {
           {/* Rutas compartidas */}
           <Route path="/perfil" element={<PagePerfil />} />
           <Route path="/reportes" element={<PageReporte />} />
-          <Route path="/Historial" element={<PageHistorial />} />
           <Route path="/vistaReporte/:idReporte" element={<PageViewReports />} />
-
-
-
+          
+          <Route path="/Monitoreo" element={<RoleBasedRoute roles={[1]}><Monitoring/></RoleBasedRoute>} />
           <Route path="/usuarios" element={<RoleBasedRoute roles={[1, 2]}><PageUsers /></RoleBasedRoute>} />
           <Route path="/departamento" element={<RoleBasedRoute roles={[1, 2]}><PageDepartamento /></RoleBasedRoute>} />
         </Route>

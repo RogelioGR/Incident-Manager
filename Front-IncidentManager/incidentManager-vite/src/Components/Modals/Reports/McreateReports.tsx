@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button, Form, Container } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
@@ -39,7 +39,6 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
                 console.error("Error al obtener la lista de usuarios:", error);
             }
         };
-
         const fetchPrioridades = async () => {
             try {
                 const prioridadesData = await GetPriority();
@@ -48,13 +47,11 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
                 console.error("Error al obtener la lista de prioridades:", error);
             }
         };
-
         if (show) {
             fetchUsuarios();
             fetchPrioridades();
         }
     }, [show]);
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setReporteData({
@@ -62,7 +59,6 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
             [name]: name === "fkPrioridad" ? parseInt(value) || 0 : value,
         });
     };
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -105,9 +101,11 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
     return (
         <Modal show={show} onHide={handleClose} size="lg" centered>
             <Modal.Header closeButton>
-                <Modal.Title>Crear Reporte</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+            <Container className="flex-grow-1 my-3">
+            <h2 className="text-center mb-4">Crear Usuario</h2>
+
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label>Título:</Form.Label>
@@ -163,14 +161,17 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
                             required
                         />
                     </Form.Group>
-                    <Button variant="primary" type="submit" disabled={loading}>
+                    <div className="text-center mt-4">
+         
+                    <Button variant="success" className="me-2" type="submit" disabled={loading}>
                         {loading ? 'Creando reporte...' : 'Crear Reporte'}
                     </Button>
+                    <Button variant="secondary" className="me-2" onClick={handleClose}>Cerrar</Button>
+        </div>
+
                 </Form>
+       </Container>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>Cerrar</Button>
-            </Modal.Footer>
         </Modal>
     );
 };

@@ -4,6 +4,6 @@ export interface IReportes {
     fkDestinatario?: number;
     fkPrioridad: number;
     descripcion: string;
-    fkEstado: number;
-    fechaCreada: string ;
+    fkEstado?: number;
+    fechaCreada?: string ;
 }

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { logout } from '../Data/Services/AuthService';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 
+/* Importacion del services y componentes */
 import Sidebar from './Sidebar';
-
 import { obtenerUsuarioid } from '../Data/Services/UsersServices';
 import { IUsuario } from '../Data/Interfaces/IUsers';
+import { logout } from '../Data/Services/AuthService';
 
 const MySwal = withReactContent(Swal);
 

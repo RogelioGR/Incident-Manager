@@ -11,6 +11,7 @@ export const GetReport = async (): Promise<IReportes[]> => {
     throw error;
   }
 };
+
 /* funciones del View Mysql reporte completo */
 export const GetReportComplets = async (): Promise<IViewReporte[]> => {
   try {

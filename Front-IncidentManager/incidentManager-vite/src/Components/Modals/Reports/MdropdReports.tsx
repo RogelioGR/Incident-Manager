@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Container } from "react-bootstrap";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
 
@@ -57,17 +57,20 @@ const MDeleteReports: React.FC<MDeleteProps> = ({
       <Modal.Header closeButton>
       </Modal.Header>
       <Modal.Body className="text-center justify-content-center">
+      <Container className="flex-grow-1 my-3">
         <h2>Eliminar Reporte</h2>
         <p>¿Estás seguro de que deseas eliminar el reporte?</p>
+        <div className="text-center mt-4">
+          <Button variant="danger" onClick={ValidarEliminacion} className="me-2">
+            Eliminar
+          </Button>
+          <Button variant="secondary" onClick={handleClose} className="me-2">
+            Cancelar
+          </Button>
+        </div>
+       </Container>
       </Modal.Body>
-      <Modal.Footer className="justify-content-center">
-        <Button variant="danger" onClick={ValidarEliminacion}>
-          Eliminar
-        </Button>
-        <Button variant="secondary" onClick={handleClose}>
-          Cancelar
-        </Button>
-      </Modal.Footer>
+  
     </Modal>
   );
 };

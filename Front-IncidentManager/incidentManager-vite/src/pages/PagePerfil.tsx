@@ -3,7 +3,7 @@ import { Container, Card, Row, Col, Form, Button } from 'react-bootstrap';
 
 /* Importacion de services */
 import { IUsuario } from '../Data/Interfaces/IUsers';
-import { obtenerUsuarioid } from '../Data/Services/UsersServices';
+import { obtenerUsuarioid, updateUser } from '../Data/Services/UsersServices';
 
 /* Componentes */
 import Sidebar from '../Components/Sidebar';
@@ -161,14 +161,11 @@ const PagePerfil: React.FC = () => {
                       className="rounded-3"
                       readOnly
                     />
-                    <Form.Text className="text-muted">
-                      Completar solo si desea cambiar su contraseña actual
-                    </Form.Text>
                   </Form.Group>
                 </Form>
                 <div className="d-flex justify-content-center gap-3 mt-4 p-2">
-                  <Button variant="secondary">Cerrar</Button>
                   <Button variant="success">Guardar cambios</Button>
+                  <Button variant="secondary">Cerrar</Button>
                 </div>
               </Card.Body>
             </Card>
