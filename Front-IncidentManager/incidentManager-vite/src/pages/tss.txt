@@ -1,0 +1,200 @@
+import React, { useEffect, useState } from 'react';
+import { Container, Card, Row, Col, Form, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
+import withReactContent from "sweetalert2-react-content";
+
+/* Importación de servicios */
+import { IUsuario } from '../Data/Interfaces/IUsers';
+import { obtenerUsuarioid, updateUser } from '../Data/Services/UsersServices';
+
+/* Componentes */
+import Sidebar from '../Components/Sidebar';
+import Header from '../Components/Header';
+
+const MySwal = withReactContent(Swal);
+
+const PagePerfil: React.FC = () => {
+  const [usuario, setUsuario] = useState<IUsuario | null>(null);
+  const [formData, setFormData] = useState<IUsuario>({
+    nombre: '',
+    apellidos: '',
+    correoElectronico: '',
+    correoPersonal: '',
+    fkRol: '',
+  });
+
+  useEffect(() => {
+    const idUsuario = localStorage.getItem('idUsuarios');
+    if (idUsuario && !isNaN(Number(idUsuario))) {
+      obtenerUsuarioid(Number(idUsuario))
+        .then((data) => {
+          if (data) {
+            setUsuario(data);
+            setFormData(data); // Inicializar el formulario con los datos actuales
+          }
+        })
+        .catch((error) => {
+          console.error('Error al obtener la información del usuario:', error);
+        });
+    }
+  }, []);
+
+  // Manejo de cambios en los inputs
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Enviar actualización
+  const handleSubmit = async () => {
+    try {
+      if (!usuario ) return;
+      await updateUser(usuario.idUsuarios, formData);
+      
+      MySwal.fire({
+        title: "¡Éxito!",
+        text: "Perfil actualizado correctamente",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
+
+      setUsuario(formData); // Actualizar el estado con los datos nuevos
+
+    } catch (error) {
+      console.error("Error al actualizar usuario:", error);
+      MySwal.fire({
+        title: "Error",
+        text: "No se pudo actualizar el perfil",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
+    }
+  };
+
+  return (
+    <>
+      <div className="d-flex vh-100 flex-column flex-md-row viewinform-container">
+        <Sidebar />
+        <div className="flex-grow-1 d-flex flex-column viewinform-content">
+          <Header />
+          <Container className="my-3" style={{ overflowY: 'auto' }}>
+            <Card className="border-0 shadow-lg rounded-3 overflow-hidden mb-4">
+              <Card.Header className="bg-gradient bg-secondary text-white p-4">
+                <h4 className="mb-0">Información Personal</h4>
+              </Card.Header>
+              <Card.Body className="p-4">
+                <Form>
+                  <h5 className="border-bottom pb-2 mb-4">Datos básicos</h5>
+                  <Row className="mb-4">
+                    <Col md={6}>
+                      <Form.Group className="mb-3 position-relative">
+                        <Form.Label className="fw-bold">Nombre</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="nombre"
+                          placeholder="Ingrese nombre"
+                          className="rounded-3"
+                          value={formData.nombre}
+                          onChange={handleChange}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label className="fw-bold">Apellidos</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="apellidos"
+                          placeholder="Ingrese apellidos"
+                          className="rounded-3"
+                          value={formData.apellidos}
+                          onChange={handleChange}
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+
+                  <h5 className="border-bottom pb-2 mb-4">Información de contacto</h5>
+                  <Row className="mb-4">
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label className="fw-bold">Correo Electrónico</Form.Label>
+                        <Form.Control
+                          type="email"
+                          name="correoElectronico"
+                          placeholder="ejemplo@empresa.com"
+                          className="rounded-3"
+                          value={formData.correoElectronico}
+                          readOnly
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label className="fw-bold">Correo Personal</Form.Label>
+                        <Form.Control
+                          type="email"
+                          name="correoPersonal"
+                          placeholder="ejemplo@gmail.com"
+                          className="rounded-3"
+                          value={formData.correoPersonal}
+                          onChange={handleChange}
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+
+                  <h5 className="border-bottom pb-2 mb-4">Datos organizacionales</h5>
+                  <Row className="mb-4">
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label className="fw-bold">Departamento</Form.Label>
+                        <Form.Select 
+                          name="fkDepartamento" 
+                          className="rounded-3"
+                          value={formData.fkDepartamento}
+                          onChange={handleChange}
+                        >
+                          <option value="">Seleccione un departamento</option>
+                          <option value="1">Administración</option>
+                          <option value="2">Desarrollo</option>
+                          <option value="3">Marketing</option>
+                          <option value="4">Recursos Humanos</option>
+                        </Form.Select>
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label className="fw-bold">Rol</Form.Label>
+                        <Form.Select 
+                          name="fkRol" 
+                          className="rounded-3"
+                          value={formData.fkRol}
+                          onChange={handleChange}
+                        >
+                          <option value="">Seleccione un rol</option>
+                          <option value="1">Administrador</option>
+                          <option value="2">Usuario</option>
+                          <option value="3">Supervisor</option>
+                        </Form.Select>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                </Form>
+                <div className="d-flex justify-content-center gap-3 mt-4 p-2">
+                  <Button variant="success" onClick={handleSubmit}>Guardar cambios</Button>
+                  <Button variant="secondary">Cerrar</Button>
+                </div>
+              </Card.Body>
+            </Card>
+          </Container>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default PagePerfil;

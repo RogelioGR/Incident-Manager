@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApiIncidentManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33c5bdd6760f80c5306a1dffec11d5c6539421cc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a8c6885ea113915d07db5bc6e82cd8f2200a0aa")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebApiIncidentManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApiIncidentManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
