@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Card, Row, Col, Form, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
+import withReactContent from "sweetalert2-react-content";
 
 /* Importacion de services */
 import { IUsuario } from '../Data/Interfaces/IUsers';
@@ -8,6 +10,9 @@ import { obtenerUsuarioid, updateUser } from '../Data/Services/UsersServices';
 /* Componentes */
 import Sidebar from '../Components/Sidebar';
 import Header from '../Components/Header';
+
+const MySwal = withReactContent(Swal);
+
 
 const PagePerfil: React.FC = () => {
   const [usuario, setUsuario] = useState<IUsuario | null>(null);

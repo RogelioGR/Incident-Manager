@@ -104,7 +104,7 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
             </Modal.Header>
             <Modal.Body>
             <Container className="flex-grow-1 my-3">
-            <h2 className="text-center mb-4">Crear Usuario</h2>
+            <h2 className="text-center mb-4">Crear Reporte</h2>
 
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
