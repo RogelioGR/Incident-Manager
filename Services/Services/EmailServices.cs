@@ -95,7 +95,7 @@ namespace Services.Services
                         Para = destinatario.CorreoPersonal,
                         Asunto = "Nuevo Reporte Asignado",
                         Contenido = $@"
-                    <p>Hola {destinatario.Nombre}, {destinatario.Apellidos},</p>
+                    <p>Hola {destinatario.Nombre} {destinatario.Apellidos},</p>
                     <p>Se te ha asignado un nuevo reporte con el siguiente detalle:</p>
                     <ul>
                         <li><b>Título:</b> {reporte.Titulo}</li>

@@ -1,133 +1,143 @@
-import React from "react";
-import { Container, Row, Col, Card, Table, Button, ListGroup } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Container, Row, Col, Card, Form, Pagination, Dropdown } from 'react-bootstrap';
+import Sidebar from '../Components/Sidebar';
+import Header from '../Components/Header';
 
-/* Componentes */
-import Sidebar from "../Components/Sidebar";
-import Header from "../Components/Header";
-import GraficoReportes from "../Components/GraficoReportes";
+const DashboardLideres = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  
+  const [userReports, setUserReports] = useState([
+    { id: 1001, name: 'Reporte de ventas Q3', priority: 'Alta', date: '2024-03-15' },
+    { id: 1002, name: 'Análisis de mercado', priority: 'Media', date: '2024-03-20' },
+    { id: 1003, name: 'Informe financiero', priority: 'Urgente', date: '2024-03-25' },
+    { id: 1004, name: 'Proyección anual', priority: 'Media', date: '2024-04-01' },
+    { id: 1005, name: 'Auditoría interna', priority: 'Alta', date: '2024-04-05' },
+    { id: 1006, name: 'Plan de expansión', priority: 'Urgente', date: '2024-04-10' },
+  ]);
 
-const DashboardLideres: React.FC = () => {
-  const reportesResueltos = 12;
-  const reportesPendientes = 5;
-
-  const datosDesempeño = {
-    labels: ["Resueltos", "Pendientes"],
-    datasets: [
-      {
-        label: "Estado de Reportes",
-        data: [reportesResueltos, reportesPendientes],
-        backgroundColor: ["#43aa8b", "#f94144"],
-      },
-    ],
+  const handleDeleteReport = (id) => {
+    const updatedReports = userReports.filter(report => report.id !== id);
+    setUserReports(updatedReports);
+    
+    const newTotalPages = Math.ceil(updatedReports.length / itemsPerPage);
+    if (currentPage > newTotalPages) setCurrentPage(newTotalPages);
   };
 
-  const miembros = [
-    { idUsuario: 1, nombre: "Juan Pérez", email: "juan@example.com" },
-    { idUsuario: 2, nombre: "María López", email: "maria@example.com" },
-    { idUsuario: 3, nombre: "Carlos Gómez", email: "carlos@example.com" },
-  ];
-
-  const reportes = [
-    { idReporte: 101, titulo: "Falla en servidor", estado: "Pendiente", prioridad: "Alta" },
-    { idReporte: 102, titulo: "Error en aplicación", estado: "Resuelto", prioridad: "Media" },
-    { idReporte: 103, titulo: "Problema de red", estado: "Pendiente", prioridad: "Alta" },
-  ];
-
-  const comentarios = [
-    "Se resolvió el problema de acceso.",
-    "Pendiente revisar el servidor principal.",
-    "Actualización de software completada.",
-  ];
+  const filteredReports = userReports.filter(report => 
+    report.id.toString().includes(searchTerm)
+  );
+  
+  const totalPages = Math.ceil(filteredReports.length / itemsPerPage);
+  const paginatedReports = filteredReports.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
-    <>
-      <div className="d-flex vh-100 flex-column flex-md-row viewinform-container">
-        <Sidebar />
-        <div className="flex-grow-1 d-flex flex-column viewinform-content">
-          <Header />
-          <Container className="my-3" style={{ overflowY: "auto" }}>
-            <h1 className="mb-2">Dashboard Líderes</h1>
+    <div className="d-flex vh-100 flex-column flex-md-row viewinform-container" 
+         style={{ backgroundColor: '#f8f9fa' }}>
+      <Sidebar />
+      <div className="flex-grow-1 d-flex flex-column viewinform-content">
+        <Header />
+        <Container fluid className="my-3 flex-grow-1 px-4 py-3" 
+                   style={{ backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+          <h1 className="mb-4 ">Dashboard Líder</h1>
 
-            <Row className="mb-4">
-              <Col md={6}>
-                <Card className="shadow">
-                  <Card.Body>
-                    <GraficoReportes title="Desempeño del Equipo" data={datosDesempeño} />
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={6}>
-                <Card className="shadow">
-                  <Card.Body>
-                    <Card.Title>Reportes Recientes</Card.Title>
-                    <Table responsive striped bordered hover>
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Título</th>
-                          <th>Estado</th>
-                          <th>Prioridad</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {reportes.map((reporte) => (
-                          <tr key={reporte.idReporte}>
-                            <td>{reporte.idReporte}</td>
-                            <td>{reporte.titulo}</td>
-                            <td>{reporte.estado}</td>
-                            <td>{reporte.prioridad}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
+          <section className="mt-5">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <h2 className="h4 mb-0 text-secondary">Reportes Recibidos</h2>
+              <div style={{ maxWidth: '300px' }}>
+                <Form.Control
+                  type="text"
+                  placeholder="Buscar por ID de reporte..."
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  className="rounded-pill border-1"
+                  style={{ borderColor: '#ced4da' }}
+                />
+              </div>
+            </div>
 
-            <Row>
-              <Col md={6}>
-                <Card className="shadow">
-                  <Card.Body>
-                    <Card.Title>Miembros del Equipo</Card.Title>
-                    <Table responsive striped bordered hover>
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nombre</th>
-                          <th>Email</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {miembros.map((miembro) => (
-                          <tr key={miembro.idUsuario}>
-                            <td>{miembro.idUsuario}</td>
-                            <td>{miembro.nombre}</td>
-                            <td>{miembro.email}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={6}>
-                <Card className="shadow">
-                  <Card.Body>
-                    <Card.Title>Comentarios Recientes</Card.Title>
-                    <ListGroup>
-                      {comentarios.map((comentario, index) => (
-                        <ListGroup.Item key={index}>{comentario}</ListGroup.Item>
-                      ))}
-                    </ListGroup>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+            {paginatedReports.length > 0 ? (
+              <Row xs={1} md={2} lg={4} className="g-4">
+                {paginatedReports.map(report => (
+                  <Col key={report.id}>
+                    <Card className="h-100 border-0 shadow-sm rounded-3 overflow-hidden"     
+                          style={{ transition: 'transform 0.2s', cursor: 'pointer', backgroundColor: '#f0f2f5'  }}
+                          onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                          onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                    >
+                      <Card.Body>
+                        <div className="d-flex justify-content-between align-items-start mb-3">
+                          <span className={`badge bg-${report.priority === 'Urgente' ? 'danger' : report.priority === 'Alta' ? 'warning' : 'info'}`} 
+                                style={{ fontSize: '0.8rem' }}>
+                            {report.priority}
+                          </span>
+                          <Dropdown>
+                            <Dropdown.Toggle variant="light" 
+                                            className="p-2  shadow-sm"
+                                            style={{ backgroundColor: '#f0f2f5' }}>
+                              ...
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu align="end">
+                              <Dropdown.Item onClick={() => handleDeleteReport(report.id)} 
+                                             className="text-danger">
+                                Eliminar reporte
+                              </Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
+                        <Card.Title className="h5 mb-3 text-truncate">{report.name}</Card.Title>
+                        <Card.Text className="text-muted small mb-0">
+                          <div className="d-flex justify-content-between align-items-center">
+                            <div className="text-truncate">{report.date}</div>
+                            <div className="text-primary">#ID{report.id}</div>
+                          </div>
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            ) : (
+              <div className="text-center py-5">
+                <p className="text-muted mb-0">No se encontraron reportes</p>
+              </div>
+            )}
+
+            {filteredReports.length > itemsPerPage && (
+              <Pagination className="mt-4 justify-content-center">
+                <Pagination.Prev 
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                  className="shadow-sm"
+                />
+                {[...Array(totalPages)].map((_, i) => (
+                  <Pagination.Item 
+                    key={i+1}
+                    active={i+1 === currentPage}
+                    onClick={() => setCurrentPage(i+1)}
+                    className="shadow-sm"
+                  >
+                    {i+1}
+                  </Pagination.Item>
+                ))}
+                <Pagination.Next 
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                  disabled={currentPage === totalPages}
+                  className="shadow-sm"
+                />
+              </Pagination>
+            )}
+          </section>
+        </Container>
       </div>
-    </>
+    </div>
   );
 };
 

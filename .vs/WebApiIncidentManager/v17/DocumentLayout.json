@@ -138,8 +138,7 @@
               "RelativeToolTip": "Services\\Services\\DepartamentoServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T03:13:20.218Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T03:13:20.218Z"
             },
             {
               "$type": "Document",
@@ -151,8 +150,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ComentarioController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:40:49.119Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:40:49.119Z"
             },
             {
               "$type": "Document",
@@ -162,7 +160,7 @@
               "RelativeDocumentMoniker": "Services\\Services\\EmailServices.cs",
               "ToolTip": "C:\\Users\\RogelioDeveloper\\Desktop\\Proyecto\\Incident-Manager\\Services\\Services\\EmailServices.cs",
               "RelativeToolTip": "Services\\Services\\EmailServices.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAgwGYAAABQAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAgwGgAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-07T02:40:56.616Z",
               "EditorCaption": ""
@@ -177,8 +175,7 @@
               "RelativeToolTip": "Services\\Services\\UsuarioServices.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAYwEQAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T08:21:02.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T08:21:02.345Z"
             },
             {
               "$type": "Document",
@@ -190,8 +187,7 @@
               "RelativeToolTip": "Services\\Services\\ReportesServices.cs",
               "ViewState": "AgIAAHwAAAAAAAAAAAAmwH8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T08:21:25.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T08:21:25.057Z"
             },
             {
               "$type": "Document",
@@ -203,8 +199,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\EmailController.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAkwCIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T02:44:59.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T02:44:59.964Z"
             },
             {
               "$type": "Document",
@@ -216,8 +211,7 @@
               "RelativeToolTip": "Services\\Iservices\\IEmailServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T02:39:51.077Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T02:39:51.077Z"
             },
             {
               "$type": "Document",
@@ -229,8 +223,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-07T02:35:41.23Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T02:35:41.23Z"
             },
             {
               "$type": "Document",
@@ -242,8 +235,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ViewsController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T08:32:43.554Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T08:32:43.554Z"
             },
             {
               "$type": "Document",
@@ -255,8 +247,7 @@
               "RelativeToolTip": "Domain\\Dto\\EmailDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T02:38:42.888Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T02:38:42.888Z"
             },
             {
               "$type": "Document",
@@ -268,8 +259,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Program.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T02:35:39.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T02:35:39.691Z"
             },
             {
               "$type": "Document",
@@ -281,8 +271,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T02:50:51.738Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T02:50:51.738Z"
             },
             {
               "$type": "Document",
@@ -294,8 +283,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\EstadoReporteController.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAgwDwAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:41:27.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:41:27.943Z"
             },
             {
               "$type": "Document",
@@ -307,8 +295,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ReporteUsuarioController.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAkwDsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:42:09.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:42:09.548Z"
             },
             {
               "$type": "Document",
@@ -320,8 +307,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ReportesController.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAgwC8AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:41:55.02Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:41:55.02Z"
             },
             {
               "$type": "Document",
@@ -333,8 +319,7 @@
               "RelativeToolTip": "Services\\Services\\PrioridadServices.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAYwDAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T19:09:26.188Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T19:09:26.188Z"
             },
             {
               "$type": "Document",
@@ -346,8 +331,7 @@
               "RelativeToolTip": "Repository\\Models\\VistaReporteCompleto.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAxwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T08:12:01.272Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T08:12:01.272Z"
             },
             {
               "$type": "Document",
@@ -359,8 +343,7 @@
               "RelativeToolTip": "Services\\Iservices\\IReportesServices.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T08:27:18.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T08:27:18.215Z"
             },
             {
               "$type": "Document",
@@ -372,8 +355,7 @@
               "RelativeToolTip": "Domain\\Dto\\VistaReporteCompletoDto.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAxwBAAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T08:17:37.17Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T08:17:37.17Z"
             },
             {
               "$type": "Document",
@@ -385,8 +367,7 @@
               "RelativeToolTip": "Repository\\Models\\SistemaKempinskiContext.cs",
               "ViewState": "AgIAAL8AAAAAAAAAAAAmwMkAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T08:14:16.491Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T08:14:16.491Z"
             },
             {
               "$type": "Document",
@@ -398,8 +379,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\RolesController.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAgwEQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:44:05.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:44:05.411Z"
             },
             {
               "$type": "Document",
@@ -411,8 +391,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\PrioridadController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAA1wD0AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:41:43.063Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:41:43.063Z"
             }
           ]
         },
