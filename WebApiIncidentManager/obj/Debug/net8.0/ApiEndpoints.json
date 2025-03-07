@@ -974,6 +974,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebApiIncidentManager.Controllers.EmailController",
+    "Method": "CrearReporte",
+    "RelativePath": "Email/crear",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reporteDto",
+        "Type": "Domain.Dto.ReportesDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApiIncidentManager.Controllers.EmailController",
+    "Method": "EnviarCorreo",
+    "RelativePath": "Email/enviar-correo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "emailDto",
+        "Type": "Domain.Dto.EmailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebApiIncidentManager.Controllers.ViewsController",
     "Method": "ViewReportes",
     "RelativePath": "Views/viewReports",

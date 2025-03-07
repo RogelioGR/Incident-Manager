@@ -20,6 +20,7 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
     nombre: "",
     apellidos: "",
     correoElectronico: "",
+    correoPersonal:"",
     contraseña: "",
     fkDepartamento: 0,
     fkRol: 0,
@@ -133,6 +134,16 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
                     placeholder="Correo electrónico"
                     name="correoElectronico"
                     value={formData.correoElectronico}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Correo Personal:</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Correo electrónico"
+                    name="correoPersonal"
+                    value={formData.correoPersonal}
                     onChange={handleChange}
                   />
                 </Form.Group>

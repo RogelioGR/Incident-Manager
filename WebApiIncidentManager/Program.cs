@@ -51,6 +51,9 @@ builder.Services.AddScoped<IUsuarioServices, UsuarioServices>();
 builder.Services.AddScoped<IReportesServices, ReportesServices>();
 builder.Services.AddScoped<IReporteUsuarioServices, ReporteUsuarioServices>();
 builder.Services.AddScoped<IComentarioServices, ComentarioServices>();
+builder.Services.AddScoped<IEmailServices, EmailServices>();
+
+
 
 // Configuraci?n del DbContext para usar MySQL
 builder.Services.AddDbContext<SistemaKempinskiContext>(options =>

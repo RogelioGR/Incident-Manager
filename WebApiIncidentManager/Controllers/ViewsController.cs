@@ -13,7 +13,7 @@ using WebApiIncidentManager.Models;
 
 namespace WebApiIncidentManager.Controllers
 {
-    //[Authorize] // Asegura que solo usuarios autenticados puedan acceder
+    [Authorize] // Asegura que solo usuarios autenticados puedan acceder
     [Route("[controller]")]
     [ApiController]
     public class ViewsController : Controller

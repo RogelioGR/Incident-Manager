@@ -644,3 +644,8 @@ C:\Users\EndyG17\Desktop\proyects\Incident-Manager\WebApiIncidentManager\obj\Deb
 C:\Users\EndyG17\Desktop\proyects\Incident-Manager\WebApiIncidentManager\obj\Debug\net8.0\WebApiIncidentManager.pdb
 C:\Users\EndyG17\Desktop\proyects\Incident-Manager\WebApiIncidentManager\obj\Debug\net8.0\WebApiIncidentManager.genruntimeconfig.cache
 C:\Users\EndyG17\Desktop\proyects\Incident-Manager\WebApiIncidentManager\obj\Debug\net8.0\ref\WebApiIncidentManager.dll
+C:\Users\RogelioDeveloper\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\RogelioDeveloper\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\MailKit.dll
+C:\Users\RogelioDeveloper\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\MimeKit.dll
+C:\Users\RogelioDeveloper\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\RogelioDeveloper\Desktop\Proyecto\Incident-Manager\WebApiIncidentManager\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

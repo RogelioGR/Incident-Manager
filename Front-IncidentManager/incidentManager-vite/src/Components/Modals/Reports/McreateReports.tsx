@@ -6,9 +6,9 @@ import withReactContent from 'sweetalert2-react-content';
 import { IReportes } from '../../../Data/Interfaces/lReports';
 import { IUsuario } from '../../../Data/Interfaces/IUsers';
 import { Iprioridad } from '../../../Data/Interfaces/lPrioridad';
-import { createReports } from '../../../Data/Services/ReportServices';
 import { obtenerUsuarios } from '../../../Data/Services/UsersServices';
 import { GetPriority } from '../../../Data/Services/priorityServices';
+import { createReportsEmail } from '../../../Data/Services/EmailServices';
 
 interface MCreateProps {
     show: boolean;
@@ -64,7 +64,7 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
         setLoading(true);
 
         try {
-            await createReports({
+            await createReportsEmail({
                 titulo: reporteData.titulo,
                 fkDestinatario: selectedDestinatarioId,
                 fkPrioridad: reporteData.fkPrioridad,
