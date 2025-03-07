@@ -21,6 +21,7 @@ import DashboardEmpleado from './pages/DashboardEmpl';
 import DashboardLideres from './pages/DashboardLid';
 import PageViewReports from './pages/PageViewReports';
 import Monitoring from './pages/pageMonitoring';
+import PageDepartmentLideres from './pages/PageDepartmentsLds';
 
 
 const MySwal = withReactContent(Swal);
@@ -77,6 +78,8 @@ const App: React.FC = () => {
           <Route path="/vistaReporte/:idReporte" element={<PageViewReports />} />
           
           <Route path="/Monitoreo" element={<RoleBasedRoute roles={[1]}><Monitoring/></RoleBasedRoute>} />
+          <Route path="/DepartamentoL" element={<RoleBasedRoute roles={[2]}><PageDepartmentLideres/></RoleBasedRoute>} />
+
           <Route path="/usuarios" element={<RoleBasedRoute roles={[1, 2]}><PageUsers /></RoleBasedRoute>} />
           <Route path="/departamento" element={<RoleBasedRoute roles={[1, 2]}><PageDepartamento /></RoleBasedRoute>} />
         </Route>
