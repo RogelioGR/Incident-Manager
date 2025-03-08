@@ -34,7 +34,8 @@ const CrearReporteModal: React.FC<MCreateProps> = ({ show, handleClose }) => {
         const fetchUsuarios = async () => {
             try {
                 const usuariosData = await obtenerUsuarios();
-                setUsuarios(usuariosData);
+                const usuariosSistema = usuariosData.filter(usuario => usuario.fkDepartamento === 1); 
+                setUsuarios(usuariosSistema);
             } catch (error) {
                 console.error("Error al obtener la lista de usuarios:", error);
             }

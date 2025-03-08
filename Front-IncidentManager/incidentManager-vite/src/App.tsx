@@ -23,7 +23,6 @@ import PageViewReports from './pages/PageViewReports';
 import Monitoring from './pages/pageMonitoring';
 import PageDepartmentLideres from './pages/PageDepartmentsLds';
 
-
 const MySwal = withReactContent(Swal);
 
 const App: React.FC = () => {
@@ -65,6 +64,7 @@ const App: React.FC = () => {
       <Routes>
         {/* Ruta pública */}
         <Route path="/login" element={<LoginPage />} />
+
 
         {/* Rutas protegidas por rol de usuario*/}
         <Route element={<ProtectedRoute />}>

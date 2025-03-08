@@ -3,6 +3,7 @@
 body{
   margin: 0%;
 }
+
 /* estilo de diseño de login */
 .login-container{
   background-color: #f0f2f5;
@@ -274,7 +275,6 @@ body{
   .no-results {
     text-align: center;
     padding: 30px;
-    background-color: #f8f9fa;
     border-radius: 8px;
     margin-top: 20px;
   }

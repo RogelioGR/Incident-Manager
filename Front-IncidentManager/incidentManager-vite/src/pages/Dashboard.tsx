@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button, Table, Form } from "react-bootstrap";
 import { Chart, registerables } from "chart.js";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 /* Services */
 import { IReportes } from "../Data/Interfaces/lReports";
@@ -13,7 +14,7 @@ import { GetPriority } from "../Data/Services/priorityServices";
 import Sidebar from "../Components/Sidebar";
 import Header from "../Components/Header";
 import ReportPDF from "../Components/ReportPDF";
-import GraficoReportes from "../Components/GraficoReportes"; 
+import GraficoReportes from "../Components/GraficoReportes";
 
 /* importacion de las graficas */
 Chart.register(...registerables);
@@ -72,6 +73,21 @@ const Dashboard: React.FC = () => {
       },
     ],
   };
+
+  const getProgress = (fkEstado: number) => {
+    switch (fkEstado) {
+      case 1:
+        return { porcentaje: 25, color: "primary" };
+      case 2:
+        return { porcentaje: 50, color: "warning" };
+      case 3:
+        return { porcentaje: 100, color: "success" };
+      case 4:
+        return { porcentaje: 75, color: "danger" };
+      default:
+        return { porcentaje: 0, color: "secondary" };
+    }
+  };
   /*  extrae los valores de fechacreada  */
   const mesesOrdenados = [
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
@@ -79,7 +95,7 @@ const Dashboard: React.FC = () => {
   ];
 
   const reportesPorMes = reportes.reduce((acc, reporte) => {
-    const mes = new Date(reporte.fechaCreada).toLocaleString("default", {
+    const mes = new Date(reporte.fechaCreada ?? 0).toLocaleString("default", {
       month: "long",
     });
     acc[mes] = (acc[mes] || 0) + 1;
@@ -87,7 +103,7 @@ const Dashboard: React.FC = () => {
   }, {} as Record<string, number>);
 
   const reportesPorMesOrdenados = Object.keys(reportesPorMes)
-  .sort((a, b) => mesesOrdenados.indexOf(a) - mesesOrdenados.indexOf(b));
+    .sort((a, b) => mesesOrdenados.indexOf(a) - mesesOrdenados.indexOf(b));
 
   const mesColores = [
     "#FF6633",
@@ -114,7 +130,7 @@ const Dashboard: React.FC = () => {
       },
     ],
   };
-  
+
 
   return (
     <>
@@ -126,10 +142,10 @@ const Dashboard: React.FC = () => {
             <h2 className="reports-title m-2">Dashboard</h2>
 
             <Row className="mb-4">
-            <Col md={6}>
+              <Col md={6}>
                 <Card className="shadow">
                   <Card.Body>
-                  <GraficoReportes title="Reportes por Prioridad" data={prioridadData} />
+                    <GraficoReportes title="Reportes por Prioridad" data={prioridadData} />
                   </Card.Body>
                 </Card>
               </Col>
@@ -137,7 +153,7 @@ const Dashboard: React.FC = () => {
               <Col md={6}>
                 <Card className="shadow">
                   <Card.Body>
-                  <GraficoReportes title="Reportes por Mes" data={reporteMesData} />
+                    <GraficoReportes title="Reportes por Mes" data={reporteMesData} />
 
                   </Card.Body>
                 </Card>
@@ -179,27 +195,27 @@ const Dashboard: React.FC = () => {
                         <tr>
                           <th>ID</th>
                           <th>Título</th>
-                          <th>Estado</th>
+                          <th>progreso del reporte</th>
                           <th>Prioridad</th>
                           <th>Fecha Creada</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {reportesFiltrados.map((reporte) => (
-                          <tr key={reporte.idReporte}>
-                            <td>{reporte.idReporte}</td>
-                            <td>{reporte.titulo}</td>
-                            <td>{reporte.fkEstado}</td>
-                            <td>{getNombrePrioridad(reporte.fkPrioridad ) }</td>
-                            <td>
-                              {new Date(
-                                reporte.fechaCreada
-                              ).toLocaleDateString()}
-                            </td>
-                          </tr>
-                        ) )
-                        }
-                        
+                        {reportesFiltrados.map((reporte) => {
+                          const { porcentaje, color } = getProgress(reporte.fkEstado ?? 0);
+
+                          return (
+                            <tr key={reporte.idReporte}>
+                              <td>{reporte.idReporte}</td>
+                              <td>{reporte.titulo}</td>
+                              <td>
+                                <ProgressBar now={porcentaje} variant={color} label={`${porcentaje}%`} />
+                              </td>
+                              <td >{getNombrePrioridad(reporte.fkPrioridad)}</td>
+                              <td className="d-flex justify-content-center">{new Date(reporte.fechaCreada ?? 0).toLocaleDateString()}</td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </Table>
                   </Card.Body>
