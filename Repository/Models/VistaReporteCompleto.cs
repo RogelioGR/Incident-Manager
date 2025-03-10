@@ -20,4 +20,6 @@ public partial class VistaReporteCompleto
     public DateTime? FechaCreada { get; set; }
 
     public int? IdComentario { get; set; }
+
+    public string TipoDeReporte { get; set; }
 }

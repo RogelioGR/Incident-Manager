@@ -124,6 +124,7 @@ namespace Services.Services
                 FkDepartamento = usuarioDto.FkDepartamento,
                 NumEmpleado = usuarioDto.NumEmpleado, // Asignar el valor de NumEmpleado
                 FkRol = usuarioDto.FkRol
+               
             };
 
             // Encriptar la contraseña
@@ -200,6 +201,7 @@ namespace Services.Services
                     CorreoPersonal = u.CorreoPersonal,
                     FkDepartamento = u.Departamento,
                     FkRol = u.Rol,
+                    Num_Empleado = u.Num_Empleado,
                 }).ToListAsync();
         }
     }

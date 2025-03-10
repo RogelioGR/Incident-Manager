@@ -256,6 +256,9 @@ public partial class SistemaKempinskiContext : DbContext
             entity.Property(e => e.IdReporte).HasColumnName("ID_Reporte");
             entity.Property(e => e.PrioridadReporte).HasMaxLength(255);
             entity.Property(e => e.Titulo).HasMaxLength(255);
+            entity.Property(e => e.TipoDeReporte).HasMaxLength(255)
+                      .HasColumnName("TipoDeReporte");  
+            ;
             entity.Property(e => e.UsuarioCreador)
                 .HasMaxLength(511)
                 .HasDefaultValueSql("''");
@@ -278,6 +281,7 @@ public partial class SistemaKempinskiContext : DbContext
             entity.Property(e => e.IdUsuarios).HasColumnName("ID_Usuarios");
             entity.Property(e => e.Nombre).HasMaxLength(255);
             entity.Property(e => e.Rol).HasMaxLength(255);
+            entity.Property(e => e.Num_Empleado).HasColumnName("Num_Empleado");
         });
 
         OnModelCreatingPartial(modelBuilder);

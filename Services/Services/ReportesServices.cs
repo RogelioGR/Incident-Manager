@@ -34,7 +34,8 @@ namespace Services.Services
                     PrioridadReporte = R.PrioridadReporte,
                     Descripcion = R.Descripcion,
                     Fecha_Creada = R.FechaCreada,
-                    IdComentario = R.IdComentario
+                    IdComentario = R.IdComentario,
+                    TipoDeReporte = R.TipoDeReporte
 
                 }).ToListAsync();
         }
@@ -58,7 +59,9 @@ namespace Services.Services
                 PrioridadReporte = reporte.PrioridadReporte,
                 Descripcion = reporte.Descripcion,
                 Fecha_Creada = reporte.FechaCreada,
-                IdComentario = reporte.IdComentario 
+                IdComentario = reporte.IdComentario,
+                TipoDeReporte = reporte.TipoDeReporte
+
             };
 
 

@@ -140,6 +140,10 @@ const PageUsers: React.FC = () => {
                                                     <i className="fa-solid fa-user-tag me-2"></i>
                                                     Rol
                                                 </th>
+                                                <th className="py-3">
+                                                    <i className="fa-solid fa-user-tag me-2"></i>
+                                                    Numero Empleado
+                                                </th>
                                                 <th className="py-3 text-center">
                                                     <i className="fa-solid fa-gears me-2"></i>
                                                     Acción
@@ -163,6 +167,9 @@ const PageUsers: React.FC = () => {
                                                             {view.fkRol}
                                                         </span>
                                                     </td>
+                                                    <td className="text-center">{view.num_Empleado}</td>
+
+
                                                     <td>
                                                         <div className="d-flex justify-content-center gap-2">
                                                             <Button 

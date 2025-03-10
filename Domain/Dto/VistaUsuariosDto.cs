@@ -15,6 +15,7 @@ namespace Domain.Dto
         public string? CorreoPersonal { get; set; }
         public string? FkDepartamento { get; set; }
         public string? FkRol { get; set; }
+        public int Num_Empleado { get; set; }
     }
 
 }

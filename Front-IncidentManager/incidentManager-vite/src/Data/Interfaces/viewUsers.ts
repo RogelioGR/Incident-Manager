@@ -7,5 +7,6 @@ export interface IViewUsuario {
     contraseña?: string;
     fkDepartamento?: string ;
     fkRol: string ;
+    num_Empleado: number;
 
 }

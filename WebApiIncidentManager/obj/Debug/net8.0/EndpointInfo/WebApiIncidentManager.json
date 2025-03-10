@@ -2383,6 +2383,10 @@
           "fkRol": {
             "type": "string",
             "nullable": true
+          },
+          "num_Empleado": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
