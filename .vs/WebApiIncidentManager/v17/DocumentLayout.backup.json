@@ -231,8 +231,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\TipoReporteController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T22:05:38.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T22:05:38.361Z"
             },
             {
               "$type": "Document",
@@ -244,8 +243,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ReporteUsuarioController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:42:09.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:42:09.548Z"
             },
             {
               "$type": "Document",
@@ -257,8 +255,7 @@
               "RelativeToolTip": "Services\\Iservices\\ITipoReporteServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T21:37:52.055Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T21:37:52.055Z"
             },
             {
               "$type": "Document",
@@ -270,8 +267,7 @@
               "RelativeToolTip": "Services\\Iservices\\IUsuarioServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T01:17:55.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T01:17:55.31Z"
             },
             {
               "$type": "Document",
@@ -283,8 +279,7 @@
               "RelativeToolTip": "Services\\Services\\TipoReporteServices.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAYwAwAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T22:10:31.802Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T22:10:31.802Z"
             },
             {
               "$type": "Document",
@@ -294,7 +289,7 @@
               "RelativeDocumentMoniker": "Services\\Services\\ReportesServices.cs",
               "ToolTip": "C:\\Users\\rogel\\OneDrive\\Desktop\\Doc Estad\\Incident-Manager\\Services\\Services\\ReportesServices.cs",
               "RelativeToolTip": "Services\\Services\\ReportesServices.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAwwMIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T08:21:25.057Z",
               "EditorCaption": ""
@@ -309,8 +304,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Program.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAtwDkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T02:35:39.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T02:35:39.691Z"
             },
             {
               "$type": "Document",
@@ -322,8 +316,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\ReportesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:41:55.02Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:41:55.02Z"
             },
             {
               "$type": "Document",
@@ -335,8 +328,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\PrioridadController.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAqwBkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:41:43.063Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:41:43.063Z"
             },
             {
               "$type": "Document",
@@ -348,8 +340,7 @@
               "RelativeToolTip": "WebApiIncidentManager\\Controllers\\EstadoReporteController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T05:41:27.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T05:41:27.943Z"
             },
             {
               "$type": "Document",
@@ -361,8 +352,7 @@
               "RelativeToolTip": "Domain\\Dto\\TipoReporteDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T21:43:35.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T21:43:35.723Z"
             },
             {
               "$type": "Document",
@@ -374,8 +364,7 @@
               "RelativeToolTip": "Repository\\Models\\TipoReporte.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T21:43:51.091Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T21:43:51.091Z"
             },
             {
               "$type": "Document",
@@ -399,8 +388,7 @@
               "RelativeToolTip": "Services\\Iservices\\IReportesServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T08:27:18.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T08:27:18.215Z"
             },
             {
               "$type": "Document",
@@ -412,8 +400,7 @@
               "RelativeToolTip": "Services\\Services\\PrioridadServices.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAABQAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T19:09:26.188Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T19:09:26.188Z"
             },
             {
               "$type": "Document",
@@ -461,8 +448,7 @@
               "RelativeToolTip": "Services\\Services\\EmailServices.cs",
               "ViewState": "AgIAAGsAAAAAAAAAAAAgwH4AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T02:40:56.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T02:40:56.616Z"
             },
             {
               "$type": "Document",
