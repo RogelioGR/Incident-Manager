@@ -18,4 +18,7 @@ public partial class VistaUsuario
     public string? Departamento { get; set; }
 
     public string? Rol { get; set; }
+
+    public int Num_Empleado { get; set; }
+
 }

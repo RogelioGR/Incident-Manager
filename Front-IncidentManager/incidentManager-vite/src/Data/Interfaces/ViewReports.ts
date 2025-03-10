@@ -7,4 +7,5 @@ export interface IViewReporte {
     descripcion: string;
     fecha_Creada: string; 
     idComentario: number;
+    tipoDeReporte: string;
   }

@@ -16,5 +16,7 @@ namespace Domain.Dto
         public string? Descripcion { get; set; }
         public DateTime? Fecha_Creada { get; set; }
         public int? IdComentario { get; set; }
+        public string TipoDeReporte { get; set; }
+
     }
 }
