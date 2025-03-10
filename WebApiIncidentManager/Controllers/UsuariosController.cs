@@ -51,6 +51,7 @@ namespace WebApiBD.Controllers
                 CorreoPersonal = request.CorreoPersonal,
                 Contraseña = request.Contraseña,
                 FkDepartamento = request.FkDepartamento,
+                NumEmpleado = request.NumEmpleado,
                 FkRol = request.FkRol
             });
 
@@ -68,6 +69,7 @@ namespace WebApiBD.Controllers
                 CorreoPersonal = request.CorreoPersonal,
                 Contraseña = request.Contraseña,
                 FkDepartamento = request.FkDepartamento,
+                NumEmpleado = request.NumEmpleado,
                 FkRol = request.FkRol
             });
 

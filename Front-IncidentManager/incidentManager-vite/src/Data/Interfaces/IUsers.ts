@@ -6,5 +6,6 @@ export interface IUsuario {
     correoPersonal?: string;
     contraseña?: string;
     fkDepartamento?: number;
-    fkRol: string | number;
+    numEmpleado: number;
+    fkRol:  number;
 }

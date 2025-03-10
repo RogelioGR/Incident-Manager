@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Badge, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
@@ -16,12 +15,24 @@ const PageViewReports: React.FC = () => {
     const { idReporte } = useParams<{ idReporte: string }>();
     const [taskData, setTaskData] = useState<IViewReporte | null>(null);
     const [commentData, setCommentData] = useState<IComentario | null>(null);
-    const [modalType, setModalType] = useState< | 'EDIT' | null>(null)  
+    const [modalType, setModalType] = useState<'EDIT' | null>(null);
     const [selectedDepartId, setSelectedDepartId] = useState<number | null>(null);
     
-    
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [, setError] = useState<string | null>(null);
+
+    const priorityColors: Record<string, string> = {
+        alta: 'danger',
+        media: 'warning',
+        baja: 'success'
+    };
+    
+    const statusColors: Record<string, string> = {
+        enviado: 'info',
+        'en proceso': 'warning',
+        finalizado: 'success',
+        'no finalizado': 'danger'
+    };
 
     const getPriorityColor = (priority: string) => priorityColors[priority.toLowerCase()] || 'secondary';
     const getStatusColor = (status: string) => statusColors[status.toLowerCase()] || 'secondary';
@@ -47,19 +58,6 @@ const PageViewReports: React.FC = () => {
         fetchReport();
     }, [idReporte]);
 
-
-    const priorityColors: Record<string, string> = {
-        alta: 'danger',
-        media: 'warning',
-        baja: 'success'
-    };
-    const statusColors: Record<string, string> = {
-        enviado: 'info',
-        'en proceso': 'primary',
-        finalizado: 'success',
-        'no finalizado': 'danger'
-    };
-
     if (loading) {
         return (
             <div className="d-flex vh-100 justify-content-center align-items-center">
@@ -68,73 +66,119 @@ const PageViewReports: React.FC = () => {
         );
     }
 
+
     return (
         <div className="d-flex vh-100">
             <Sidebar />
             <div className="flex-grow-1 d-flex flex-column">
                 <Header />
-                <div style={{ margin: '20px' }} className='viewPages-fade-in'>
-                    <Container className="flex-grow-1">
-                        <div className="p-3 mb-4 rounded shadow-sm">
+                <div className="flex-grow-1 p-3 p-md-4 bg-light">
+                    <Container fluid className="px-md-4">
+                        {/* Cabecera del reporte */}
+                        <div className="mb-4 bg-white p-3 rounded shadow-sm">
                             <Row className="align-items-center">
-                                <Col md={8}>
-                                    <h2 className="mb-2">{taskData ? taskData.titulo : "Reporte null"}</h2>
+                                <Col xs={12} md={8}>
+                                    <h3 className="mb-0">
+                                        <i className="fa-solid fa-file-lines me-2"></i>
+                                        {taskData ? taskData.titulo : "Reporte no disponible"}
+                                    </h3>
                                 </Col>
-                                <Col md={4} className="text-md-end mt-2 mt-md-0 ">
-                                    <div className="d-flex flex-column flex-md-row justify-content-md-end gap-2">
-                                        <Badge bg={taskData ? getPriorityColor(taskData.prioridadReporte) : 'secondary'} className="p-2 me-2">
-                                            Prioridad: {taskData ? taskData.prioridadReporte : "N/A"}
+                                <Col xs={12} md={4} className="text-md-end mt-2 mt-md-0">
+                                    <Badge 
+                                        bg={taskData ? getPriorityColor(taskData.prioridadReporte) : 'secondary'} 
+                                        className="me-2 py-2 px-3"
+                                    >
+                                        Prioridad: {taskData ? taskData.prioridadReporte : "N/A"}
+                                    </Badge>
+                                {taskData?.estadoReporte && (
+                                        <Badge 
+                                            bg={getStatusColor(taskData.estadoReporte)} 
+                                            className="py-2 px-3"
+                                        >
+                                            <i className="fa-solid fa-circle-info me-1"></i>
+                                            Estado: {taskData.estadoReporte}
                                         </Badge>
-                                        <Badge bg={taskData ? getStatusColor(taskData.estadoReporte) : 'secondary'} className="p-2">
-                                            Estado: {taskData ? taskData.estadoReporte : "N/A"}
-                                        </Badge>
-                                    </div>
+                                    )}
                                 </Col>
                             </Row>
+                            <hr className="my-3" />
+                            <div className="d-flex flex-wrap justify-content-between text-muted">
+                                <div className="me-3 mb-2">
+                                    <i className="fa-solid fa-user me-1"></i>
+                                    Creado por: {taskData ? taskData.usuarioCreador : "N/A"}
+                                </div>
+                                <div className="mb-2">
+                                    <i className="fa-solid fa-calendar me-1"></i>
+                                    Fecha: {taskData ? new Date(taskData.fecha_Creada).toLocaleDateString() : "N/A"}
+                                </div>
+                            </div>
                         </div>
 
-                        <Row className="mb-4">
-                            <Col md={6}>
-                                <div className="d-flex justify-content-between text-muted">
-                                    <small>Creado por: {taskData ? taskData.usuarioCreador : "N/A"}</small>
-                                    <small>Fecha: {taskData ? new Date(taskData.fecha_Creada).toLocaleDateString() : "N/A"}</small>
-                                </div>
-                                <div className="p-3 bg-white rounded shadow-sm mb-3 mb-md-0">
-                                    <div className="d-flex justify-content-between align-items-center mb-3">
-                                        <h4 className="mb-0">Instrucción</h4>
-                                        
-                                            <Button variant="warning" size="sm"
+                        <Row>
+                           
+                            <Col xs={12} md={6} className="mb-4">
+                                <div className="bg-white rounded shadow-sm h-100">
+                                    <div className="p-3 border-bottom d-flex justify-content-between align-items-center">
+                                        <h5 className="mb-0">
+                                            <i className="fa-solid fa-clipboard-list me-2"></i>
+                                            Instrucción
+                                        </h5>
+                                        <Button 
+                                            variant="warning" 
+                                            size="sm"
+                                            className="px-3"
                                             onClick={() => {
                                                 setSelectedDepartId(taskData?.iD_Reporte ?? null);
                                                 setModalType('EDIT');
                                             }}
-                                            >
-                                                <i className="fas fa-pen me-1"></i> Editar
-                                            </Button>
-                                        
+                                        >
+                                            <i className="fa-solid fa-pen me-1"></i> Editar
+                                        </Button>
                                     </div>
-                                    <p className="text-justify mb-3">
-                                        {taskData ? taskData.descripcion : "Por el momento el reporte no se visualiza"}
-                                    </p>
+                                    <div className="p-3">
+                                        {taskData?.descripcion ? (
+                                            <p className="mb-0">{taskData.descripcion}</p>
+                                        ) : (
+                                            <div className="text-center text-muted py-3">
+                                                <i className="fa-solid fa-xmark me-2"></i>
+                                                Por el momento el reporte no se visualiza
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </Col>
-                            <Col>
-                                <div className="p-3 bg-white rounded shadow-sm">
-                                    <h4 className="mb-3">Evidencia</h4>
-                                    {commentData && commentData.comentario1 ? (
-                                        <>
-                                            <strong>Contenido:</strong>
-                                            <p className='m-2'>{commentData.comentario1}</p>
-                                        </>
-                                    ) : (
-                                        <p className="text-muted">Por el momento no hay respuesta</p>
-                                    )}
+
+                            {/* Evidencia */}
+                            <Col xs={12} md={6} className="mb-4">
+                                <div className="bg-white rounded shadow-sm h-100">
+                                    <div className="p-3 border-bottom">
+                                        <h5 className="mb-0">
+                                            <i className="fa-solid fa-image me-2"></i>
+                                            Respuesta
+                                        </h5>
+                                    </div>
+                                    <div className="p-3">
+                                        {commentData && commentData.comentario1 ? (
+                                            <p className="mb-0">{commentData.comentario1}</p>
+                                        ) : (
+                                            <div className="text-center text-muted py-3">
+                                                <i className="fa-solid fa-xmark me-2"></i>
+                                                Por el momento no hay respuesta
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </Col>
                         </Row>
+                        
+                       
                         {modalType === 'EDIT' && selectedDepartId !== null && (
-                                <MEditReports show={true} handleClose={() => setModalType(null)} reportsId={selectedDepartId} />
-                            )}
+                            <MEditReports 
+                                show={true} 
+                                handleClose={() => setModalType(null)} 
+                                reportsId={selectedDepartId} 
+                            />
+                        )}
                     </Container>
                 </div>
             </div>

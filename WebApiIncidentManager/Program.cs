@@ -4,7 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Services.Iservices;
 using Services.Services;
 using System.Text;
-using WebApiIncidentManager.Models;
+using Repository.ModelsDb;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +51,7 @@ builder.Services.AddScoped<IUsuarioServices, UsuarioServices>();
 builder.Services.AddScoped<IReportesServices, ReportesServices>();
 builder.Services.AddScoped<IReporteUsuarioServices, ReporteUsuarioServices>();
 builder.Services.AddScoped<IComentarioServices, ComentarioServices>();
+builder.Services.AddScoped<ITipoReporteServices, TipoReporteServices>();
 builder.Services.AddScoped<IEmailServices, EmailServices>();
 
 

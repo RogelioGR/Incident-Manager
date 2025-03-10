@@ -11,7 +11,7 @@ interface SidebarProps {
   mobile?: boolean;
   closeMenu?: () => void;
 }
-    const MySwal = withReactContent(Swal);
+const MySwal = withReactContent(Swal);
 
 const Sidebar: React.FC<SidebarProps> = ({ mobile = false, closeMenu }) => {
   const [isReportesOpen, setIsReportesOpen] = useState(false);
@@ -20,19 +20,19 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile = false, closeMenu }) => {
 
   const handleLogout = () => {
     MySwal.fire({
-        title: "Cerrar Sesión",
-        text: "¿Seguro que quieres cerrar tu sesión?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Si",
-        cancelButtonText: "Cancelar",
-      }).then((result) => {
-        if (result.isConfirmed) {
+      title: "Cerrar Sesión",
+      text: "¿Seguro que quieres cerrar tu sesión?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
         logout();
         navigate('/login');
-        }
-      });
-};
+      }
+    });
+  };
 
   return (
     <>
@@ -76,13 +76,13 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile = false, closeMenu }) => {
                 Departamentos
               </Nav.Link>
               {rol === '1' ? (
-           <Nav.Link as={Link} to="/Usuarios" className="sidebar-link">
-                      <i className="fa-solid fa-user sidebar-icon me-2"></i>
-                      Usuarios
-                    </Nav.Link>
-                   ) : (
-                    <></>
-                  )}
+                <Nav.Link as={Link} to="/Usuarios" className="sidebar-link">
+                  <i className="fa-solid fa-user sidebar-icon me-2"></i>
+                  Usuarios
+                </Nav.Link>
+              ) : (
+                <></>
+              )}
               <Nav.Link as={Link} to="/Perfil" className="sidebar-link">
                 <i className="fas fa-user-edit sidebar-icon me-2"></i>
                 Perfil
@@ -124,36 +124,46 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile = false, closeMenu }) => {
                   <i className="fas fa-file sidebar-icon me-3"></i>
                   Mis Reporte
                 </Nav.Link>
-                 {rol === '1'|| rol === '2' ? (
-                 <Nav.Link as={Link} to="/Monitoreo" className="sidebar-submenu-link ps-5 hover:bg-gray-600">
-                     <i className="fas fa-chart-line me-3"></i>
-                     Monitoreo
-                   </Nav.Link>
-              ) : (
-               <></>
-             )}
+                {rol === '2' ? (
+                  <Nav.Link as={Link} to="/Monitoreo" className="sidebar-submenu-link ps-5 hover:bg-gray-600">
+                    <i className="fas fa-chart-line me-3"></i>
+                    Monitoreo
+                  </Nav.Link>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
-            {rol === '1'|| rol === '2' ? (
-           <Nav.Link as={Link} to="/Departamento" className="sidebar-link">
+            {rol === '1' || rol === '2' ? (
+              <Nav.Link as={Link} to="/Departamento" className="sidebar-link">
                 <i className="fa-solid fa-building me-2"></i>
                 Departamentos
               </Nav.Link>
-               ) : (
-                <></>
-              )}
+            ) : (
+              <></>
+            )}
+
             {rol === '1' ? (
-           <Nav.Link as={Link} to="/Usuarios" className="sidebar-link">
-                      <i className="fa-solid fa-user sidebar-icon me-2"></i>
-                      Usuarios
-                    </Nav.Link>
-                   ) : (
-                    <></>
-                  )}
+              <Nav.Link as={Link} to="/" className="sidebar-link">
+                <i className="fas fa-user-cog me-2"></i>
+                Acceso Usuarios
+              </Nav.Link>
+            ) : (
+              <></>
+            )}
+            {rol === '1' ? (
+              <Nav.Link as={Link} to="/Usuarios" className="sidebar-link">
+                <i className="fa-solid fa-user sidebar-icon me-2"></i>
+                Usuarios
+              </Nav.Link>
+            ) : (
+              <></>
+            )}
             <Nav.Link as={Link} to="/Perfil" className="sidebar-link">
               <i className="fas fa-user-edit sidebar-icon me-2"></i>
               Perfil
             </Nav.Link>
+
           </Nav>
           <Nav className="flex-column mt-auto w-100">
             <Nav.Link onClick={handleLogout} className="sidebar-link">

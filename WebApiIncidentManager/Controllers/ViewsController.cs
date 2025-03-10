@@ -9,7 +9,7 @@ using Services.Iservices;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using WebApiIncidentManager.Models;
+using Repository.ModelsDb;
 
 namespace WebApiIncidentManager.Controllers
 {

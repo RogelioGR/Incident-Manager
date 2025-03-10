@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using WebApiIncidentManager.Models;
+using Repository.ModelsDb;
 
 namespace Services.Services
 {
@@ -27,21 +27,21 @@ namespace Services.Services
                 .AsNoTracking()
                 .Select(R => new VistaReporteCompletoDto
                 {
-                    ID_Reporte = R.ID_Reporte,
+                    ID_Reporte = R.IdReporte,
                     Titulo = R.Titulo,
                     UsuarioCreador = R.UsuarioCreador,
                     EstadoReporte = R.EstadoReporte,
                     PrioridadReporte = R.PrioridadReporte,
                     Descripcion = R.Descripcion,
-                    Fecha_Creada = R.Fecha_Creada,
-                    IdComentario = R.ID_Comentario
+                    Fecha_Creada = R.FechaCreada,
+                    IdComentario = R.IdComentario
 
                 }).ToListAsync();
         }
         public async Task<VistaReporteCompletoDto> ObtenerVistaReportePorId(int id)
         {
             var reporte = await _dBcontext.VistaReporteCompletos
-                 .FirstOrDefaultAsync(r => r.ID_Reporte == id);
+                 .FirstOrDefaultAsync(r => r.IdReporte == id);
 
 
             if (reporte == null)
@@ -51,14 +51,14 @@ namespace Services.Services
 
             return new VistaReporteCompletoDto
             {
-                ID_Reporte = reporte.ID_Reporte,
+                ID_Reporte = reporte.IdReporte,
                 Titulo = reporte.Titulo,
                 UsuarioCreador = reporte.UsuarioCreador,
                 EstadoReporte = reporte.EstadoReporte,
                 PrioridadReporte = reporte.PrioridadReporte,
                 Descripcion = reporte.Descripcion,
-                Fecha_Creada = reporte.Fecha_Creada,
-                IdComentario = reporte.ID_Comentario 
+                Fecha_Creada = reporte.FechaCreada,
+                IdComentario = reporte.IdComentario 
             };
 
 
@@ -78,6 +78,7 @@ namespace Services.Services
                     FkPrioridad = r.FkPrioridad,
                     Descripcion = r.Descripcion,
                     FkEstado = r.FkEstado,
+                    FkTipoReporte = r.FkTipoReporte,
                     FechaCreada = r.FechaCreada
                 }).ToListAsync();
         }
@@ -122,6 +123,7 @@ namespace Services.Services
                 FkPrioridad = reporte.FkPrioridad,
                 Descripcion = reporte.Descripcion,
                 FkEstado = reporte.FkEstado,
+                FkTipoReporte = reporte.FkTipoReporte,
                 FechaCreada = reporte.FechaCreada
             };
         }
@@ -147,6 +149,7 @@ namespace Services.Services
                 FkPrioridad = reporteDto.FkPrioridad,
                 Descripcion = reporteDto.Descripcion,
                 FkEstado = reporteDto.FkEstado,
+                FkTipoReporte = reporteDto.FkTipoReporte,
                 FechaCreada = DateTime.Now
             };
 
@@ -170,6 +173,7 @@ namespace Services.Services
                 FkPrioridad = reporte.FkPrioridad,
                 Descripcion = reporte.Descripcion,
                 FkEstado = reporte.FkEstado,
+                FkTipoReporte = reporteDto.FkTipoReporte,
                 FechaCreada = reporte.FechaCreada
             };
         }

@@ -9,7 +9,7 @@ using MimeKit.Text;
 using MailKit.Net.Smtp;
 using Microsoft.EntityFrameworkCore;
 using Services.Iservices;
-using WebApiIncidentManager.Models;
+using Repository.ModelsDb;
 
 namespace Services.Services
 {
@@ -68,6 +68,7 @@ namespace Services.Services
                 FkPrioridad = reporteDto.FkPrioridad,
                 Descripcion = reporteDto.Descripcion,
                 FkEstado = reporteDto.FkEstado,
+                FkTipoReporte = reporteDto.FkTipoReporte,
                 FechaCreada = DateTime.Now
             };
 
@@ -123,6 +124,7 @@ namespace Services.Services
                 FkPrioridad = reporte.FkPrioridad,
                 Descripcion = reporte.Descripcion,
                 FkEstado = reporte.FkEstado,
+                FkTipoReporte = reporteDto.FkTipoReporte,
                 FechaCreada = reporte.FechaCreada
             };
         }

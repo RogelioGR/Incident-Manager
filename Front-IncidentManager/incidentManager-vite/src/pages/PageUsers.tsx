@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table, Button } from 'react-bootstrap';
+import { Container, Table, Button, Form, InputGroup } from 'react-bootstrap';
 
 /* Importacion de services  */
 import { viewUsuarios } from '../Data/Services/UsersServices';
@@ -68,74 +68,130 @@ const PageUsers: React.FC = () => {
         setSelectedUserId(IdUsuario);
     };
 
+
+
     return (
         <div className="d-flex vh-100 flex-column flex-md-row viewinform-container">
             <Sidebar />
             <div className="flex-grow-1 d-flex flex-column viewinform-content">
                 <Header />
-                <Container className="p-4" style={{ overflowY: 'auto' }}>
-                    <div className="container mt-4">
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                            <h2 className="reports-title">Usuarios</h2>
+                <Container fluid className="p-4" style={{ overflowY: 'auto' }}>
+                    <div className="container-fluid mt-4">
+                        <div className="d-flex justify-content-between align-items-center mb-4">
+                            <h2 className="reports-title">
+                                <i className="fa-solid fa-users me-2"></i>
+                                Usuarios
+                            </h2>
                             <div className="d-flex align-items-center search-container">
-                                <input
-                                    type="text"
-                                    className="form-control search-input"
-                                    placeholder="Buscar Usuarios"
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                />
+                                <InputGroup>
+                                    <Form.Control
+                                        type="text"
+                                        className="search-input"
+                                        placeholder="Buscar Usuarios"
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                    />
+                                  
+                                    <Button variant="outline-primary">
+                                        <i className="fa-solid fa-search"></i>
+                                    </Button>
+                                </InputGroup>
                             </div>
                         </div>
-                        <button className="btn btn-success mb-4" onClick={() => handleOpenModal(ModalsUsers.CREATE_USER)}>
+                        <Button 
+                            className="mb-4" 
+                            variant="success" 
+                            onClick={() => handleOpenModal(ModalsUsers.CREATE_USER)}
+                        >
+                            <i className="fa-solid fa-user-plus me-2"></i>
                             Crear usuario
-                        </button>
+                        </Button>
+                        
                         {isLoading ? (
-                            <div className="text-center"><p>Cargando usuarios...</p></div>
-                        ) :(
-                    filteredUsers.length === 0 ? (
-                            <div className="text-center my-4"><p>No se encontraron usuarios</p></div>
+                            <div className="text-center p-5">
+                                <i className="fa-solid fa-spinner fa-spin fa-2x mb-3"></i>
+                                <p>Cargando usuarios...</p>
+                            </div>
                         ) : (
-                            <Table responsive striped bordered hover>
-                                <thead className="text-center bg-light text-dark">
-                                    <tr>
-                                        <th className="py-3">#</th>
-                                        <th className="py-3">Nombre completo</th>
-                                        <th className="py-3">Departamento</th>
-                                        <th className="py-3">Correo Electrónico</th>
-                                        <th className="py-3">Correo Personal</th>
-                                        <th className="py-3">Rol</th>
-                                        <th className="py-3 text-center">Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {filteredUsers.map((view) => (
-                                        <tr key={view.idUsuario}>
-                                            <td>{view.idUsuario}</td>
-                                            <td>{view.apellidos} {view.nombre}</td>
-                                            <td>{view.fkDepartamento}</td>
-                                            <td>{view.correoElectronico}</td>
-                                            <td>{view.correoPersonal ? view.correoPersonal : <i>Sin correo</i>}</td>
-                                            <td className="py-3">
-                                                <span className="badge bg-light text-dark rounded-pill px-3 py-2">
-                                                    {view.fkRol}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <div className="d-flex justify-content-center">
-                                                    <Button variant="primary" className="me-1" onClick={() => handleOpenModal(ModalsUsers.VIEW_USER, view.idUsuario)}>
-                                                        Ver
-                                                    </Button>
-                                                    <Button variant="danger" className="me-1" onClick={() => handleOpenModal(ModalsUsers.DELETE_USER, view.idUsuario)}>
-                                                        Eliminar
-                                                    </Button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </Table>
-                        ))}
+                            filteredUsers.length === 0 ? (
+                                <div className="text-center my-5">
+                                    <i className="fa-solid fa-user-slash fa-2x mb-3 text-muted"></i>
+                                    <p>No se encontraron usuarios</p>
+                                </div>
+                            ) : (
+                                <div className="table-responsive shadow-sm rounded">
+                                    <Table striped bordered hover className="mb-0">
+                                        <thead className="text-center bg-light text-dark">
+                                            <tr>
+                                                <th className="py-3">#</th>
+                                                <th className="py-3">
+                                                    <i className="fa-solid fa-user me-2"></i>
+                                                    Nombre completo
+                                                </th>
+                                                <th className="py-3">
+                                                    <i className="fa-solid fa-building me-2"></i>
+                                                    Departamento
+                                                </th>
+                                                <th className="py-3">
+                                                    <i className="fa-solid fa-envelope me-2"></i>
+                                                    Correo Electrónico
+                                                </th>
+                                                <th className="py-3">
+                                                    <i className="fa-solid fa-user-tag me-2"></i>
+                                                    Rol
+                                                </th>
+                                                <th className="py-3 text-center">
+                                                    <i className="fa-solid fa-gears me-2"></i>
+                                                    Acción
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {filteredUsers.map((view) => (
+                                                <tr key={view.idUsuario}>
+                                                    <td className="text-center">{view.idUsuario}</td>
+                                                    <td>
+                                                            {view.apellidos} {view.nombre}
+                                                    </td>
+                                                    <td>{view.fkDepartamento}</td>
+                                                    <td>
+                                                            {view.correoElectronico}
+                                                        
+                                                    </td>
+                                                    <td className="text-center">
+                                                        <span className="badge bg-light text-dark border rounded-pill px-3 py-2">
+                                                            {view.fkRol}
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <div className="d-flex justify-content-center gap-2">
+                                                            <Button 
+                                                                variant="outline-primary" 
+                                                                size="sm"
+                                                                onClick={() => handleOpenModal(ModalsUsers.VIEW_USER, view.idUsuario)}
+                                                                title="Ver detalles"
+                                                            >
+                                                                <i className="fa-solid fa-eye"></i>
+                                                            </Button>
+                                                            
+                                                            <Button 
+                                                                variant="outline-danger" 
+                                                                size="sm"
+                                                                onClick={() => handleOpenModal(ModalsUsers.DELETE_USER, view.idUsuario)}
+                                                                title="Eliminar usuario"
+                                                            >
+                                                                <i className="fa-solid fa-trash-can"></i>
+                                                            </Button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </Table>
+                                </div>
+                            )
+                        )}
+                        
                         {/* Modales */}
                         <MCreateUser show={modalUsers === ModalsUsers.CREATE_USER} handleClose={handleCloseModal} />
                         <MViewUser show={modalUsers === ModalsUsers.VIEW_USER} handleClose={handleCloseModal} userId={selectedUserId} />

@@ -4,7 +4,7 @@ using Services.Iservices;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApiIncidentManager.Models;
+using Repository.ModelsDb;
 using Domain.Dto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
@@ -63,6 +63,7 @@ namespace Services.Services
                 CorreoElectronico = usuario.CorreoElectronico,
                 CorreoPersonal = usuario.CorreoPersonal,
                 FkDepartamento = usuario.FkDepartamento,
+                NumEmpleado = usuario.NumEmpleado,
                 FkRol = usuario.FkRol
             };
         }
@@ -82,6 +83,7 @@ namespace Services.Services
                     CorreoPersonal = u.CorreoPersonal,
                     Contraseña = u.Contraseña,
                     FkDepartamento = u.FkDepartamento,
+                    NumEmpleado=u.NumEmpleado,
                     FkRol = u.FkRol,
                     FkDepartamentoNavigation = u.FkDepartamentoNavigation != null ? new DepartamentoDto
                     {
@@ -96,28 +98,35 @@ namespace Services.Services
                     } : null
                 }).ToListAsync();
         }
-        
+
         public async Task<UsuariosDto> CrearUsuario(UsuariosDto usuarioDto)
         {
+            // Validar campos obligatorios
             if (string.IsNullOrWhiteSpace(usuarioDto.Nombre) || string.IsNullOrWhiteSpace(usuarioDto.Apellidos) || string.IsNullOrWhiteSpace(usuarioDto.Contraseña))
             {
                 throw new ArgumentException("Nombre, Apellidos y Contraseña son requeridos");
             }
+
+            // Validar si el correo electrónico ya está registrado
             if (await _dBcontext.Usuarios.AnyAsync(u => u.CorreoElectronico == usuarioDto.CorreoElectronico))
             {
                 throw new Exception("El correo electrónico ya está registrado");
             }
+
+            // Crear el nuevo usuario
             var usuario = new Usuario
             {
                 Nombre = usuarioDto.Nombre,
                 Apellidos = usuarioDto.Apellidos,
-                CorreoElectronico = usuarioDto.CorreoElectronico, 
+                CorreoElectronico = usuarioDto.CorreoElectronico,
                 CorreoPersonal = usuarioDto.CorreoPersonal,
                 Contraseña = usuarioDto.Contraseña,
                 FkDepartamento = usuarioDto.FkDepartamento,
+                NumEmpleado = usuarioDto.NumEmpleado, // Asignar el valor de NumEmpleado
                 FkRol = usuarioDto.FkRol
             };
-            // Encriptar la contraseña 
+
+            // Encriptar la contraseña
             var passwordHasher = new PasswordHasher<Usuario>();
             usuario.Contraseña = passwordHasher.HashPassword(usuario, usuarioDto.Contraseña);
 
@@ -125,7 +134,9 @@ namespace Services.Services
             await _dBcontext.Usuarios.AddAsync(usuario);
             await _dBcontext.SaveChangesAsync();
 
+            // Asignar el ID generado al DTO
             usuarioDto.IdUsuarios = usuario.IdUsuarios;
+
             return usuarioDto;
         }
         public async Task<UsuariosDto> EditarUsuario(int idUsuario, UsuariosDto usuarioDto)
@@ -142,6 +153,7 @@ namespace Services.Services
             usuario.CorreoPersonal = usuarioDto.CorreoPersonal;
             usuario.Contraseña = usuarioDto.Contraseña;
             usuario.FkDepartamento = usuarioDto.FkDepartamento;
+            usuario.NumEmpleado = usuarioDto.NumEmpleado;
             usuario.FkRol = usuarioDto.FkRol;
 
             // Verificar si la contraseña ha sido modificada
@@ -181,11 +193,11 @@ namespace Services.Services
                 .AsNoTracking()
                 .Select(u => new VistaUsuarioDto
                 {
-                    IdUsuario = u.ID_Usuarios,
+                    IdUsuario = u.IdUsuarios,
                     Nombre = u.Nombre,
                     Apellidos = u.Apellidos,
-                    CorreoElectronico = u.Correo_Electronico,
-                    CorreoPersonal = u.Correo_Personal,
+                    CorreoElectronico = u.CorreoElectronico,
+                    CorreoPersonal = u.CorreoPersonal,
                     FkDepartamento = u.Departamento,
                     FkRol = u.Rol,
                 }).ToListAsync();

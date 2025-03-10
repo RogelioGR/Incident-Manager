@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiIncidentManager.Models;
+namespace Repository.ModelsDb;
 
 public partial class Usuario
 {
@@ -17,9 +17,11 @@ public partial class Usuario
 
     public string Contraseña { get; set; } = null!;
 
-    public int? FkDepartamento { get; set; }
+    public int FkDepartamento { get; set; }
 
-    public int? FkRol { get; set; }
+    public int FkRol { get; set; }
+
+    public int NumEmpleado { get; set; }
 
     public virtual Departamento FkDepartamentoNavigation { get; set; } = null!;
 

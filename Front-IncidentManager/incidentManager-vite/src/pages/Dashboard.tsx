@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Button, Table, Form } from "react-bootstrap";
+import { Container, Row, Col, Card,  Table, Form } from "react-bootstrap";
 import { Chart, registerables } from "chart.js";
-import { PDFDownloadLink } from "@react-pdf/renderer";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 /* Services */
@@ -13,7 +12,6 @@ import { GetPriority } from "../Data/Services/priorityServices";
 /*Componentes */
 import Sidebar from "../Components/Sidebar";
 import Header from "../Components/Header";
-import ReportPDF from "../Components/ReportPDF";
 import GraficoReportes from "../Components/GraficoReportes";
 
 /* importacion de las graficas */
@@ -159,22 +157,7 @@ const Dashboard: React.FC = () => {
                 </Card>
               </Col>
             </Row>
-            {/* Botón para descargar el PDF */}
-            <Row className="mb-4">
-              <Col className="d-flex justify-content-between align-items-center">
-                <h5>Descargar Reporte del Mes</h5>
-                <PDFDownloadLink
-                  document={<ReportPDF reportes={reportesFiltrados} />}
-                  fileName="Reporte_Incidentes.pdf"
-                >
-                  {({ loading }) => (
-                    <Button variant="primary">
-                      {loading ? "Generando PDF..." : "Descargar PDF"}
-                    </Button>
-                  )}
-                </PDFDownloadLink>
-              </Col>
-            </Row>
+      
             <Row className="mb-3">
               <Col md={6}>
                 <Form.Control

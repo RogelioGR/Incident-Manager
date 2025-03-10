@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
-using Repository.Models;
 
-namespace WebApiIncidentManager.Models;
+namespace Repository.ModelsDb;
 
 public partial class SistemaKempinskiContext : DbContext
 {
     public SistemaKempinskiContext()
     {
     }
+
     public SistemaKempinskiContext(DbContextOptions<SistemaKempinskiContext> options)
         : base(options)
     {
@@ -30,11 +30,19 @@ public partial class SistemaKempinskiContext : DbContext
 
     public virtual DbSet<Role> Roles { get; set; }
 
+    public virtual DbSet<TipoReporte> TipoReportes { get; set; }
+
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
-    // Importacion de las view MySQL
+    public virtual DbSet<VistaReporte> VistaReportes { get; set; }
+
+    public virtual DbSet<VistaReporteCompleto> VistaReporteCompletos { get; set; }
+
     public virtual DbSet<VistaUsuario> VistaUsuarios { get; set; }
-    public virtual DbSet<VistaReporteCompleto> VistaReporteCompletos{ get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseMySql("server=mysql-2a593c0a-rogelio35grm-abac.h.aivencloud.com;port=17104;database=Sistema_Kempinski;uid=avnadmin;pwd=AVNS_nolUS7f12mDHiWFDUGK", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -100,6 +108,8 @@ public partial class SistemaKempinskiContext : DbContext
 
             entity.HasIndex(e => e.FkPrioridad, "Fk_Prioridad");
 
+            entity.HasIndex(e => e.FkTipoReporte, "Fk_TipoReporte");
+
             entity.HasIndex(e => e.FkDestinatario, "Fk_destinatario");
 
             entity.HasIndex(e => e.FkEstado, "Fk_estado");
@@ -112,6 +122,7 @@ public partial class SistemaKempinskiContext : DbContext
             entity.Property(e => e.FkDestinatario).HasColumnName("Fk_destinatario");
             entity.Property(e => e.FkEstado).HasColumnName("Fk_estado");
             entity.Property(e => e.FkPrioridad).HasColumnName("Fk_Prioridad");
+            entity.Property(e => e.FkTipoReporte).HasColumnName("Fk_TipoReporte");
             entity.Property(e => e.Titulo).HasMaxLength(255);
 
             entity.HasOne(d => d.FkDestinatarioNavigation).WithMany(p => p.Reportes)
@@ -128,6 +139,11 @@ public partial class SistemaKempinskiContext : DbContext
                 .HasForeignKey(d => d.FkPrioridad)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Reportes_ibfk_2");
+
+            entity.HasOne(d => d.FkTipoReporteNavigation).WithMany(p => p.Reportes)
+                .HasForeignKey(d => d.FkTipoReporte)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Reportes_ibfk_4");
         });
 
         modelBuilder.Entity<ReporteUsuario>(entity =>
@@ -163,6 +179,18 @@ public partial class SistemaKempinskiContext : DbContext
                 .HasColumnName("Nombre_Rol");
         });
 
+        modelBuilder.Entity<TipoReporte>(entity =>
+        {
+            entity.HasKey(e => e.IdTipo).HasName("PRIMARY");
+
+            entity.ToTable("TipoReporte");
+
+            entity.Property(e => e.IdTipo).HasColumnName("ID_Tipo");
+            entity.Property(e => e.NombreTipo)
+                .HasMaxLength(255)
+                .HasColumnName("Nombre_Tipo");
+        });
+
         modelBuilder.Entity<Usuario>(entity =>
         {
             entity.HasKey(e => e.IdUsuarios).HasName("PRIMARY");
@@ -183,6 +211,7 @@ public partial class SistemaKempinskiContext : DbContext
             entity.Property(e => e.FkDepartamento).HasColumnName("Fk_Departamento");
             entity.Property(e => e.FkRol).HasColumnName("Fk_Rol");
             entity.Property(e => e.Nombre).HasMaxLength(255);
+            entity.Property(e => e.NumEmpleado).HasColumnName("Num_Empleado");
 
             entity.HasOne(d => d.FkDepartamentoNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.FkDepartamento)
@@ -194,17 +223,62 @@ public partial class SistemaKempinskiContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Usuarios_ibfk_2");
         });
-        modelBuilder.Entity<VistaUsuario>(entity =>
+
+        modelBuilder.Entity<VistaReporte>(entity =>
         {
-            entity.HasKey(e => e.ID_Usuarios);
-            entity.ToView("Vista_Usuarios"); 
-        });
-        modelBuilder.Entity<VistaReporteCompleto>(entity =>
-        {
-            entity.HasKey(e => e.ID_Reporte);
-            entity.ToView("VistaReporteCompleto");
+            entity
+                .HasNoKey()
+                .ToView("Vista_Reportes");
+
+            entity.Property(e => e.Descripcion).HasColumnType("text");
+            entity.Property(e => e.Destinatario).HasMaxLength(255);
+            entity.Property(e => e.Estado).HasMaxLength(255);
+            entity.Property(e => e.FechaCreada)
+                .HasColumnType("timestamp")
+                .HasColumnName("Fecha_Creada");
+            entity.Property(e => e.IdReporte).HasColumnName("ID_Reporte");
+            entity.Property(e => e.Prioridad).HasMaxLength(255);
+            entity.Property(e => e.Titulo).HasMaxLength(255);
         });
 
+        modelBuilder.Entity<VistaReporteCompleto>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("VistaReporteCompleto");
+
+            entity.Property(e => e.Descripcion).HasColumnType("text");
+            entity.Property(e => e.EstadoReporte).HasMaxLength(255);
+            entity.Property(e => e.FechaCreada)
+                .HasColumnType("timestamp")
+                .HasColumnName("Fecha_Creada");
+            entity.Property(e => e.IdComentario).HasColumnName("ID_Comentario");
+            entity.Property(e => e.IdReporte).HasColumnName("ID_Reporte");
+            entity.Property(e => e.PrioridadReporte).HasMaxLength(255);
+            entity.Property(e => e.Titulo).HasMaxLength(255);
+            entity.Property(e => e.UsuarioCreador)
+                .HasMaxLength(511)
+                .HasDefaultValueSql("''");
+        });
+
+        modelBuilder.Entity<VistaUsuario>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("Vista_Usuarios");
+
+            entity.Property(e => e.Apellidos).HasMaxLength(255);
+            entity.Property(e => e.CorreoElectronico)
+                .HasMaxLength(255)
+                .HasColumnName("Correo_Electronico");
+            entity.Property(e => e.CorreoPersonal)
+                .HasMaxLength(255)
+                .HasColumnName("Correo_Personal");
+            entity.Property(e => e.Departamento).HasMaxLength(255);
+            entity.Property(e => e.IdUsuarios).HasColumnName("ID_Usuarios");
+            entity.Property(e => e.Nombre).HasMaxLength(255);
+            entity.Property(e => e.Rol).HasMaxLength(255);
+        });
 
         OnModelCreatingPartial(modelBuilder);
     }

@@ -20,9 +20,11 @@ namespace Domain.Dto
 
         public string Contraseña { get; set; } = null!;
 
-        public int? FkDepartamento { get; set; }
+        public int FkDepartamento { get; set; }
 
-        public int? FkRol { get; set; }
+        public int FkRol { get; set; }
+        public int NumEmpleado { get; set; }
+
 
         public virtual DepartamentoDto? FkDepartamentoNavigation { get; set; }
 

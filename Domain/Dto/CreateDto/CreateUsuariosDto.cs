@@ -24,6 +24,9 @@ namespace Domain.Dto.CreateDto
 
         public int FkRol { get; set; }
 
-  
+        public int NumEmpleado { get; set; }
+
+
+
     }
 }

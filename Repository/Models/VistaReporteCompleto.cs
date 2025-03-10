@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Repository.Models
+namespace Repository.ModelsDb;
+
+public partial class VistaReporteCompleto
 {
-    public class VistaReporteCompleto
-    {
-        public int ID_Reporte { get; set; }
-        public string? Titulo { get; set; }
-        public string? UsuarioCreador { get; set; }
-        public string? EstadoReporte { get; set; }
-        public string? PrioridadReporte { get; set; }
-        public string? Descripcion { get; set; }
-        public DateTime? Fecha_Creada { get; set; }
-        public int? ID_Comentario { get; set; }
+    public int IdReporte { get; set; }
 
+    public string Titulo { get; set; } = null!;
 
-    }
+    public string UsuarioCreador { get; set; } = null!;
+
+    public string EstadoReporte { get; set; } = null!;
+
+    public string PrioridadReporte { get; set; } = null!;
+
+    public string Descripcion { get; set; } = null!;
+
+    public DateTime? FechaCreada { get; set; }
+
+    public int? IdComentario { get; set; }
 }

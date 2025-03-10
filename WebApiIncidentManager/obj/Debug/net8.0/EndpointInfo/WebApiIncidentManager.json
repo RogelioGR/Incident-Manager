@@ -1560,6 +1560,84 @@
         }
       }
     },
+    "/api/TipoReporte": {
+      "get": {
+        "tags": [
+          "TipoReporte"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TipoReporteDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TipoReporteDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TipoReporteDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TipoReporte/{id}": {
+      "get": {
+        "tags": [
+          "TipoReporte"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TipoReporteDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TipoReporteDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TipoReporteDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Usuarios": {
       "get": {
         "tags": [
@@ -2041,6 +2119,10 @@
           "fkRol": {
             "type": "integer",
             "format": "int32"
+          },
+          "numEmpleado": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -2148,8 +2230,7 @@
           },
           "fkDestinatario": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "fkPrioridad": {
             "type": "integer",
@@ -2167,6 +2248,10 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "fkTipoReporte": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -2182,6 +2267,20 @@
             "format": "int32"
           },
           "nombreRol": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TipoReporteDto": {
+        "type": "object",
+        "properties": {
+          "idTipo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreTipo": {
             "type": "string",
             "nullable": true
           }
@@ -2235,13 +2334,15 @@
           },
           "fkDepartamento": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "fkRol": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
+          },
+          "numEmpleado": {
+            "type": "integer",
+            "format": "int32"
           },
           "fkDepartamentoNavigation": {
             "$ref": "#/components/schemas/DepartamentoDto"

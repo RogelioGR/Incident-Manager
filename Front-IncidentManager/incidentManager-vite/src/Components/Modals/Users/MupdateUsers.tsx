@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 /* Importacion services */
 import { IUsuario } from "../../../Data/Interfaces/IUsers";
 import { obtenerUsuarioid, updateUser } from "../../../Data/Services/UsersServices";
+import { IDepartamento } from "../../../Data/Interfaces/lDepartamento";
+import { GetDepartment } from "../../../Data/Services/departmentServices";
 
 interface MEditUserProps {
   show: boolean;
@@ -14,43 +16,56 @@ interface MEditUserProps {
 }
 
 const MySwal = withReactContent(Swal);
-const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
 
+const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
   const [formData, setFormData] = useState<IUsuario>({
     nombre: "",
     apellidos: "",
     correoElectronico: "",
-    correoPersonal:"",
+    correoPersonal: "",
     contraseña: "",
     fkDepartamento: 0,
     fkRol: 0,
+    numEmpleado: 0,
   });
 
+  const [departamentos, setDepartamentos] = useState<IDepartamento[]>([]);
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
+  const [, setPrevPassword] = useState("");
 
   useEffect(() => {
+    const fetchDepartamentos = async () => {
+      try {
+        const departamentosData = await GetDepartment();
+        setDepartamentos(departamentosData);
+      } catch (error) {
+        console.error("Error al obtener los departamentos:", error);
+      }
+    };
+
     const fetchUser = async () => {
       if (userId !== undefined) {
         try {
           const userData = await obtenerUsuarioid(userId);
-          console.log("userData:", userData);
           setFormData(userData);
-        } catch (error) { 
+          setPrevPassword(userData.contraseña || ""); // Guarda la contraseña original
+        } catch (error) {
           console.error("Error al cargar los datos del usuario:", error);
           MySwal.fire("Error", "Hubo un error al cargar los datos del usuario", "error");
         }
       }
     };
 
-    fetchUser();
+    fetchDepartamentos().then(fetchUser);
   }, [userId]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
-    if (name === 'contraseña') {
+    if (name === "contraseña") {
       setIsPasswordChanged(true);
     }
+
     setFormData({ ...formData, [name]: value });
   };
 
@@ -63,11 +78,13 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
 
     try {
       const updatedData = { ...formData };
+
       if (!isPasswordChanged) {
-        delete updatedData.contraseña;
+        delete updatedData.contraseña; // No enviar la contraseña si no ha sido cambiada
       }
 
       await updateUser(userId, updatedData);
+
       MySwal.fire({
         title: "Usuario editado",
         text: "El usuario ha sido editado correctamente.",
@@ -80,7 +97,7 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
       });
       handleClose();
     } catch (error) {
-      console.error("Error al cargar los datos del usuario:", error);
+      console.error("Error al editar el usuario:", error);
       MySwal.fire("Error", "Hubo un error al editar el usuario", "error");
     }
   };
@@ -150,23 +167,34 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
                 <Form.Group>
                   <Form.Label>Contraseña:</Form.Label>
                   <Form.Control
-                    type="password" 
-                    placeholder="Contraseña"
+                    type="password"
+                    placeholder="Dejar en blanco para mantener la actual"
                     name="contraseña"
+                    value={formData.contraseña}
                     onChange={handleChange}
                   />
                 </Form.Group>
                 <Row>
                   <Col md={6}>
                     <Form.Group>
-                      <Form.Label>departamento:</Form.Label>
+                      <Form.Label>Departamento:</Form.Label>
                       <Form.Control
-                        type="text"
-                        placeholder="Teléfono"
+                        as="select"
                         name="fkDepartamento"
-                        value={formData.fkDepartamento}
+                        value={formData.fkDepartamento || ""}
                         onChange={handleChange}
-                      />
+                      >
+                        <option value="">Seleccione un departamento</option>
+                        {departamentos.length > 0 ? (
+                          departamentos.map((dep) => (
+                            <option key={dep.idDepartamento} value={dep.idDepartamento}>
+                              {dep.nombreDepartamentos}
+                            </option>
+                          ))
+                        ) : (
+                          <option disabled>Cargando departamentos...</option>
+                        )}
+                      </Form.Control>
                     </Form.Group>
                   </Col>
                   <Col md={6}>
@@ -180,9 +208,20 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
                       >
                         <option>Roles</option>
                         <option value={1}>Admin</option>
-                        <option value={2}>Lideres</option>
+                        <option value={2}>Líderes</option>
                         <option value={3}>Empleado</option>
                       </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId="formTipo">
+                      <Form.Label>Numero de Empleado:</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder="000"
+                        name="numEmpleado"
+                        value={formData.numEmpleado}
+                        onChange={handleChange}
+                      />
                     </Form.Group>
                   </Col>
                 </Row>
@@ -190,11 +229,7 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
                   <Button variant="success" className="me-2" type="submit">
                     Guardar
                   </Button>
-                  <Button
-                    variant="secondary"
-                    className="me-2"
-                    onClick={handleClose}
-                  >
+                  <Button variant="secondary" className="me-2" onClick={handleClose}>
                     Cancelar
                   </Button>
                 </div>
@@ -205,6 +240,6 @@ const MEditUser: React.FC<MEditUserProps> = ({ show, handleClose, userId }) => {
       </Modal.Body>
     </Modal>
   );
-};  
+};
 
 export default MEditUser;

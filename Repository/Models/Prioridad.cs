@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiIncidentManager.Models;
+namespace Repository.ModelsDb;
 
 public partial class Prioridad
 {

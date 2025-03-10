@@ -12,7 +12,7 @@ namespace Domain.Dto
 
         public string Titulo { get; set; } = null!;
 
-        public int? FkDestinatario { get; set; }
+        public int FkDestinatario { get; set; }
 
         public int FkPrioridad { get; set; }
 
@@ -21,5 +21,7 @@ namespace Domain.Dto
         public int FkEstado { get; set; }
 
         public DateTime? FechaCreada { get; set; }
+        public int FkTipoReporte { get; set; }
+
     }
 }

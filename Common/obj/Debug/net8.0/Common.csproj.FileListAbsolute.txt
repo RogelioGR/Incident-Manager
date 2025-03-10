@@ -10,3 +10,15 @@ C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\Common\obj\Debug
 C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\Common\obj\Debug\net8.0\refint\Common.dll
 C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\Common\obj\Debug\net8.0\Common.pdb
 C:\Users\rogel\OneDrive\Desktop\Doc Estad\WebApiIncidentManager\Common\obj\Debug\net8.0\ref\Common.dll
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\bin\Debug\net8.0\Common.deps.json
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\bin\Debug\net8.0\Common.dll
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\bin\Debug\net8.0\Common.pdb
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\obj\Debug\net8.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\obj\Debug\net8.0\Common.AssemblyInfoInputs.cache
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\obj\Debug\net8.0\Common.AssemblyInfo.cs
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\obj\Debug\net8.0\Common.csproj.CoreCompileInputs.cache
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\obj\Debug\net8.0\Common.sourcelink.json
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\obj\Debug\net8.0\Common.dll
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\obj\Debug\net8.0\refint\Common.dll
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\obj\Debug\net8.0\Common.pdb
+C:\Users\rogel\OneDrive\Desktop\Doc Estad\Incident-Manager\Common\obj\Debug\net8.0\ref\Common.dll

@@ -21,5 +21,7 @@ namespace Domain.Dto.CreateDto
         public int FkEstado { get; set; }
 
         public DateTime? FechaCreada { get; set; }
+        public int FkTipoReporte { get; set; }
+
     }
 }

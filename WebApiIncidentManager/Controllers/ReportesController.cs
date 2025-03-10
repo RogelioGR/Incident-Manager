@@ -5,7 +5,6 @@ using Services.Iservices;
 
 namespace WebApiBD.Controllers
 {
-    [Authorize] // Asegura que solo usuarios autenticados
     [Route("api/[controller]")]
     [ApiController]
 

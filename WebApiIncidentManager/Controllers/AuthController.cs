@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Domain.Dto;
-using WebApiIncidentManager.Models;
+using Repository.ModelsDb;
 
 namespace WebApiIncidentManager.Controllers
 {

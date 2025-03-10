@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
-using WebApiIncidentManager.Models;
+using Repository.ModelsDb;
 
 namespace Services.Services
 {

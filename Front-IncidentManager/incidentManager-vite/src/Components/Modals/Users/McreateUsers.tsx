@@ -25,6 +25,7 @@ const MCreateUser: React.FC<MCreateUserProps> = ({ show, handleClose }) => {
     contraseña: "",
     fkDepartamento: 0,
     fkRol: 0,
+    numEmpleado: 0
   });
 
   const [departamentos, setDepartamentos] = useState<IDepartamento[]>([]);
@@ -89,7 +90,6 @@ const MCreateUser: React.FC<MCreateUserProps> = ({ show, handleClose }) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>Crear Usuario</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Container className="flex-grow-1 my-5">
@@ -183,6 +183,16 @@ const MCreateUser: React.FC<MCreateUserProps> = ({ show, handleClose }) => {
                       </Form.Control>
                     </Form.Group>
                   </Col>
+                  <Form.Group controlId="formTipo">
+  <Form.Label>Número de Empleado:</Form.Label>  
+  <Form.Control
+    type="number"
+    placeholder="000"
+    name="numEmpleado"
+    value={formData.numEmpleado}
+    onChange={handleChange}
+  />
+</Form.Group>
                 </Row>
 
                 <div className="text-center mt-4">

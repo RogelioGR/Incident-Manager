@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiIncidentManager.Models;
+namespace Repository.ModelsDb;
 
 public partial class Reporte
 {
@@ -9,7 +9,7 @@ public partial class Reporte
 
     public string Titulo { get; set; } = null!;
 
-    public int? FkDestinatario { get; set; }
+    public int FkDestinatario { get; set; }
 
     public int FkPrioridad { get; set; }
 
@@ -19,6 +19,8 @@ public partial class Reporte
 
     public DateTime? FechaCreada { get; set; }
 
+    public int FkTipoReporte { get; set; }
+
     public virtual ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
 
     public virtual Usuario FkDestinatarioNavigation { get; set; } = null!;
@@ -26,6 +28,8 @@ public partial class Reporte
     public virtual EstadosReporte FkEstadoNavigation { get; set; } = null!;
 
     public virtual Prioridad FkPrioridadNavigation { get; set; } = null!;
+
+    public virtual TipoReporte FkTipoReporteNavigation { get; set; } = null!;
 
     public virtual ICollection<ReporteUsuario> ReporteUsuarios { get; set; } = new List<ReporteUsuario>();
 }

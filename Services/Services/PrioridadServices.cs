@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Domain.Dto;
 using Microsoft.EntityFrameworkCore;
 using Services.Iservices;
-using WebApiIncidentManager.Models;
+using Repository.ModelsDb;
 
 
 namespace Services.Services

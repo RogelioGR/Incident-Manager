@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Repository.Models
+namespace Repository.ModelsDb;
+
+public partial class VistaUsuario
 {
-    public class VistaUsuario
-    {
-        public int ID_Usuarios { get; set; }
-        public string? Nombre { get; set; }
-        public string? Apellidos { get; set; }
-        public string? Correo_Electronico { get; set; }
-        public string? Correo_Personal { get; set; }
-        public string? Departamento { get; set; }
-        public string? Rol { get; set; }
-    }
+    public int IdUsuarios { get; set; }
 
+    public string Nombre { get; set; } = null!;
+
+    public string Apellidos { get; set; } = null!;
+
+    public string CorreoElectronico { get; set; } = null!;
+
+    public string? CorreoPersonal { get; set; }
+
+    public string? Departamento { get; set; }
+
+    public string? Rol { get; set; }
 }

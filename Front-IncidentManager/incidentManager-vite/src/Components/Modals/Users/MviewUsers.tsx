@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button, Spinner, Card, Alert, Form } from "react-bootstrap";
+
 import { IUsuario } from "../../../Data/Interfaces/IUsers";
 import { obtenerUsuarioid } from "../../../Data/Services/UsersServices";
+import { IDepartamento } from "../../../Data/Interfaces/lDepartamento";
+import { GetDepartment } from "../../../Data/Services/departmentServices";
+import { IRoles } from "../../../Data/Interfaces/lRoles";
+import { GetRols } from "../../../Data/Services/RolServices";
 import MEditUser from "./MupdateUsers";
 
 interface MviewUserProps {
@@ -14,29 +19,49 @@ const MViewUser: React.FC<MviewUserProps> = ({ show, handleClose, userId }) => {
   const [user, setUser] = useState<IUsuario | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [departments, setDepartments] = useState<IDepartamento[]>([]);
+  const [roles, setRoles] = useState<IRoles[]>([]);
 
   useEffect(() => {
-    if (!userId) return;
-    const fetchUser = async () => {
+    const fetchData = async () => {
       try {
         setLoading(true);
-        const userData = await obtenerUsuarioid(userId);
-        setUser(userData);
+        const departmentsData = await GetDepartment();
+        const rolesData = await GetRols();
+        setDepartments(departmentsData);
+        setRoles(rolesData);
+
+        if (userId) {
+          const userData = await obtenerUsuarioid(userId);
+          setUser(userData);
+        }
       } catch (error) {
-        setError("Error al cargar la información del usuario");
+        setError("Error al cargar la información");
         console.error(error);
       } finally {
         setLoading(false);
       }
     };
-    fetchUser();
+
+    fetchData();
   }, [userId]);
+
+  const getDepartmentName = (departmentId: number | undefined) => {
+    const department = departments.find((dept) => dept.idDepartamento === departmentId);
+    return department ? department.nombreDepartamentos : "Desconocido";
+  };
+
+  const getRoleName = (roleId: number | undefined) => {
+    if (roleId === undefined) return "Desconocido";
+    const role = roles.find((rol) => rol.idRol === roleId);
+    return role ? role.nombreRol : "Desconocido";
+  };
 
   enum ModalsUsers {
     NONE = 'NONE',
     EDIT_USER = 'EDIT_USER',
-
   }
+
   const [modalUsers, setModalUsers] = useState(ModalsUsers.NONE);
   const [selectedUserId, setSelectedUserId] = useState<number>();
 
@@ -82,11 +107,15 @@ const MViewUser: React.FC<MviewUserProps> = ({ show, handleClose, userId }) => {
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Departamento</Form.Label>
-                    <Form.Control type="text" value={user.fkDepartamento?.toString()} readOnly />
+                    <Form.Control type="text" value={getDepartmentName(user.fkDepartamento)} readOnly />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Rol de Usuario</Form.Label>
-                    <Form.Control type="text" value={user.fkRol?.toString()} readOnly />
+                    <Form.Control type="text" value={getRoleName(user.fkRol)} readOnly />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Numero de Usuario</Form.Label>
+                    <Form.Control type="text" value={user.numEmpleado?.toString()} readOnly />
                   </Form.Group>
                 </Form>
               </Card.Body>
@@ -110,7 +139,6 @@ const MViewUser: React.FC<MviewUserProps> = ({ show, handleClose, userId }) => {
       </Modal>
 
       <MEditUser show={modalUsers === ModalsUsers.EDIT_USER} handleClose={handleCloseModal} userId={selectedUserId} />
-
     </>
   );
 };

@@ -6,4 +6,5 @@ export interface IReportes {
     descripcion: string;
     fkEstado?: number;
     fechaCreada?: string ;
+    fkTipoReporte? : number;
 }
