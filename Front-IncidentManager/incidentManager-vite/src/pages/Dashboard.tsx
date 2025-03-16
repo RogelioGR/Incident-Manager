@@ -174,33 +174,43 @@ const Dashboard: React.FC = () => {
                   <Card.Body>
                     <Card.Title>Reportes Recibidos</Card.Title>
                     <Table responsive striped bordered hover>
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Título</th>
-                          <th>progreso del reporte</th>
-                          <th>Prioridad</th>
-                          <th>Fecha Creada</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {reportesFiltrados.map((reporte) => {
-                          const { porcentaje, color } = getProgress(reporte.fkEstado ?? 0);
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Progreso del reporte</th>
+      <th>Prioridad</th>
+      <th>Fecha Creada</th>
+    </tr>
+  </thead>
+  <tbody>
+    {reportesFiltrados.length === 0 ? (
+      <tr>
+        <td colSpan={5} className="text-center">
+          Reporte no encontrado
+        </td>
+      </tr>
+    ) : (
+      reportesFiltrados.map((reporte) => {
+        const { porcentaje, color } = getProgress(reporte.fkEstado ?? 0);
 
-                          return (
-                            <tr key={reporte.idReporte}>
-                              <td>{reporte.idReporte}</td>
-                              <td>{reporte.titulo}</td>
-                              <td>
-                                <ProgressBar now={porcentaje} variant={color} label={`${porcentaje}%`} />
-                              </td>
-                              <td >{getNombrePrioridad(reporte.fkPrioridad)}</td>
-                              <td className="d-flex justify-content-center">{new Date(reporte.fechaCreada ?? 0).toLocaleDateString()}</td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </Table>
+        return (
+          <tr key={reporte.idReporte}>
+            <td>{reporte.idReporte}</td>
+            <td>{reporte.titulo}</td>
+            <td>
+              <ProgressBar now={porcentaje} variant={color} label={`${porcentaje}%`} />
+            </td>
+            <td>{getNombrePrioridad(reporte.fkPrioridad)}</td>
+            <td className="d-flex justify-content-center">
+              {new Date(reporte.fechaCreada ?? 0).toLocaleDateString()}
+            </td>
+          </tr>
+        );
+      })
+    )}
+  </tbody>
+</Table>
                   </Card.Body>
                 </Card>
               </Col>
